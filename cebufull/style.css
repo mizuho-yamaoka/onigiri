@@ -1,0 +1,382 @@
+@charset "UTF-8";
+/* CSS Document */
+
+/*reset----------------*/
+body {
+    margin: 0;
+    padding: 0;
+}
+a {
+    text-decoration: none;
+    color: #2b2b2b;
+    cursor: pointer;
+}
+a:hover {
+    opacity: 0.8;
+}
+ul {
+    padding: 0;
+    margin: 0;
+}
+li {
+    list-style: none;
+}
+p {
+    margin: 0;
+    font-size: 20px;
+    line-height: 2rem;
+    font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", "sans-serif";
+    font-weight: normal;
+}
+h1, h2 {
+    margin: 0;
+}
+/*style---------------------*/
+/*pc非表示*/
+body {
+    background-color: #ecfafa;
+    box-sizing: border-box;
+}
+/*heder*/
+.spnavi{display: none;}
+#groval-navi {
+    width: 100%;
+}
+.logo {
+    margin-top: 20px;
+    height: 40px;
+}
+.navi {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 10%;
+}
+.navilist {
+    display: flex;
+    margin: 3% 0;
+}
+.navilist li {
+    border-left: solid 1px #2b2b2b;
+    padding: 0 15px;
+    display: table-cell;
+    vertical-align: middle;
+}
+.navilist .lilast {
+    border-right: solid 1px #2b2b2b;
+}
+.navilist .login {
+    border-left: none!important;
+    background-color: #2d93d6;
+    margin-left: 15px;
+}
+.login a {
+    color: #FFFFFF;
+    display: block;
+}
+.newA {
+    border-left: none!important;
+    background-color: #ffaa00;
+    margin-left: 10px
+}
+.newA a {
+    color: #FFFFFF;
+}
+.headimg {
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+}
+video {
+    width: 100%;
+}
+/*about area----------------------*/
+.aboutWrap {
+    background-color: #add9da;
+    padding: 60px 0;
+}
+.acWrap {
+    margin: 0 10%;
+    position: relative;
+}
+.acWrap h2 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+.aboutTxet {
+    color: #FFFFFF;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 80px;
+}
+.ajp, .aen {
+    width: 48%;
+    text-align: center;
+}
+.howbtn {
+    background-color: #ffaa00;
+    width: 210px;
+    text-align: center;
+    padding: 5px;
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+}
+.howbtn p {
+    font-weight: bold;
+    font-size: 25px;
+}
+.howbtn img {
+    vertical-align: middle;
+    margin-left: 15px;
+}
+/*now area---------------------------*/
+.ncWrap {
+    padding: 60px 0;
+    margin: 0 10%;
+    text-align: center;
+}
+.ncWrap h2 {
+    background-color: #14548a;
+    padding: 20px 0;
+}
+/*how to cebu area-----------------------*/
+.hcWrap .bgimg {
+    position: relative;
+    height: 500px;
+    width: 100%;
+    background: url(img/howimg.jpg) no-repeat center center;
+    background-size: cover;
+}
+.hcWrap h2 {
+    position: absolute;
+    bottom: -40px;
+    background-color: #add9da;
+    padding: 20px 20px 20px 10%;
+}
+.teWrap {
+    padding: 80px 0 60px;
+    margin: 0 10%;
+}
+.howtoTxet {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 80px;
+    position: relative;
+}
+.howtobtn {
+    background-color: #ffaa00;
+    width: 210px;
+    text-align: center;
+    padding: 5px;
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+}
+.howtobtn p {
+    font-weight: bold;
+    font-size: 25px;
+}
+.howtobtn img {
+    vertical-align: middle;
+    margin-left: 15px;
+}
+/*bbs area------------------------*/
+.bbsWrap {
+    padding: 60px 0;
+    text-align: center;
+    background: url(img/fish.jpg) no-repeat top center;
+    background-size: cover;
+}
+.bcWrap {
+    position: relative;
+    padding-bottom: 60px;
+    margin: 0 10%;
+}
+/*slick---------*/
+* {
+    box-sizing: border-box;
+}
+.slider {
+    width: 64%;
+    margin: 100px auto;
+}
+.slick-slide {
+    margin: 0px 20px;
+}
+.slick-slide img {
+    width: 100%;
+}
+.slick-prev:before, .slick-next:before {
+    color: black;
+}
+.slick_container {
+    position: relative;
+}
+.slide-arrow {
+    position: absolute;
+    top: 50%;
+}
+.prev-arrow {
+    left: -60px;
+}
+.next-arrow {
+    right: -60px;
+}
+.bbsbtn {
+    background-color: #ffaa00;
+    width: 210px;
+    text-align: center;
+    padding: 5px;
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+}
+.bbsbtn p {
+    font-weight: bold;
+    font-size: 25px;
+}
+.bbsbtn a {
+    color: #FFFFFF;/*footer area---------------------*/
+}
+.bbsbtn img {
+    vertical-align: middle;
+    margin-left: 15px;
+}
+#footer {
+    padding: 60px 0;
+    background-color: #14548a;
+}
+.footerWrap {
+    margin: 0 10%;
+    display: flex;
+    justify-content: space-between;
+}
+.footerMenu {
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+    margin-left: 20px;
+}
+.footerMenu ul {
+    width: 50%;
+}
+.footerMenu li {
+    margin-bottom: 10px;
+}
+.fmenu1 a, .fmenu2 a {
+    color: #FFFFFF;
+    letter-spacing: 0.1rem;
+}
+.fmenu1 img, .fmenu2 img {
+    vertical-align: middle;
+    margin-right: 10px;
+}
+.fmenu1 li:last-child {
+    text-indent: 2rem;
+}
+
+/*SPサイズ---------------------*/
+@media screen and (max-width: 480px) {
+	/*sp非表示*/
+	.pcOnly {
+		display: none;
+	}
+	
+	.spnavi{display: block;}
+	.navi{
+		margin: 10px 5%;
+	}
+	.logo{
+		margin-top: 0;
+	}
+
+	/*sp navi ハンバーガーボタン*/
+	.menu-trigger, .menu-trigger span {
+		display: inline-block;
+		transition: all .4s;
+		box-sizing: border-box;
+	}
+	.menu-trigger {
+		position: relative;
+		/*bottom: 20px;
+		right: 20px;*/
+		top: 0px;
+		right: 14px;
+		width: 60px;
+		height: 60px;
+		z-index: 9999;
+		border-radius: 4px;
+	}
+	.menu-trigger span {
+		position: absolute;
+		z-index: 9999;
+		left: 8px;
+		width: 75%;
+		height: 4px;
+		background-color: #14548a;
+		border-radius: 4px;
+	}
+	.menu-trigger span:nth-of-type(1) {
+		top: 9px;
+	}
+	.menu-trigger span:nth-of-type(2) {
+		top: 28px;
+	}
+	.menu-trigger span:nth-of-type(3) {
+		bottom: 9px;
+	}
+	.menu-trigger.active span:nth-of-type(1) {
+		-webkit-transform: translateY(20px) rotate(-45deg);
+		transform: translateY(19px) rotate(-45deg);
+	}
+	.menu-trigger.active span:nth-of-type(2) {
+		opacity: 0;
+	}
+	.menu-trigger.active span:nth-of-type(3) {
+		-webkit-transform: translateY(-20px) rotate(45deg);
+		transform: translateY(-20px) rotate(45deg);
+	}
+	#overlay {
+		display: none;
+		width: 100%;
+		height: 100%;
+		text-align: center;
+		position: fixed;
+		top: 0;
+		right: 0;
+		z-index: 100;
+		background: rgba(173,217,218,0.7);
+		padding: 20px;
+		box-sizing: border-box;
+	}
+	#overlay ul {
+		padding-left: 0px;
+	}
+	#overlay ul li {
+		padding-left: 0px;
+		list-style-type: none;
+		margin-top: 50px;
+	}
+	#overlay ul li a {
+		color: #fff;
+		text-decoration: none;
+		font-size: 150%;
+	}
+	
+	.headimg{height: auto;}
+	video{vertical-align: bottom;}
+	.acWrap,.ncWrap,.teWrap,.bcWrap,.footerWrap{
+		margin: 0 5%;
+	}
+	.aboutTxet,.howtoTxet,.footerMenu{
+		display: block;
+	}
+	.ajp, .aen{width: 100%;}
+	.bgimg h2 img{width: 95%;}
+	.hcWrap h2 {padding: 20px 0% 20px 2%;}
+	.hcWrap .bgimg{height: 200px;}
+	.footerWrap{}
+	.flogo {width: 45%;}
+	.flogo img,.footerMenu ul{width: 100%;}
+	.footerMenu p{font-size: 1rem;}
+}
