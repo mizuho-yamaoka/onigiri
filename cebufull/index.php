@@ -27,7 +27,7 @@
 						</p>
 					</li>
 					<li class="lilast">
-						<p><a href="#">BLOG</a>
+						<p><a href="../blog_list.php">BLOG</a>
 						</p>
 					</li>
 					<li class="login">
