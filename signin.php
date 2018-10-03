@@ -47,7 +47,7 @@ echo '</pre>';
                   // 認証成功
                   // サインインするユーザーのIDをセッションに保存
               $_SESSION['cebufull']['id'] = $record['id'];
-              header('Location: blog_list.php');
+              header('Location: blog/blog_list.php');
             }else{
                 // 認証失敗
               $errors['signin'] = 'failed';
