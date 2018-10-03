@@ -112,6 +112,9 @@
       <button type='submit' name='category' value='4'>other</button>
     </form>
 <!-- 記事の出力 -->
+  </div>
+  <div>
+    <form action="blog.php" method="POST">
     <?php foreach ($posts as $post):?>
         <!-- 1件づつ処理 -->
         
@@ -120,9 +123,10 @@
         <div><?php echo $post['post'] ?></div>
         <div><?php echo $post['created'] ?></div>
       <?php endforeach; ?>
+    </form>
   </div>
   <div>
-    <ul>
+      <ul>
         <!-- GET送信のパラメータ
         URL?キー = 値
         URL?キー１ = 値１＆キー２= 値２ -->
