@@ -6,6 +6,10 @@
       header('Location: signup.php');
       exit();
     }
+    // session_destroy();
+echo '<pre>';
+var_dump ($_SESSION);
+echo '</pre>';
 
 
 
@@ -21,8 +25,12 @@
 
     //登録ボタンが押された時のみ処理するif文
     if(!empty($_POST)) {
+      // パスワードをハッシュ化
+
+      $hash_password = password_hash($password, PASSWORD_DEFAULT);
+
         $sql = 'INSERT INTO `users` SET `name` = ?, `email` = ?, `password` = ?, `img_name` = ?, `gender` =?, `age` = ?, `school` = ?, `other` = ?, `created` =NOW()';
-        $data = array($name, $email, password_hash($password, PASSWORD_DEFAULT), $img_name, $gender, $age, $school, $other);
+        $data = array($name, $email, $hash_password, $img_name, $gender, $age, $school, $other);
         $stmt = $dbh->prepare($sql);
         $stmt->execute($data);
 
@@ -44,7 +52,7 @@
 </head>
 <body>
   <h2 class="text-center content_header">アカウント情報確認</h2>
-  <img src="../user_profile_img/<?php echo $_SESSION['register']['img_name'];?>" width="60">
+  <img src="../user_profile_img/<?php echo htmlspecialchars($img_name);?>" width="60">
   <div>
     <span>ユーザー名(Username)</span>
     <p><?php echo htmlspecialchars($name); ?></p>
