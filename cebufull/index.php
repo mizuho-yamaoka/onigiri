@@ -27,7 +27,7 @@
 						</p>
 					</li>
 					<li class="lilast">
-						<p><a href="#">BLOG</a>
+						<p><a href="../blog_list.php">BLOG</a>
 						</p>
 					</li>
 					<li class="login">
@@ -47,7 +47,7 @@
 					<ul>
 						<li><a href="#">ABOUT</a>
 						</li>
-						<li><a href="#">BBS</a>
+						<li><a href="../blog_list.php">BBS</a>
 						</li>
 						<li><a href="#">BLOG</a>
 						</li>
