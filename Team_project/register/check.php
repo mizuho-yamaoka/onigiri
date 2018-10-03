@@ -7,9 +7,9 @@
       exit();
     }
     // session_destroy();
-echo '<pre>';
-var_dump ($_SESSION);
-echo '</pre>';
+// echo '<pre>';
+// var_dump ($_SESSION);
+// echo '</pre>';
 
 
 
@@ -52,7 +52,7 @@ echo '</pre>';
 </head>
 <body>
   <h2 class="text-center content_header">アカウント情報確認</h2>
-  <img src="../user_profile_img/<?php echo htmlspecialchars($img_name);?>" width="60">
+  <img src="../user_profile_img/<?php echo $img_name;?>" width="60">
   <div>
     <span>ユーザー名(Username)</span>
     <p><?php echo htmlspecialchars($name); ?></p>
