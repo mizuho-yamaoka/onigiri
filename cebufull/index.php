@@ -47,7 +47,7 @@
 					<ul>
 						<li><a href="#">ABOUT</a>
 						</li>
-						<li><a href="#">BBS</a>
+						<li><a href="../blog_list.php">BBS</a>
 						</li>
 						<li><a href="#">BLOG</a>
 						</li>
