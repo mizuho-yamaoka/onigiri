@@ -122,7 +122,7 @@
 		<div class="bbsWrap">
 			<div class="bcWrap">
 				<h2><img src="img/morefun.png" alt="もっと楽しもう"></h2>
-				<div class="slick_container pcOnly">
+				<div class="slick_container pcOnlylist">
 					<section class="regular slider">
 						<div>
 							<img src="http://placehold.it/350x300?text=1">
@@ -195,7 +195,3 @@
 
 </body>
 </html>
-
-<!--アイウエオ-->
-
-<!-- В интервью Би-би-си Ищенко рассказал, как готовился к разговору с Владимиром Путиным и как Геннадий Зюганов просил его "не сливать протест -->
