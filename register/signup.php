@@ -95,6 +95,11 @@ echo '</pre>';
             $date_str = date('YmdHis');
             $submit_file_name = $date_str . $file_name;
 
+// echo '<pre>';
+// var_dump ($submit_file_name);
+// echo '</pre>';
+// die();
+
             move_uploaded_file(
               $_FILES['img_name']['tmp_name'], 
               '../user_profile_img/' . $submit_file_name);
