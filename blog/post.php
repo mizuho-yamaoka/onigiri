@@ -44,7 +44,7 @@ session_start();
         $stmt = $dbh->prepare($sql);
         $stmt->execute($data);
 
-        header('Location: post.php');
+        header('Location: blog_list.php');
         exit();
       }else
         // 空だったら
@@ -96,7 +96,9 @@ session_start();
     <p class="red">カテゴリーを選択して下さい</p>
   <?php endif; ?>
 
-  <input type="submit" value="投稿する">
+  <input type="submit" value="投稿する"><br>
+
+  <a href="blog_list.php">一覧へ戻る</a>
 </form>
 </body>
 </html>
