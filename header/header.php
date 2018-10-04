@@ -14,7 +14,7 @@
 	<header>
 		<div id="groval-navi">
 			<div class="navi">
-				<h1 class="logo"><?php require('../path.php'); logo_img();?></h1>
+				<h1 class="logo"><?php logoimg(); ?></h1>
 
 				<!--pcOnly navi-->
 				<ul class="navilist pcOnly">

@@ -1,5 +1,5 @@
+
 <?php
-function logo_img(){
-	echo '<img src="Lechon/img/cebufull_logo.png">';
+function logoimg() {
+  echo '<img src="cebufull_logo.png">';
 }
-?>
