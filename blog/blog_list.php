@@ -123,14 +123,14 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
-<<<<<<< HEAD:blog_list.php
+
 	<header>
 		<?php include ('../header/header.php'); ?>
 	</header>
-=======
+
 
 <a href="post.php">投稿する</a>
->>>>>>> master:blog/blog_list.php
+
   <!-- 検索ボックス -->
   <div>
     <form method="GET" action="blog_list.php">

@@ -1,5 +1,5 @@
 
 <?php
 function logoimg() {
-  echo '<img src="cebufull_logo.png">';
+  echo '<img src="img/cebufull_logo.png">';
 }
