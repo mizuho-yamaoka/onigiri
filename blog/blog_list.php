@@ -117,6 +117,8 @@
   <title>test</title>
 </head>
 <body>
+
+<a href="post.php">投稿する</a>
   <!-- 検索ボックス -->
   <div>
     <form method="GET" action="blog_list.php">

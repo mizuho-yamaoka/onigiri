@@ -46,8 +46,8 @@ echo '</pre>';
             if (password_verify($password,$record['password'])) {
                   // 認証成功
                   // サインインするユーザーのIDをセッションに保存
-              $_SESSION['cebufull']['id'] = $record['id'];
-              header('Location: blog/blog_list.php');
+              $_SESSION['register']['id'] = $record['id'];
+              header('Location: blog/post.php');
             }else{
                 // 認証失敗
               $errors['signin'] = 'failed';

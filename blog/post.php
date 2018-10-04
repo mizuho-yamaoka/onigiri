@@ -8,18 +8,19 @@ session_start();
 
     // 閲覧制限
     // サインイン処理をしていれば、セッション処理の中にidが保存されているので、idが存在するかどうかでこのタイムラインページの閲覧を制限する。
-    // if (!isset($_SESSION['']['id'])) {
-    //   header('location: signin.php');
-    // }
-    // $signin_user_id = $_SESSION['']['id'];
-    // //SELECTで現在サインインしているユーザーの情報をusersテーブルから読み込む
-    // $sql = 'SELECT `id`, `name`, `img_name` FROM `users` WHERE `id` = ?';
-    // $data = [$signin_user_id];
-    // $stmt = $dbh->prepare($sql);
-    // $stmt->execute($data);
+    if (!isset($_SESSION['register']['id'])) {
+      header('../location: signin.php');
+    }
+    $signin_user_id = $_SESSION['register']['id'];
+    //SELECTで現在サインインしているユーザーの情報をusersテーブルから読み込む
+    $sql = 'SELECT `id`, `name`, `img_name` FROM `users` WHERE `id` = ?';
+    $data = [$signin_user_id];
+    $stmt = $dbh->prepare($sql);
+    $stmt->execute($data);
 
-    // // フェッチする
-    // $user = $stmt->fetch(PDO::FETCH_ASSOC);
+    // フェッチする
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
 
     // 投稿機能
     // エラーがあれば、この中に入れる
@@ -35,7 +36,7 @@ session_start();
       
       //バリデーション処理
       // 投稿の空チェック
-      if ($post != '') {
+      if ($post != '' && $title != '' && $category != '') {
         // 空じゃなければ
         // 投稿処理
         $sql = 'INSERT INTO `posts` SET `title`= ?, `post`= ?, `user_id`= ?, `category_id`= ?, `created` = NOW()';
@@ -52,7 +53,7 @@ session_start();
         $errors['catogory'] = 'not_chosen';
     }
 
-    $username = '1';
+
 
 
 
@@ -66,9 +67,13 @@ session_start();
 </head>
 <body>
 
+<p>ログインしているユーザー:<?php echo $user['name']?>さん</p>
+<img src="../user_profile_img/<?= $user['img_name']?>" width="60" class="img-thumbnail">
+
+
 <form action="" method="POST">
 
-  <input type="text" name="username" value="<?php echo $username; ?>">
+  <input type="hidden" name="username" value="<?php echo $user['id']; ?>">
   <br>
   <input type="text" name="title" placeholder="Title">
   <br>
@@ -88,7 +93,7 @@ session_start();
     <p class="red">投稿データを入力して下さい</p>
   <?php endif; ?>
   <?php if(isset($errors['category']) && $errors['category'] == 'not_chosen'): ?>
-    <p class="red">カテゴリーを選択して下さい下さい</p>
+    <p class="red">カテゴリーを選択して下さい</p>
   <?php endif; ?>
 
   <input type="submit" value="投稿する">
