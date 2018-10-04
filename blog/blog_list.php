@@ -1,6 +1,6 @@
 <?php
     session_start();
-    require_once('dbconnect.php');
+    require_once('../dbconnect.php');
 
 
 
@@ -10,6 +10,7 @@
     $page = 1;
     $start = 0;
     $last_page = '';
+    $word_search = '';
 
     const CONTENT_PER_PAGE = 6;
     if(isset($_GET['page'])){
@@ -32,7 +33,7 @@
         $start = ($page-1) * CONTENT_PER_PAGE;
     }
 
-
+    // カテゴリー検索
     if (isset($_GET['category'])) {
 
         $category_number = $_GET['category'];
@@ -54,6 +55,37 @@
               // レコードがあれば追加
               $posts[] = $record;
         }
+
+    // ワード検索機能
+    }elseif(isset($_GET['wordsearch'])){
+
+      // 検索欄に入れられたワードを変数に代入
+        $word_search = htmlspecialchars($_GET['wordsearch']);
+        // ブログのタイトルとポスト（本記事）内のワード検索
+        // LIKE"%' . $変数 . '%"  =>>> $変数が含まれているもの
+        // WHERE句内 条件式A OR 条件式B =>>> AまたはBのとき
+
+        $sql = 'SELECT p.*, u.name FROM posts AS p LEFT JOIN users AS u ON p. user_id = u. id WHERE post LIKE "%' . $word_search . '%" OR title LIKE "%' . $word_search . '%"ORDER BY p.created DESC LIMIT ' . CONTENT_PER_PAGE . ' OFFSET ' . $start;
+
+        $data = [$word_search];
+        $stmt = $dbh->prepare($sql);
+        $stmt->execute($data);
+
+        // ポストに入れる配列
+        $posts = array();
+        // レコードがなくなるまで取得処理
+        while(true){
+          // フェッチ
+          $record = $stmt->fetch(PDO::FETCH_ASSOC);
+          // レコードがなくなったら処理を抜ける
+          if($record == false){
+            break;
+          }
+          // レコードがあれば追加
+          $posts[] = $record;
+        }
+
+    // 全記事表示
     }else{
         $sql = 'SELECT `p`.*, `u`.`name` FROM `posts` AS `p` LEFT JOIN `users` AS `u` ON `p`. `user_id` = `u`. `id` ORDER BY `p`.`created` DESC LIMIT ' . CONTENT_PER_PAGE . ' OFFSET ' . $start;
         $stmt = $dbh->prepare($sql);
@@ -76,16 +108,6 @@
         }
     }
 
-    // if(isset($_GET['wordsearch'])){
-
-    //   $word_search = htmlspecialchars($_GET['wordsearch']);
-    // }else{
-    //     $word_search = '';
-    // }
-    // $sql = 'SELECT `p`.*, `u`.`name` FROM `posts` AS `p` LEFT JOIN `users` AS `u` ON `p`. `user_id` = `u`. `id` WHERE `post` LIKE '%$word_search%'ORDER BY `p`.`created` DESC LIMIT ' . CONTENT_PER_PAGE . ' OFFSET ' . $start;
-    //   $stmt = $dbh->prepare($sql);
-    //   $stmt->execute();
-
 ?>
 
 <!DOCTYPE html>
@@ -99,14 +121,22 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
+<<<<<<< HEAD:blog_list.php
 	<header>
 		<?php include ('../header/header.php'); ?>
 	</header>
+=======
+
+<a href="post.php">投稿する</a>
+>>>>>>> master:blog/blog_list.php
   <!-- 検索ボックス -->
   <div>
-    <form method="get" action="blog_list.php">
+    <form method="GET" action="blog_list.php">
       <label for="wordsearch">フリーワード検索</label><br>
-      <input type="text" id="wordsearch" name="wordsearch"><br>
+      <!-- テキストボックス -->
+      <!-- value内は検索後検索したワードを表示 -->
+      <input type="text" id="wordsearch" name="wordsearch" value="<?php echo $word_search; ?>"><br>
+      <!-- サーチボタン -->
       <input type="submit" name="submit" value="search"><br>
     </form>
   </div>
@@ -119,6 +149,10 @@
       <button type='submit' name='category' value='4'>other</button>
     </form>
 <!-- 記事の出力 -->
+  </div>
+  <div>
+    <form action="blog.php" method="POST">
+
     <?php foreach ($posts as $post):?>
         <!-- 1件づつ処理 -->
         
@@ -127,9 +161,10 @@
         <div><?php echo $post['post'] ?></div>
         <div><?php echo $post['created'] ?></div>
       <?php endforeach; ?>
+    </form>
   </div>
   <div>
-    <ul>
+      <ul>
         <!-- GET送信のパラメータ
         URL?キー = 値
         URL?キー１ = 値１＆キー２= 値２ -->

@@ -1,6 +1,6 @@
 <?php
     session_start();
-    require_once('dbconnect.php');
+    require_once('../dbconnect.php');
     $sql= 'SELECT `p`.*, `u`.`name` FROM `posts` AS `p` LEFT JOIN `users` AS `u` ON `p`.`user_id` = `u`.`id` ORDER BY `p`.`created` DESC';
     $stmt = $dbh->prepare($sql);
     $stmt->execute();
