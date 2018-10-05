@@ -133,7 +133,8 @@
 
 
 <a href="post.php">投稿する</a>
->>>>>>> 6021bb5c07d51cf12fbc5339c390fe91de0191ca
+<!-- 6021bb5c07d51cf12fbc5339c390fe91de0191ca -->
+
 
   <!-- 検索ボックス -->
   <div>
