@@ -118,7 +118,6 @@
   <title>ブログ一覧</title>
 </head>
 <body>
-<a href="post.php">投稿する</a><br>
   <title>test</title>
 	<link rel="stylesheet" type="text/css" href="../css/style.css">
 	<link rel="stylesheet" type="text/css" href="../js/slick/slick.css">
