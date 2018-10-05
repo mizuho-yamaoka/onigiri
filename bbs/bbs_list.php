@@ -1,5 +1,4 @@
 <?php
-	require('../path.php');
     session_start();
     require_once('../dbconnect.php');
 
@@ -7,6 +6,7 @@
 
     // ６記事で１ページの出力
     // 定数定義
+
 
     $page = 1;
     $start = 0;
@@ -34,31 +34,31 @@
         $start = ($page-1) * CONTENT_PER_PAGE;
     }
 
-    // カテゴリー検索
-    if (isset($_GET['category'])) {
+    // // カテゴリー検索
+    // if (isset($_GET['category'])) {
 
-        $category_number = $_GET['category'];
+    //     $category_number = $_GET['category'];
 
-        $sql = 'SELECT `p`.*, `u`.`name` FROM `posts` AS `p` LEFT JOIN `users` AS `u` ON `p`. `user_id` = `u`. `id` WHERE category_id = ? ORDER BY `p`.`created` DESC LIMIT ' . CONTENT_PER_PAGE . ' OFFSET ' . $start;
-        $data = [$category_number];
-        $stmt = $dbh->prepare($sql);
-        $stmt->execute($data);
-        // ポストを入れる配列
-        $posts = array();
-        // レコードがなくなるまで取得処理
-        while(true){
-          // 1件ずつフェッチ
-            $record = $stmt->fetch(PDO::FETCH_ASSOC);
-            // レコードがなければ処理を抜ける
-              if($record == false){
-                  break;
-              }
-              // レコードがあれば追加
-              $posts[] = $record;
-        }
+    //     $sql = 'SELECT `p`.*, `u`.`name` FROM `posts` AS `p` LEFT JOIN `users` AS `u` ON `p`. `user_id` = `u`. `id` WHERE category_id = ? ORDER BY `p`.`created` DESC LIMIT ' . CONTENT_PER_PAGE . ' OFFSET ' . $start;
+    //     $data = [$category_number];
+    //     $stmt = $dbh->prepare($sql);
+    //     $stmt->execute($data);
+    //     // ポストを入れる配列
+    //     $posts = array();
+    //     // レコードがなくなるまで取得処理
+    //     while(true){
+    //       // 1件ずつフェッチ
+    //         $record = $stmt->fetch(PDO::FETCH_ASSOC);
+    //         // レコードがなければ処理を抜ける
+    //           if($record == false){
+    //               break;
+    //           }
+    //           // レコードがあれば追加
+    //           $posts[] = $record;
+    //     }
 
     // ワード検索機能
-    }elseif(isset($_GET['wordsearch'])){
+    if(isset($_GET['wordsearch'])){
 
       // 検索欄に入れられたワードを変数に代入
         $word_search = htmlspecialchars($_GET['wordsearch']);
@@ -66,14 +66,14 @@
         // LIKE"%' . $変数 . '%"  =>>> $変数が含まれているもの
         // WHERE句内 条件式A OR 条件式B =>>> AまたはBのとき
 
-        $sql = 'SELECT p.*, u.name FROM posts AS p LEFT JOIN users AS u ON p. user_id = u. id WHERE post LIKE "%' . $word_search . '%" OR title LIKE "%' . $word_search . '%"ORDER BY p.created DESC LIMIT ' . CONTENT_PER_PAGE . ' OFFSET ' . $start;
+        $sql = 'SELECT f.*, u.name FROM feeds AS f LEFT JOIN users AS u ON f. user_id = u. id WHERE feed LIKE "%' . $word_search . '%" ORDER BY f.created DESC LIMIT ' . CONTENT_PER_PAGE . ' OFFSET ' . $start;
 
         $data = [$word_search];
         $stmt = $dbh->prepare($sql);
         $stmt->execute($data);
 
         // ポストに入れる配列
-        $posts = array();
+        $feeds = array();
         // レコードがなくなるまで取得処理
         while(true){
           // フェッチ
@@ -83,18 +83,18 @@
             break;
           }
           // レコードがあれば追加
-          $posts[] = $record;
+          $feeds[] = $record;
         }
 
     // 全記事表示
     }else{
-        $sql = 'SELECT `p`.*, `u`.`name` FROM `posts` AS `p` LEFT JOIN `users` AS `u` ON `p`. `user_id` = `u`. `id` ORDER BY `p`.`created` DESC LIMIT ' . CONTENT_PER_PAGE . ' OFFSET ' . $start;
+        $sql = 'SELECT `f`.*, `u`.`name` FROM `feeds` AS `f` LEFT JOIN `users` AS `u` ON `f`. `user_id` = `u`. `id` ORDER BY `f`.`created` DESC LIMIT ' . CONTENT_PER_PAGE . ' OFFSET ' . $start;
         $stmt = $dbh->prepare($sql);
         $stmt->execute();
 
 
           // ポストを入れる配列
-        $posts = array();
+        $feeds = array();
           // レコードがなくなるまで取得処理
         while(true){
             // 1件ずつフェッチ
@@ -104,7 +104,7 @@
                   break;
               }
               // レコードがあれば追加
-              $posts[] = $record;
+              $feeds[] = $record;
             
         }
     }
@@ -115,28 +115,14 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>ブログ一覧</title>
-</head>
-<body>
-<a href="post.php">投稿する</a><br>
-  <title>test</title>
-	<link rel="stylesheet" type="text/css" href="../css/style.css">
-	<link rel="stylesheet" type="text/css" href="../js/slick/slick.css">
-	<link rel="stylesheet" type="text/css" href="../js/slick/slick-theme.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <title>BBS一覧</title>
 </head>
 <body>
 
-	<header>
-		<?php include ('../header/header.php'); ?>
-	</header>
-
-
-<a href="post.php">投稿する</a>
-
+<a href="feed.php">投稿する</a>
   <!-- 検索ボックス -->
   <div>
-    <form method="GET" action="blog_list.php">
+    <form method="GET" action="bbs_list.php">
       <label for="wordsearch">フリーワード検索</label><br>
       <!-- テキストボックス -->
       <!-- value内は検索後検索したワードを表示 -->
@@ -146,26 +132,25 @@
     </form>
   </div>
   <!-- カテゴリボタン -->
-  <div>
-    <form action="blog_list.php" method="GET">
+<!--   <div>
+    <form action="bbs_list.php" method="GET">
       <button type='submit' name='category' value="1">eat</button>
       <button type='submit' name='category' value='2'>activity</button>
       <button type='submit' name='category' value='3'>life</button>
       <button type='submit' name='category' value='4'>other</button>
-    </form>
+    </form> -->
 <!-- 記事の出力 -->
   </div>
   <div>
 
-    <?php foreach ($posts as $post):?>
-    <form action="blog.php" method="POST">
+    <?php foreach ($feeds as $feed):?>
+    <form action="bbs.php" method="POST">
         <!-- 1件づつ処理 -->
         
-        <div>NAME:<?php echo $post['name'] ?></div>
-        <div>TITLE:<?php echo $post['title'] ?></div>
-        <div>BODY:<?php echo $post['post'] ?></div>
-        <div>TIME:<?php echo $post['created'] ?></div>
-        <input type="hidden" name="post_id" value="<?php echo $post['id'] ?>">
+        <div>NAME:<?php echo $feed['name'] ?></div>
+        <div>BODY:<?php echo $feed['feed'] ?></div>
+        <div>TIME:<?php echo $feed['created'] ?></div>
+        <input type="hidden" name="feed_id" value="<?php echo $feed['id'] ?>">
         <input type="submit" name="submit" value="詳しく読む"><br>
     </form>
     <?php endforeach; ?>
@@ -181,7 +166,7 @@
             <a>Newer</a>
           <?php else: ?>
           <!-- それ以外の場合 -->
-          <a href="blog_list.php?page=<?php echo $page -1; ?>">Newer</a>
+          <a href="bbs_list.php?page=<?php echo $page -1; ?>">Newer</a>
           <?php endif; ?>
         </li>
         <!-- 最後のページではOlderは押せない -->
@@ -192,11 +177,10 @@
             <a>Older</a>
             <!-- それ以外の場合 -->
           <?php else: ?>
-          <a href="blog_list.php?page=<?php echo $page +1; ?>">Older</a>
+          <a href="bbs_list.php?page=<?php echo $page +1; ?>">Older</a>
         <?php endif; ?>
         </li>
       </ul>
   </div>
-		<?php include ('../footer/footer.php'); ?>
 </body>
 </html>
