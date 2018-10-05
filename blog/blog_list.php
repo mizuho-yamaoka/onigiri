@@ -1,4 +1,5 @@
 <?php
+	require('../path.php');
     session_start();
     require_once('../dbconnect.php');
 
@@ -7,6 +8,7 @@
     // ６記事で１ページの出力
     // 定数定義
 
+    $posts['id'] = '';
     $page = 1;
     $start = 0;
     $last_page = '';
@@ -150,17 +152,19 @@
 <!-- 記事の出力 -->
   </div>
   <div>
-    <form action="blog.php" method="POST">
 
     <?php foreach ($posts as $post):?>
+    <form action="blog.php" method="POST">
         <!-- 1件づつ処理 -->
         
-        <div><?php echo $post['name'] ?></div>
-        <div><?php echo $post['title'] ?></div>
-        <div><?php echo $post['post'] ?></div>
-        <div><?php echo $post['created'] ?></div>
-      <?php endforeach; ?>
+        <div>NAME:<?php echo $post['name'] ?></div>
+        <div>TITLE:<?php echo $post['title'] ?></div>
+        <div>BODY:<?php echo $post['post'] ?></div>
+        <div>TIME:<?php echo $post['created'] ?></div>
+        <input type="hidden" name="post_id" value="<?php echo $post['id'] ?>">
+        <input type="submit" name="submit" value="詳しく読む"><br>
     </form>
+    <?php endforeach; ?>
   </div>
   <div>
       <ul>
@@ -189,6 +193,6 @@
         </li>
       </ul>
   </div>
-		<?php include ('footer/footer.php'); ?>
+		<?php include ('../footer/footer.php'); ?>
 </body>
 </html>

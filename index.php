@@ -1,3 +1,7 @@
+<?php
+require('path.php');
+?>
+
 <!doctype html>
 <html>
 <head>
