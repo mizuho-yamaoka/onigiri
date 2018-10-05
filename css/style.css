@@ -274,7 +274,92 @@ video {
 .fmenu1 li:last-child {
     text-indent: 2rem;
 }
-
+/*カテゴリーエリア-------------*/
+.topimg{
+	height: 500px;
+	width: 100%;
+	background: url(../blog/img/blogtop.jpg) no-repeat center center;
+	background-size: cover;
+}
+.blcWrap {
+    margin: 0 10%;
+}
+.psbar{
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	position: relative;
+	padding-top: 60px;
+}
+.search{margin-right: 7%;}
+.search form{
+	display: flex;
+	align-items: center;
+}
+.search input[type="submit"] {
+  width: 79px;
+  height: 38px;
+  padding: 0;
+  background: url(../blog/img/searchb.png) no-repeat 0 0;
+  background-size: contain;
+  border: none;
+  color: transparent;
+  font-size: 0;
+  cursor: pointer;
+  outline: none;
+}
+.search input[type="submit"]:hover {
+  background-image: url(../blog/img/searchb2.png);
+}
+.search input[type="text"]{
+	height: 38px;
+	border-radius: 5px;
+	width: 250px;
+}
+.bpost {
+	position: absolute;
+	top: -35px;
+	right: -98px;
+}
+/*bpost Pulse btn*/
+@-webkit-keyframes hvr-pulse {
+  25% {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+  75% {
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+}
+@keyframes hvr-pulse {
+  25% {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+  75% {
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+}
+.bpost {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+}
+.bpost:hover, .bpost:focus, .bpost:active {
+  -webkit-animation-name: hvr-pulse;
+  animation-name: hvr-pulse;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+}
+.bpost a:hover{opacity: 1;}
 /*SPサイズ---------------------*/
 @media screen and (max-width: 750px) {
 	/*sp非表示*/

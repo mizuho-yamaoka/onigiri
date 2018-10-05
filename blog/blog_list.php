@@ -127,84 +127,88 @@ if ( isset( $_GET[ 'category' ] ) ) {
 	<header>
 		<?php include ('../header/header.php'); ?>
 	</header>
-	<div class="headimg">
-		<img src="img/blogtop.jpg">
-	</div>
+	<div class="topimg"></div>
+	<div class="wrap">
+		<div class="bbslistWrap">
+			<div class="blcWrap">
+				<div class="psbar">
+				<!-- 検索ボックス -->
+				<div class="search">
+					<form method="GET" action="blog_list.php">
+<!--						<label for="wordsearch">フリーワード検索</label><br>-->
+						<!-- テキストボックス -->
+						<!-- value内は検索後検索したワードを表示 -->
+						<input type="text" id="wordsearch" name="wordsearch" value="<?php echo $word_search; ?>">
+						<!-- サーチボタン -->
+						<input type="submit" name="submit" value="search"><br>
+					</form>
+				</div>
+				<div class="bpost"><a href="post.php"><img src="img/writebtn.png"></a></div>
+					</div>
+				<!-- カテゴリボタン -->
+				<div>
+					<form action="blog_list.php" method="GET">
+						<button type='submit' name='category' value="1">eat</button>
+						<button type='submit' name='category' value='2'>activity</button>
+						<button type='submit' name='category' value='3'>life</button>
+						<button type='submit' name='category' value='4'>other</button>
+					</form>
+					<!-- 記事の出力 -->
+				</div>
+				<div>
+					<?php foreach ($posts as $post):?>
 
+					<form action="blog.php" method="POST">
+						<!-- 1件づつ処理 -->
 
-	<a href="post.php">投稿する</a>
-
-	<!-- 検索ボックス -->
-	<div>
-		<form method="GET" action="blog_list.php">
-			<label for="wordsearch">フリーワード検索</label><br>
-			<!-- テキストボックス -->
-			<!-- value内は検索後検索したワードを表示 -->
-			<input type="text" id="wordsearch" name="wordsearch" value="<?php echo $word_search; ?>"><br>
-			<!-- サーチボタン -->
-			<input type="submit" name="submit" value="search"><br>
-		</form>
-	</div>
-	<!-- カテゴリボタン -->
-	<div>
-		<form action="blog_list.php" method="GET">
-			<button type='submit' name='category' value="1">eat</button>
-			<button type='submit' name='category' value='2'>activity</button>
-			<button type='submit' name='category' value='3'>life</button>
-			<button type='submit' name='category' value='4'>other</button>
-		</form>
-		<!-- 記事の出力 -->
-	</div>
-	<div>
-		<?php foreach ($posts as $post):?>
-
-		<form action="blog.php" method="POST">
-			<!-- 1件づつ処理 -->
-
-			<div>NAME:
-				<?php echo $post['name'] ?>
-			</div>
-			<div>TITLE:
-				<?php echo $post['title'] ?>
-			</div>
-			<div>BODY:
-				<?php echo $post['post'] ?>
-			</div>
-			<div>TIME:
-				<?php echo $post['created'] ?>
-			</div>
-			<input type="hidden" name="post_id" value="<?php echo $post['id'] ?>">
-			<input type="submit" name="submit" value="詳しく読む"><br>
-		</form>
-		<?php endforeach; ?>
-	</div>
-	<div>
-		<ul>
-			<!-- GET送信のパラメータ
+						<div>NAME:
+							<?php echo $post['name'] ?>
+						</div>
+						<div>TITLE:
+							<?php echo $post['title'] ?>
+						</div>
+						<div>BODY:
+							<?php echo $post['post'] ?>
+						</div>
+						<div>TIME:
+							<?php echo $post['created'] ?>
+						</div>
+						<input type="hidden" name="post_id" value="<?php echo $post['id'] ?>">
+						<input type="submit" name="submit" value="詳しく読む"><br>
+					</form>
+					<?php endforeach; ?>
+				</div>
+				<div>
+					<ul>
+						<!-- GET送信のパラメータ
         URL?キー = 値
         URL?キー１ = 値１＆キー２= 値２ -->
-			<!-- 最初のページではNEWERは押せない -->
-			<li>
-				<?php if($page == 1): ?>
-				<a>Newer</a>
-				<?php else: ?>
-				<!-- それ以外の場合 -->
-				<a href="blog_list.php?page=<?php echo $page -1; ?>">Newer</a>
-				<?php endif; ?>
-			</li>
-			<!-- 最後のページではOlderは押せない -->
-			<li>
-				<?php if ($page == $last_page):?>
+						<!-- 最初のページではNEWERは押せない -->
+						<li>
+							<?php if($page == 1): ?>
+							<a>Newer</a>
+							<?php else: ?>
+							<!-- それ以外の場合 -->
+							<a href="blog_list.php?page=<?php echo $page -1; ?>">Newer</a>
+							<?php endif; ?>
+						</li>
+						<!-- 最後のページではOlderは押せない -->
+						<li>
+							<?php if ($page == $last_page):?>
 
 
-				<a>Older</a>
-				<!-- それ以外の場合 -->
-				<?php else: ?>
-				<a href="blog_list.php?page=<?php echo $page +1; ?>">Older</a>
-				<?php endif; ?>
-			</li>
-		</ul>
-	</div>
-	<?php include ('../footer/footer.php'); ?>
+							<a>Older</a>
+							<!-- それ以外の場合 -->
+							<?php else: ?>
+							<a href="blog_list.php?page=<?php echo $page +1; ?>">Older</a>
+							<?php endif; ?>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<!--blcWrap-->
+		</div>
+		<!--bbslistWrap-->
+		<?php include ('../footer/footer.php'); ?>
 </body>
 </html>
