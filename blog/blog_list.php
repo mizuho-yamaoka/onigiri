@@ -7,7 +7,6 @@
     // ６記事で１ページの出力
     // 定数定義
 
-    $posts['id'] = '';
     $page = 1;
     $start = 0;
     $last_page = '';
@@ -112,14 +111,15 @@
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>test</title>
+  <title>ブログ一覧</title>
 </head>
 <body>
 
-<a href="post.php">投稿する</a>
+<a href="post.php">投稿する</a><br>
+
   <!-- 検索ボックス -->
   <div>
     <form method="GET" action="blog_list.php">
