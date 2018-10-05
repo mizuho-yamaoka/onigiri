@@ -1,4 +1,5 @@
 <?php
+	require('../path.php');
     session_start();
     require_once('../dbconnect.php');
 
@@ -117,8 +118,22 @@
   <title>ブログ一覧</title>
 </head>
 <body>
-
 <a href="post.php">投稿する</a><br>
+  <title>test</title>
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
+	<link rel="stylesheet" type="text/css" href="../js/slick/slick.css">
+	<link rel="stylesheet" type="text/css" href="../js/slick/slick-theme.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+
+	<header>
+		<?php include ('../header/header.php'); ?>
+	</header>
+
+
+<a href="post.php">投稿する</a>
+>>>>>>> 6021bb5c07d51cf12fbc5339c390fe91de0191ca
 
   <!-- 検索ボックス -->
   <div>
@@ -183,5 +198,6 @@
         </li>
       </ul>
   </div>
+		<?php include ('footer/footer.php'); ?>
 </body>
 </html>
