@@ -23,6 +23,7 @@ li {
 }
 p {
     margin: 0;
+	padding: 0;
     font-size: 20px;
     line-height: 2rem;
     font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", "sans-serif";
@@ -329,6 +330,50 @@ video {
 	top: -35px;
 	right: -98px;
 }
+.ctbtn{
+	display: flex;
+	justify-content: space-between;
+	margin: 40px 0;
+}
+.ctbtn div{width: 100%;}
+.ctbtn div img {width: 100%;}
+.ctbtn li{
+	width: 245px;
+	padding: 2%;
+}
+.ctbtn li .cteg1 {
+	background: url(../blog/img/eat2.jpg) no-repeat;
+	background-size: contain;
+}
+.ctbtn li .cteg2 {
+	background: url(../blog/img/activityb2.jpg) no-repeat;
+	background-size: contain;
+}
+.ctbtn li .cteg3{
+	background: url(../blog/img/life2.jpg) no-repeat;
+	background-size: contain;
+}
+.ctbtn li .cteg4{
+	background: url(../blog/img/other2.jpg) no-repeat;
+	background-size: contain;
+}
+.ctbtn li:first-child{
+	background: url(../blog/img/eatbg.jpg) no-repeat;
+	background-size: cover;
+}
+.ctbtn li:nth-child(2) {
+	background: url(../blog/img/activitybg.jpg) no-repeat;
+	background-size: cover;
+}
+.ctbtn li:nth-child(3) {
+	background: url(../blog/img/lifebg.jpg) no-repeat;
+	background-size: cover;
+}
+.ctbtn li:last-child {
+	background: url(../blog/img/otherbg.jpg) no-repeat;
+	background-size: cover;
+}
+.ctbtn li :hover img{visibility: hidden;}
 /*bpost Pulse btn*/
 @-webkit-keyframes hvr-pulse {
   25% {
@@ -368,6 +413,18 @@ video {
   animation-iteration-count: infinite;
 }
 .bpost a:hover{opacity: 1;}
+.blw{
+	display: flex;
+    flex-wrap: wrap;
+    margin-right: -3%;
+    overflow: hidden;
+}
+.blaw{
+    width: 22%;
+    background-color: #FFFFFF;
+    border: solid 1px #2b2b2b;
+    margin: 0 3% 3% 0px;
+}
 /*SPサイズ---------------------*/
 @media screen and (max-width: 750px) {
 	/*sp非表示*/
