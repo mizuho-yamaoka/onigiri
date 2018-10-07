@@ -130,17 +130,17 @@ echo '</pre>';
             <div>
               <label for="name">ユーザー名(Username)</label>
               <input type="text" name="name" placeholder="username" value="<?php echo htmlspecialchars($name); ?>">
-              <?php if(isset($errors['name']) && $errors['name'] == 'blank') : ?>
+              <?php if(isset($errors['name']) && $errors['name'] == 'blank') { ?>
                 <p>Please enter username</p>
-              <?php endif; ?>
+              <?php } ?>
             </div>
 
             <div>
               <label for="email">メールアドレス(email)</label>
               <input type="email" name="email" placeholder="example@.com" value="<?php echo htmlspecialchars($email); ?>">
-              <?php if(isset($errors['email']) && $errors['email'] == 'blank') : ?>
+              <?php if(isset($errors['email']) && $errors['email'] == 'blank') { ?>
                 <p>Please enter email</p>
-              <?php ; ?>
+              <?php } ?>
             </div>
 
             <div>
@@ -175,7 +175,7 @@ echo '</pre>';
               <?php if(isset($errors['gender']) && $errors['gender'] == 'blank'): ?>
                 <p>Please select your gender</p>
               <?php endif; ?>
-             </div>
+          </div>
 
             <div>
               <label for="age">年齢(Age)</label>
