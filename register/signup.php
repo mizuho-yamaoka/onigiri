@@ -130,7 +130,7 @@ echo '</pre>';
             <div>
               <label for="name">ユーザー名(Username)</label>
               <input type="text" name="name" placeholder="username" value="<?php echo htmlspecialchars($name); ?>">
-              <?php if(isset($errors['name']) && $errors['name'] == 'blank') { ?>
+              <?php if(isset($errors['name']) && $errors['name'] == 'blank') ; ?>
                 <p>Please enter username</p>
               <?php } ?>
             </div>
