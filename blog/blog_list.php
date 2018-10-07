@@ -132,53 +132,69 @@ if ( isset( $_GET[ 'category' ] ) ) {
 		<div class="bbslistWrap">
 			<div class="blcWrap">
 				<div class="psbar">
-				<!-- 検索ボックス -->
-				<div class="search">
-					<form method="GET" action="blog_list.php">
-<!--						<label for="wordsearch">フリーワード検索</label><br>-->
-						<!-- テキストボックス -->
-						<!-- value内は検索後検索したワードを表示 -->
-						<input type="text" id="wordsearch" name="wordsearch" value="<?php echo $word_search; ?>">
-						<!-- サーチボタン -->
-						<input type="submit" name="submit" value="search"><br>
-					</form>
-				</div>
-				<div class="bpost"><a href="post.php"><img src="img/writebtn.png"></a></div>
+					<!-- 検索ボックス -->
+					<div class="search">
+						<form method="GET" action="blog_list.php">
+							<!--						<label for="wordsearch">フリーワード検索</label><br>-->
+							<!-- テキストボックス -->
+							<!-- value内は検索後検索したワードを表示 -->
+							<input type="text" id="wordsearch" name="wordsearch" value="<?php echo $word_search; ?>">
+							<!-- サーチボタン -->
+							<input type="submit" name="submit" value="search"><br>
+						</form>
 					</div>
+					<div class="bpost"><a href="post.php"><img src="img/writebtn.png"></a>
+					</div>
+				</div>
 				<!-- カテゴリボタン -->
 				<div>
 					<form action="blog_list.php" method="GET">
-						<button type='submit' name='category' value="1">eat</button>
-						<button type='submit' name='category' value='2'>activity</button>
-						<button type='submit' name='category' value='3'>life</button>
-						<button type='submit' name='category' value='4'>other</button>
+						<ul class="ctbtn">
+							<li>
+								<div class="cteg1"><button type='submit' name='category' value="1"><img src="img/eat.jpg" alt="eat"></button>
+								</div>
+							</li>
+							<li>
+								<div class="cteg2"><button type='submit' name='category' value='2'><img src="img/activityb.jpg" alt="activity"></button>
+								</div>
+							</li>
+							<li>
+								<div class="cteg3"><button type='submit' name='category' value='3'><img src="img/life.jpg" alt="life"></button>
+								</div>
+							</li>
+							<li>
+								<div class="cteg4"><button type='submit' name='category' value='4'><img src="img/other.jpg" alt="other"></button>
+								</div>
+							</li>
+						</ul>
 					</form>
 					<!-- 記事の出力 -->
 				</div>
 				<div>
+					<div class="blw">
 					<?php foreach ($posts as $post):?>
-
-					<form action="blog.php" method="POST">
-						<!-- 1件づつ処理 -->
-
-						<div>NAME:
-							<?php echo $post['name'] ?>
+					<div class="blaw">
+						<form action="blog.php" method="POST">
+							<!-- 1件づつ処理 -->
+							<div>NAME:
+								<?php echo $post['name'] ?>
+							</div>
+							<div>TITLE:
+								<?php echo $post['title'] ?>
+							</div>
+							<div>BODY:
+								<?php echo $post['post'] ?>
+							</div>
+							<div>TIME:
+								<?php echo $post['created'] ?>
+							</div>
+							<input type="hidden" name="post_id" value="<?php echo $post['id'] ?>">
+							<input type="submit" name="submit" value="詳しく読む">
+						</form>
 						</div>
-						<div>TITLE:
-							<?php echo $post['title'] ?>
-						</div>
-						<div>BODY:
-							<?php echo $post['post'] ?>
-						</div>
-						<div>TIME:
-							<?php echo $post['created'] ?>
-						</div>
-						<input type="hidden" name="post_id" value="<?php echo $post['id'] ?>">
-						<input type="submit" name="submit" value="詳しく読む"><br>
-					</form>
-					<?php endforeach; ?>
+						<?php endforeach; ?>
+					
 				</div>
-				<div>
 					<ul>
 						<!-- GET送信のパラメータ
         URL?キー = 値
