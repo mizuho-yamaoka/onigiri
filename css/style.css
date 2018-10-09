@@ -23,6 +23,7 @@ li {
 }
 p {
     margin: 0;
+	padding: 0;
     font-size: 20px;
     line-height: 2rem;
     font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", "sans-serif";
@@ -30,6 +31,14 @@ p {
 }
 h1, h2 {
     margin: 0;
+}
+button{
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        outline: none;
+        padding: 0;
+        appearance: none;
 }
 /*style---------------------*/
 /*pc非表示*/
@@ -144,7 +153,7 @@ video {
     position: relative;
     height: 500px;
     width: 100%;
-    background: url(img/howimg.jpg) no-repeat center center;
+    background: url(../img/howimg.jpg) no-repeat center center;
     background-size: cover;
 }
 .hcWrap h2 {
@@ -184,7 +193,7 @@ video {
 .bbsWrap {
     padding: 60px 0;
     text-align: center;
-    background: url(img/fish.jpg) no-repeat top center;
+    background: url(../img/fish.jpg) no-repeat top center;
     background-size: cover;
 }
 .bcWrap {
@@ -274,7 +283,148 @@ video {
 .fmenu1 li:last-child {
     text-indent: 2rem;
 }
-
+/*カテゴリーエリア-------------*/
+.topimg{
+	height: 500px;
+	width: 100%;
+	background: url(../blog/img/blogtop.jpg) no-repeat center center;
+	background-size: cover;
+}
+.blcWrap {
+    margin: 0 10%;
+}
+.psbar{
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	position: relative;
+	padding-top: 60px;
+}
+.search{margin-right: 7%;}
+.search form{
+	display: flex;
+	align-items: center;
+}
+.search input[type="submit"] {
+  width: 79px;
+  height: 38px;
+  padding: 0;
+  background: url(../blog/img/searchb.png) no-repeat 0 0;
+  background-size: contain;
+  border: none;
+  color: transparent;
+  font-size: 0;
+  cursor: pointer;
+  outline: none;
+}
+.search input[type="submit"]:hover {
+  background-image: url(../blog/img/searchb2.png);
+}
+.search input[type="text"]{
+	height: 38px;
+	border-radius: 5px;
+	width: 250px;
+}
+.bpost {
+	position: absolute;
+	top: -35px;
+	right: -98px;
+}
+.ctbtn{
+	display: flex;
+	justify-content: space-between;
+	margin: 40px 0;
+}
+.ctbtn div{width: 100%;}
+.ctbtn div img {width: 100%;}
+.ctbtn li{
+	width: 245px;
+	padding: 2%;
+}
+.ctbtn li .cteg1 {
+	background: url(../blog/img/eat2.jpg) no-repeat;
+	background-size: contain;
+}
+.ctbtn li .cteg2 {
+	background: url(../blog/img/activityb2.jpg) no-repeat;
+	background-size: contain;
+}
+.ctbtn li .cteg3{
+	background: url(../blog/img/life2.jpg) no-repeat;
+	background-size: contain;
+}
+.ctbtn li .cteg4{
+	background: url(../blog/img/other2.jpg) no-repeat;
+	background-size: contain;
+}
+.ctbtn li:first-child{
+	background: url(../blog/img/eatbg.jpg) no-repeat;
+	background-size: cover;
+}
+.ctbtn li:nth-child(2) {
+	background: url(../blog/img/activitybg.jpg) no-repeat;
+	background-size: cover;
+}
+.ctbtn li:nth-child(3) {
+	background: url(../blog/img/lifebg.jpg) no-repeat;
+	background-size: cover;
+}
+.ctbtn li:last-child {
+	background: url(../blog/img/otherbg.jpg) no-repeat;
+	background-size: cover;
+}
+.ctbtn li :hover img{visibility: hidden;}
+/*bpost Pulse btn*/
+@-webkit-keyframes hvr-pulse {
+  25% {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+  75% {
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+}
+@keyframes hvr-pulse {
+  25% {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+  75% {
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+}
+.bpost {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+}
+.bpost:hover, .bpost:focus, .bpost:active {
+  -webkit-animation-name: hvr-pulse;
+  animation-name: hvr-pulse;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+}
+.bpost a:hover{opacity: 1;}
+.blw{
+	display: flex;
+    flex-wrap: wrap;
+    margin-right: -3%;
+    overflow: hidden;
+}
+.blaw{
+    width: 22%;
+    background-color: #FFFFFF;
+    border: solid 1px #2b2b2b;
+    margin: 0 3% 3% 0px;
+}
 /*SPサイズ---------------------*/
 @media screen and (max-width: 750px) {
 	/*sp非表示*/
