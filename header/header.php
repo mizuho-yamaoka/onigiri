@@ -1,17 +1,3 @@
-<!doctype html>
-<html>
-<head>
-	<meta charset="UTF-8">
-	<title>cebufull</title>
-	<link rel="stylesheet" type="text/css" href="../css/style.css">
-	<link rel="stylesheet" type="text/css" href="../js/slick/slick.css">
-	<link rel="stylesheet" type="text/css" href="../js/slick/slick-theme.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-</head>
-
-<body>
-
-	<header>
 		<div id="groval-navi">
 			<div class="navi">
 				<h1 class="logo"><a href="/Lechon/index.php"><?php logoimg(); ?></a></h1>
@@ -68,4 +54,4 @@
 				<!--spOnly navi-->
 					
 			</div>
-	</header>
+

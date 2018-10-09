@@ -1,4 +1,5 @@
 <?php
+require( '../path.php' );
     session_start();
     require_once('../dbconnect.php');
 
@@ -30,14 +31,15 @@
 <header>
 	<?php include ('../header/header.php'); ?>
 </header>
-  <div>
+	<div class="topimg_b"></div>
+  <div class="bbsWrap">
       <a href="feed.php">投稿する</a> 
         <div><?php echo $feed['name'] ?></div>
         <div><?php echo $feed['feed'] ?></div>
         <div><?php echo $feed['created'] ?></div>
 
         <a href="bbs_list.php">BBS一覧に戻る</a>
-
   </div>
+		<?php include ('../footer/footer.php'); ?>
 </body>
 </html>

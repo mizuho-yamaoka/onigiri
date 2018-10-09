@@ -292,11 +292,11 @@ video {
 	background: url(../blog/img/blogtop.jpg) no-repeat center center;
 	background-size: cover;
 }
-.blcWrap, .blogWrap {
+.blcWrap, .blogWrap, .bbsWrap{
     margin: 0 10%;
 }
-.blogWrap{
- padding: 40px 0;
+.blogWrap, .bbsWrap{
+	padding: 40px 0;
 }
 .psbar{
 	display: flex;
@@ -432,6 +432,23 @@ video {
 }
 .blch{
 	display: flex;
+}
+/*blog*/
+.topimg_b{
+	height: 500px;
+	width: 100%;
+	background: url(../bbs/img/bbs_topimg.jpg) no-repeat center center;
+	background-size: cover;
+}
+/*form*/
+.formWrap{
+	margin: 5%;
+	background-color: #14548a;
+	padding: 5%;
+}
+.l_user h1{
+	margin-top:20px;
+	color: #FFFFFF;
 }
 /*SPサイズ---------------------*/
 @media screen and (max-width: 750px) {
