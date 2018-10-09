@@ -2,9 +2,9 @@
     date_default_timezone_set('Asia/Manila'); //フィリピン時間に設定
     session_start();
 
-echo '<pre>';
-var_dump ($_POST);
-echo '</pre>';
+// echo '<pre>';
+// var_dump ($_POST);
+// echo '</pre>';
 
       $name = '';
       $email = '';
@@ -130,17 +130,17 @@ echo '</pre>';
             <div>
               <label for="name">ユーザー名(Username)</label>
               <input type="text" name="name" placeholder="username" value="<?php echo htmlspecialchars($name); ?>">
-              <?php if(isset($errors['name']) && $errors['name'] == 'blank') { ?>
+              <?php if(isset($errors['name']) && $errors['name'] == 'blank') : ?>
                 <p>Please enter username</p>
-              <?php } ?>
+              <?php endif; ?>
             </div>
 
             <div>
               <label for="email">メールアドレス(email)</label>
               <input type="email" name="email" placeholder="example@.com" value="<?php echo htmlspecialchars($email); ?>">
-              <?php if(isset($errors['email']) && $errors['email'] == 'blank') { ?>
+              <?php if(isset($errors['email']) && $errors['email'] == 'blank') : ?>
                 <p>Please enter email</p>
-              <?php } ?>
+              <?php endif; ?>
             </div>
 
             <div>
