@@ -34,20 +34,22 @@ $post = $record;
 	</header>
 	<div class="topimg"></div>
 	<article>
-		<div class="bbsWrap">
-			<a href="post.php">投稿する</a>
+		<div class="blogWrap">
 			<section>
-				<div>
-					<?php echo $post['name'] ?>
+				<div class="blch">
+					<a href="post.php">投稿する</a>
+					<div class="bname">
+						<?php echo $post['name'] ?>
+					</div>
+					<div class="bcreated">
+						<?php echo $post['created'] ?>
+					</div>
 				</div>
-				<div>
+				<h1 class="btotle">
 					<?php echo $post['title'] ?>
-				</div>
+				</h1>
 				<div>
 					<?php echo $post['post'] ?>
-				</div>
-				<div>
-					<?php echo $post['created'] ?>
 				</div>
 			</section>
 			<a href="blog_list.php">ブログ一覧に戻る</a>

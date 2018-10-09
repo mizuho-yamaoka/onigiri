@@ -285,17 +285,18 @@ video {
     text-indent: 2rem;
 }
 /*カテゴリーエリア-------------*/
+/*blog*/
 .topimg{
 	height: 500px;
 	width: 100%;
 	background: url(../blog/img/blogtop.jpg) no-repeat center center;
 	background-size: cover;
 }
-.blcWrap, .bbsWrap {
+.blcWrap, .blogWrap {
     margin: 0 10%;
 }
-.bbsWrap{
-
+.blogWrap{
+ padding: 40px 0;
 }
 .psbar{
 	display: flex;
@@ -429,7 +430,9 @@ video {
     border: solid 1px #2b2b2b;
     margin: 0 3% 3% 0px;
 }
-
+.blch{
+	display: flex;
+}
 /*SPサイズ---------------------*/
 @media screen and (max-width: 750px) {
 	/*sp非表示*/
