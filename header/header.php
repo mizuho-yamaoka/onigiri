@@ -14,28 +14,32 @@
 	<header>
 		<div id="groval-navi">
 			<div class="navi">
-				<h1 class="logo"><?php logoimg(); ?></h1>
+				<h1 class="logo"><a href="/Lechon/index.php"><?php logoimg(); ?></a></h1>
 
 				<!--pcOnly navi-->
 				<ul class="navilist pcOnly">
 					<li>
-						<p><a href="#">ABOUT</a>
+						<p><a href="#aboutWrap">ABOUT</a>
 						</p>
 					</li>
 					<li>
-						<p><a href="#">BBS</a>
+						<p><a href="/Lechon/bbs/bbs_list.php">NOW</a>
 						</p>
 					</li>
-					<li class="lilast">
+					<li>
 						<p><a href="/Lechon/blog/blog_list.php">BLOG</a>
 						</p>
 					</li>
+					<li class="lilast">
+						<p><a href="/Lechon/bbs/bbs_list.php">BBS</a>
+						</p>
+					</li>
 					<li class="login">
-						<p><a href="#">LOGIN</a>
+						<p><a href="/Lechon/signin.php">LOGIN</a>
 						</p>
 					</li>
 					<li class="newA">
-						<p><a href="#">NEW ACCOUNT</a>
+						<p><a href="/Lechon/register/signup.php">NEW ACCOUNT</a>
 						</p>
 					</li>
 				</ul>
@@ -47,13 +51,15 @@
 					<ul>
 						<li><a href="#">ABOUT</a>
 						</li>
-						<li><a href="../blog_list.php">BBS</a>
+						<li><a href="../blog_list.php">NOW</a>
 						</li>
-						<li><a href="#">BLOG</a>
+						<li><a href="/Lechon/blog/blog_list.php">BLOG</a>
 						</li>
-						<li><a href="#">LOGIN</a>
+						<li><a href="/Lechon/bbs/bbs_list.php">BBS</a>
 						</li>
-						<li><a href="#">NEW ACCOUNT</a>
+						<li><a href="/Lechon/signin.php">LOGIN</a>
+						</li>
+						<li><a href="/Lechon/register/signup.php">NEW ACCOUNT</a>
 						</li>
 					</ul>
 				</div>
@@ -63,6 +69,3 @@
 					
 			</div>
 	</header>
-<body>
-</body>
-</html>

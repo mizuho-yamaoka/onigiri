@@ -70,7 +70,7 @@ body {
     display: table-cell;
     vertical-align: middle;
 }
-.navilist .lilast {
+.navilist li:nth-child(4) {
     border-right: solid 1px #2b2b2b;
 }
 .navilist .login {
@@ -99,7 +99,7 @@ video {
     width: 100%;
 }
 /*about area----------------------*/
-.aboutWrap {
+#aboutWrap {
     background-color: #add9da;
     padding: 60px 0;
 }
@@ -107,7 +107,7 @@ video {
     margin: 0 10%;
     position: relative;
 }
-.acWrap h2 {
+.acWrap h1 {
     text-align: center;
     margin-bottom: 40px;
 }
@@ -144,7 +144,7 @@ video {
     margin: 0 10%;
     text-align: center;
 }
-.ncWrap h2 {
+.ncWrap h1 {
     background-color: #14548a;
     padding: 20px 0;
 }
@@ -156,7 +156,7 @@ video {
     background: url(../img/howimg.jpg) no-repeat center center;
     background-size: cover;
 }
-.hcWrap h2 {
+.hcWrap h1 {
     position: absolute;
     bottom: -40px;
     background-color: #add9da;
@@ -190,7 +190,7 @@ video {
     margin-left: 15px;
 }
 /*bbs area------------------------*/
-.bbsWrap {
+#bbsWrap {
     padding: 60px 0;
     text-align: center;
     background: url(../img/fish.jpg) no-repeat top center;
@@ -245,8 +245,9 @@ video {
     font-size: 25px;
 }
 .bbsbtn a {
-    color: #FFFFFF;/*footer area---------------------*/
+    color: #FFFFFF;
 }
+/*footer area---------------------*/
 .bbsbtn img {
     vertical-align: middle;
     margin-left: 15px;
@@ -272,7 +273,7 @@ video {
 .footerMenu li {
     margin-bottom: 10px;
 }
-.fmenu1 a, .fmenu2 a {
+.fmenu1 p,.fmenu1 p a, .fmenu2 p a{
     color: #FFFFFF;
     letter-spacing: 0.1rem;
 }
@@ -290,8 +291,11 @@ video {
 	background: url(../blog/img/blogtop.jpg) no-repeat center center;
 	background-size: cover;
 }
-.blcWrap {
+.blcWrap, .bbsWrap {
     margin: 0 10%;
+}
+.bbsWrap{
+
 }
 .psbar{
 	display: flex;
@@ -425,6 +429,7 @@ video {
     border: solid 1px #2b2b2b;
     margin: 0 3% 3% 0px;
 }
+
 /*SPサイズ---------------------*/
 @media screen and (max-width: 750px) {
 	/*sp非表示*/
@@ -449,10 +454,8 @@ video {
 	}
 	.menu-trigger {
 		position: relative;
-		/*bottom: 20px;
-		right: 20px;*/
-		top: 0px;
-		right: 14px;
+		top: 0;
+		right: 0;
 		width: 70px;
 		height: 70px;
 		z-index: 9999;
@@ -535,4 +538,24 @@ video {
 	.flogo {width: 45%;}
 	.flogo img,.footerMenu ul{width: 100%;}
 	.footerMenu p{font-size: 1rem;}
+
+/*SPサイズ カテゴリー----------------*/
+.topimg{height: 240px;}
+.blcWrap{margin: 0 5%;}
+.psbar{display: block;}
+.bpost {
+    position: absolute;
+    top: -90px;
+    right: 0;
 }
+.search {margin-right: 0;}
+.search input[type="text"] {width: 100%;}
+.ctbtn {flex-wrap: wrap;}
+.ctbtn li {
+    width: 49%;
+    margin-bottom: 2%;
+}
+.blw{display: block;}
+.blaw{width: 100%;}
+	
+	}

@@ -2,7 +2,6 @@
     session_start();
     require_once('../dbconnect.php');
 
-
     $feed_id = $_POST['feed_id'];
 
     $sql= 'SELECT f.*,u.name FROM feeds AS f LEFT JOIN users AS u ON f.user_id = u.id WHERE f.id = ?';
@@ -17,7 +16,6 @@
 
       // レコードがあれば追加
       $feed = $record;
-
 ?>
 
 
@@ -26,11 +24,14 @@
 <head>
   <meta charset="UTF-8">
   <title>bbs 詳細</title>
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
 </head>
 <body>
+<header>
+	<?php include ('../header/header.php'); ?>
+</header>
   <div>
       <a href="feed.php">投稿する</a> 
-
         <div><?php echo $feed['name'] ?></div>
         <div><?php echo $feed['feed'] ?></div>
         <div><?php echo $feed['created'] ?></div>
