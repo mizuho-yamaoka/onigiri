@@ -4,6 +4,10 @@
 
     // 閲覧制限
     // サインイン処理をしていれば、セッション処理の中にidが保存されているので、idが存在するかどうかでこのタイムラインページの閲覧を制限する。
+// echo '<pre>';
+// var_dump ($_SESSION);
+// echo '</pre>';
+// die();
     if (!isset($_SESSION['register']['id'])) {
       header('../location: signin.php');
     }
@@ -13,10 +17,6 @@
     $data = [$signin_user_id];
     $stmt = $dbh->prepare($sql);
     $stmt->execute($data);
-
-echo '<pre>';
-var_dump ($_POST);
-echo '</pre>';
     // ブログの削除処理
     if (!empty($_POST['post_delete'])) {
     $str_post_id = $_POST['post_id'];
@@ -98,6 +98,20 @@ echo '</pre>';
           $feeds[] = $record;
     }
 
+    // $genderの文字化
+    if($gender=='1'){
+      $gender = 'Male';
+    }elseif($gender=='2'){
+      $gender = 'Female';
+    }else{
+      $gender = 'Not Chosen';
+    }
+
+// echo '<pre>';
+// var_dump ($user['img_name']);
+// echo '</pre>';
+
+
 ?>
 
 <!DOCTYPE html>
@@ -121,6 +135,9 @@ echo '</pre>';
           </div>
           <div>E-mail:<?php echo $email?>
             <input type="submit" name="email" value="edit">
+          </div>
+          <div>Password:**********
+            <input type="submit" name="password" value="edit">
           </div>
           <div>gender:<?php echo $gender?>
             <input type="submit" name="gender" value="edit">

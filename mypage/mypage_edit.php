@@ -1,4 +1,4 @@
-<?php
+  <?php
     session_start();
     require_once('../dbconnect.php');
 
@@ -10,13 +10,6 @@
     $signin_user_id = $_SESSION['register']['id'];
     //SELECTで現在サインインしているユーザーの情報をusersテーブルから読み込む
 
-    // $sql = 'SELECT `id`, `name`, `img_name` FROM `users` WHERE `id` = ?';
-    // $data = [$signin_user_id];
-    // $stmt = $dbh->prepare($sql);
-    // $stmt->execute($data);
-
-    // // フェッチする
-    // $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
     $sql = 'SELECT * FROM `users` WHERE `id` = ?';
     $data = [$signin_user_id];
@@ -25,158 +18,130 @@
 
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
+
+    // echo '<pre>';
+    // var_dump();
+    // echo '</pre>';
+// placeholderに表示するユーザーデータ
     $name = $user['name'];
     $email = $user['email'];
+    $password = $user['password'];
     $img_name = $user['img_name'];
     $gender = $user['gender'];
     $age = $user['age'];
     $school = $user['school'];
     $other = $user['other'];
 
+// 変更しないタプル処理用の変数を作る
+    $update_name = $name;
+    $update_email = $email;
+    $submit_file_name = $img_name;
+    $hash_password =$password; 
+    $update_gender = $gender;
+    $update_age = $age;
+    $update_school = $school;
+    $update_other = $other;
+
+    $count = '';
+    $errors =array();
+
+
+    // if(!empty($_POST)){
+      
 echo '<pre>';
 var_dump ($_POST);
 echo '</pre>';
 
-    if(isset($_POST['update_name'])){
+    if(!empty($_POST['update_name'])){
       $update_name = $_POST['update_name'];
     }
 
-   if(empty($_POST['email'])){
-      $edit_email = $_POST['email'];
+    if(!empty($_POST['update_email'])){
+      $update_email = $_POST['update_email'];
     }
 
-    if(empty($_POST['img_name'])){
-      $edit_img_name = $_POST['img_name'];
+    if(!empty($_FILES['update_img_name']['name'])){
+      $file_name = $_FILES['update_img_name']['name'];
+        $file_type = substr($file_name,-3);
+        echo '<br>';
+        if ($file_type != 'jpg' && $file_type != 'png' && $ext != 'gif') {
+            $errors['img_name'] = 'type';
+        }
+        //エラーがなかったときの処理
+          if(empty($errors['img_name'])) {
+            $date_str = date('YmdHis');
+            $submit_file_name = $date_str . $file_name;
+
+            move_uploaded_file(
+              $_FILES['update_img_name']['tmp_name'], 
+              '../user_profile_img/' . $submit_file_name);
+          }
     }
 
-    if(empty($_POST['password'])){
-      $edit_password = $_POST['password'];
+    // パスワード
+    // ３つとも入力されているか
+    if(!empty($_POST['update_password_now']) && 
+      !empty($_POST['update_password_new1']) && 
+      !empty($_POST['update_password_new2'])){
+      // 古いパスワードを間違えている場合
+      if(!password_verify($_POST['update_password_now'],$password)){
+        $errors['password'] = 'invalid';
+      }
+      // 新しいパスワードが一致しない場合
+      if($_POST['update_password_new1'] != $_POST['update_password_new2']){
+        $errors['password'] = 'mistatch';
+      }
+      // 文字数エラー
+      $count = strlen($_POST['update_password_new1']);
+      if($count < 4 || 16 < $count) {
+        // ||演算子を使って4文字未満または16文字より多い場合にエラー配列にlengthを代入
+        $errors['password'] = 'length';
+      }
+                $hash_password = password_hash($_POST['update_password_new1'],PASSWORD_DEFAULT);
+    } else {
+      // ３つのうち１つ以上がからの場合
+      $errors['password'] = 'mistake';
+    }
+    // エラーがなにもない場合DBに保存する
+    if(empty($errors['password'])){
+      $hash_password = password_hash($_POST['update_password_new1'],PASSWORD_DEFAULT);
     }
 
-    if(empty($_POST['gender'])){
-      $edit_gender = $_POST['gender'];
+
+
+
+    if(!empty($_POST['update_gender'])){
+      $update_gender = $_POST['update_gender'];
     }
 
-    if(empty($_POST['age'])){
-      $edit_age = $_POST['age'];
+    if(!empty($_POST['update_age'])){
+      $update_age = $_POST['update_age'];
+    }
+    
+
+    if(!empty($_POST['update_school'])){
+      $update_school = $_POST['update_school'];
     }
 
-    if(empty($_POST['school'])){
-      $edit_school = $_POST['school'];
+    if(!empty($_POST['update_other'])){
+      $update_other = $_POST['update_other'];
     }
 
-    if(empty($_POST['other'])){
-      $edit_other = $_POST['other'];
-    }
+    // if($_POST)){
 
 
   $sql='UPDATE users SET name = ?, email= ?, password = ?, img_name = ?, gender = ?, age = ?, school = ?, other = ? WHERE id = ?';
-  $data = [$update_name,$update_email,$update_password,$update_img_name,$update_gender,$update_age,$update_school,$update_other
+  $data = [$update_name,$update_email,$hash_password,$submit_file_name,$update_gender,$update_age,$update_school,$update_other,$signin_user_id
   ];
   $stmt = $dbh->prepare($sql);
   $stmt->execute($data);
+  // header('Location: mypage.php');
+  // exit();
 
-//     // バリデーションに引っかかんた項目を入れる
-//       $name = '';
-//       $email = '';
-//       $school = '';
-//       $gender = '';
-//       $age = '';
-//       $school = '';
-//       $other = '';
-
-//     $errors = array();
-
-//       if(!empty($_POST)) {
-//       $name = $_POST['name'];
-//       $email = $_POST['email'];
-//       $password = $_POST['password'];
-//       $str_age = $_POST['age'];
-//       $age = (int) $str_age;
-//       $school = $_POST['school'];
-//       $other = $_POST['other'];
-
-//       if(isset($_POST['gender'])){
-//       $str_gender = $_POST['gender'];
-//       $gender = (int) $str_gender;
-//     }
-// // echo '<pre>';
-// // var_dump ($gender);
-// // echo '</pre>';
-
-//         //ユーザー名の空チェック
-//       if($name == '') {
-//         $errors['name'] = 'blank';
-//       }
-
-//         //メールアドレスの空チェック
-//       if($email == '') {
-//         $errors['email'] = 'blank';
-//       }
-
-//         //パスワードの空チェック
-//         $count = strlen($password);//hogehogeとパスワードを入力した際、8が$countに代入される
-//         if($password == '') {
-//           $errors['password'] = 'blank';
-//         } elseif($count < 4 || 16 < $count) {
-//             // ||演算子を使って4文字未満または16文字より多い場合にエラー配列にlengthを代入
-//           $errors['password'] = 'length';
-//         }
-
-//         //画像名を取得
-//         $file_name = $_FILES['img_name']['name'];
-//         if (empty($file_name)) {
-//             $errors['img_name'] = 'blank';
-//         }else{
-//               $file_type = substr($file_name,-3);
-//               echo '<br>';
-//         if ($file_type != 'jpg' && $file_type != 'png' && $ext != 'gif') {
-//             $errors['img_name'] = 'type';
-//         }
-//         }
+    // }
 
 
-//           //性別の空チェック
-//           if($gender == '') {
-//             $errors['gender'] = 'blank';
-//           }
 
-//           //年齢の空チェック
-//           if($age == '') {
-//             $errors['age'] = 'blank';
-//           }
-
-//           //語学学校チェック
-//           if($school == '') {
-//             $errors['school'] = 'blank';
-//           }
-
-//           //備考チェック
-//           if($other == '') {
-//             $errors['other'] = 'blank';
-//           }
-
-//         //エラーがなかったときの処理
-//           if(empty($errors)) {
-//             $date_str = date('YmdHis');
-//             $submit_file_name = $date_str . $file_name;
-
-
-// // echo '<pre>';
-// // var_dump ($submit_file_name);
-// // echo '</pre>';
-// // die();
-
-//             move_uploaded_file(
-//               $_FILES['img_name']['tmp_name'], 
-//               '../user_profile_img/' . $submit_file_name);
-
-//             $_SESSION['register'] = $_POST;
-//             $_SESSION['register']['img_name'] = $submit_file_name;
-
-//             header('Location: mypage.php');
-//           }
-//         }
 ?>
 
 <!DOCTYPE html>
@@ -188,68 +153,74 @@ echo '</pre>';
 <body>
   <h3>編集する</h3>
   <div>
-    <form action="mypage_edit.php" method="POST">
+    <form action="mypage_edit.php" method="POST" enctype="multipart/form-data">
       
       <!-- イメージ画像 -->
     <?php if(isset($_POST['img_name'])):?>
       <img src="../user_profile_img/<?= $user['img_name']?>" width="60" class="img-thumbnail" ><br>
       <lavel for="img_name">イメージ画像を変更する</lavel><br>
-      <input type="file" name="img_name" value="">
-       <input type="submit" name="update_img_name" value="update">
+      <input type="file" name="update_img_name" accept="image/*">
+       <input type="submit" name="img_name" value="update">
     <?php endif; ?>
-
+       
     <?php if(isset($_POST['name'])):?>
       <lavel for="name">USER NAME:</lavel>
-       <input type="text" name="name" value="<?php echo $name;?>">
-       <input type="submit" name="update_name" value="update">
-    <?php endif; ?>
-
+       <input type="text" name="update_name" placeholder="<?php echo $name;?>">
+       <input type="submit" name="name" value="update">
+    <?php endif; ?> 
+<!--     <?php if($update_name == ''): ?>
+      <input type="hidden" name="update_name" value="<?php echo $name;?>">
+    <?php endif ;?> -->
 
     <?php if(isset($_POST['email'])):?>
       <lavel for="email">E-MAIL:</lavel>
-      <input type="email" name="email" value="<?php echo $email;?>">
-      <input type="submit" name="update_email" value="update">
+      <input type="email" name="update_email" placeholder="<?php echo $email;?>">
+      <input type="submit" name="email" value="update">
     <?php endif; ?>
+<!--     <?php if($update_email == ''): ?>
+      <input type="hidden" name="update_email" value="<?php echo $email;?>">
+    <?php endif ;?> -->
 
 
     <?php if(isset($_POST['password'])):?>
       <lavel for="password">PASSWORD</lavel><br>
-      <input type="password" name="password_now">(現在のパスワード)<br>
-      <input type="password" name="password_new1">(新しいパスワード)<br>
-      <input type="password" name="password_now2">(新しいパスワードの再入力)
-      <input type="submit" name="update_password" value="update">
+      <input type="password" name="update_password_now" placeholder="your password">(現在のパスワード)<br>
+      <input type="password" name="update_password_new1" placeholder="new password">(新しいパスワード)<br>
+      <input type="password" name="update_password_new2" placeholder="new password (check)">(新しいパスワードの再入力)
+      <input type="submit" name="password" value="update">
     <?php endif; ?>
 
 
     <?php if(isset($_POST['gender'])):?>
       <lavel for="email">GENDER:</lavel><br> 
-      <input type="radio" name="gender" value="1">男
-      <input type="radio" name="gender" value="2">女
-      <input type="radio" name="gender" value="3">表示しない
-      <input type="submit" name="update_gender" value="update">
+      <input type="radio" name="update_gender" value="1">Male
+      <input type="radio" name="update_gender" value="2">Female
+      <input type="radio" name="update_gender" value="3">Not Chosen
+      <input type="submit" name="gender" value="update">
     <?php endif; ?>
-
 
     <?php if(isset($_POST['age'])):?>
       <lavel for="age">AGE:</lavel>
-      <input type="text" name="age" value="<?php echo $age?>">
-      <input type="submit" name="update_age" value="update">
+      <input type="text" name="update_age" placeholder="<?php echo $age?>">
+      <input type="submit" name="age" value="update">
     <?php endif; ?>
 
 
     <?php if(isset($_POST['school'])):?>
       <lavel for="school">SCHOOL:</lavel>
-      <input type="text" name="school" value="<?php echo $school?>">
-      <input type="submit" name="update_school" value="update">
+      <input type="text" name="update_school" placeholder="<?php echo $school?>">
+      <input type="submit" name="school" value="update">
     <?php endif; ?>
 
 
     <?php if(isset($_POST['other'])):?>
       <lavel for="other">INTRODUCTION:</lavel>
-      <input type="text" name="other" value ="<?php echo $other?>">
-      <input type="submit" name="update_other" value="update">
+      <input type="text" name="update_other" placeholder="<?php echo $other?>">
+      <input type="submit" name="other" value="update">
     <?php endif; ?>
+
     </form>
+  <a href="mypage.php">Back to MyPage</a>
   </div>
 </body>
 </html>
