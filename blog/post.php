@@ -67,7 +67,7 @@ if ( !empty( $_POST ) ) {
 		<?php include ('../header/header.php'); ?>
 	</header>
 	<div class="formWrap">
-			<h1>投稿する<span>Post</span></h1>
+			<h1>投稿</h1>
 		<article>
 		<section class="l_user">
 			<div class="writer">

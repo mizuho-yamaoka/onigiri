@@ -28,6 +28,7 @@ p {
     line-height: 2rem;
     font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", "sans-serif";
     font-weight: normal;
+	color: #2b2b2b;
 }
 h1, h2 {
     margin: 0;
@@ -488,6 +489,8 @@ video {
 .bl_input .title input,.bl_input .contents input,.bl_input .thbtn input{width: 100%;}
 .bl_input .title input{height: 50px;}
 .bl_input .contents input{height: 100px;}
+.title ,.contents, .acte{margin-bottom: 20px;}
+.list_back {margin-top: 40px;}
 /*SPサイズ---------------------*/
 @media screen and (max-width: 750px) {
 /*sp非表示*/
@@ -644,6 +647,15 @@ video {
     display: block;
 }
 .blaw {
+    width: 100%;
+}
+	.formWrap article{display: block;}
+	.l_user {
+    width: 100%;
+    margin-right: 0px;
+    text-align: center;
+}
+	.bl_input {
     width: 100%;
 }
 }
