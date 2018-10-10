@@ -18,23 +18,43 @@ $stmt->execute( $data );
 // フェッチする
 $user = $stmt->fetch( PDO::FETCH_ASSOC );
 
+echo '<pre>';
+var_dump($_POST);
+echo '</pre>';
 
 // 投稿機能
 // エラーがあれば、この中に入れる
 $errors = [];
+$category = '';
+$post = '';
+$title = '';
 // ポスト送信できたら
+// テキストエリアの内容を取り出す
+
 if ( !empty( $_POST ) ) {
-	// テキストエリアの内容を取り出す
 	$username = $_POST[ 'username' ];
 	$title = $_POST[ 'title' ];
 	$post = $_POST[ 'body' ];
-	$category = $_POST[ 'category' ];
 
+	if(isset($_POST['category'])){
+		$category = $_POST['category'];
+		}
+	// $category = $_POST[ 'category' ];
 
 	//バリデーション処理
 	// 投稿の空チェック
-	if ( $post != '' && $title != '' && $category != '' ) {
-		// 空じゃなければ
+	if ( $post == '' ){
+		$errors['post'] = 'blank';
+	}
+
+	if( $title == '' ){
+		$errors['title'] = 'blank';
+	}
+	if(!isset($_POST['category'])) {
+		$errors['category'] = 'not_chosen';
+	}
+	if(empty($errors)){
+
 		// 投稿処理
 		$sql = 'INSERT INTO `posts` SET `title`= ?, `post`= ?, `user_id`= ?, `category_id`= ?, `created` = NOW()';
 		$data = [ $title, $post, $username, $category ];
@@ -43,12 +63,14 @@ if ( !empty( $_POST ) ) {
 
 		header( 'Location: blog_list.php' );
 		exit();
-	} else
-	// 空だったら
-	$errors[ 'post' ] = 'blank';
-	$errors[ 'title' ] = 'blank';
-	$errors[ 'category' ] = 'not_chosen';
+	}
 }
+// 	} else
+// 	// 空だったら
+// 	$errors[ 'post' ] = 'blank';
+// 	$errors[ 'title' ] = 'blank';
+// 	$errors[ 'category' ] = 'not_chosen';
+// }
 ?>
 
 <!DOCTYPE html>
@@ -83,11 +105,11 @@ if ( !empty( $_POST ) ) {
 				<input type="hidden" name="username" value="<?php echo $user['id']; ?>">
 				<div class="title">
 				<p>TITLE</p>
-				<input type="text" name="title" placeholder="Title">
+				<input type="text" name="title" placeholder="Title" value="<?php echo $title ?>">
 				</div>
 				<div class="contents">
 				<p>CONTENTS</p>
-				<input type="text" name="body" placeholder="Body of letter">
+				<input type="text" name="body" placeholder="Body of letter" value="<?php echo $post ?>">
 				</div>
 				<div class="acte">
 				<input type="radio" name="category" value="1">EAT
