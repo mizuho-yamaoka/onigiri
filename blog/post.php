@@ -45,9 +45,9 @@ if ( !empty( $_POST ) ) {
 		exit();
 	} else
 	// 空だったら
-		$errors[ 'post' ] = 'blank';
+	$errors[ 'post' ] = 'blank';
 	$errors[ 'title' ] = 'blank';
-	$errors[ 'catogory' ] = 'not_chosen';
+	$errors[ 'category' ] = 'not_chosen';
 }
 ?>
 
@@ -63,25 +63,38 @@ if ( !empty( $_POST ) ) {
 </head>
 
 <body>
-	<article class="formWrap">
-		<section class="l_user">
+	<header>
+		<?php include ('../header/header.php'); ?>
+	</header>
+	<div class="formWrap">
 			<h1>投稿する<span>Post</span></h1>
-			<p><?php echo $user['name']?></p>
-			<img src="../user_profile_img/<?= $user['img_name']?>" width="60" class="img-thumbnail">
+		<article>
+		<section class="l_user">
+			<div class="writer">
+				<h2>WRITER</h2>
+				<img src="../user_profile_img/<?= $user['img_name']?>" class="img-thumbnail">
+				<p>
+					<?php echo $user['name']?>
+				</p>
+			</div>
 		</section>
 		<section class="bl_input">
 			<form action="" method="POST">
 				<input type="hidden" name="username" value="<?php echo $user['id']; ?>">
-				<br>
+				<div class="title">
+				<p>TITLE</p>
 				<input type="text" name="title" placeholder="Title">
-				<br>
+				</div>
+				<div class="contents">
+				<p>CONTENTS</p>
 				<input type="text" name="body" placeholder="Body of letter">
-				<br>
+				</div>
+				<div class="acte">
 				<input type="radio" name="category" value="1">EAT
 				<input type="radio" name="category" value="2">ACTIVITY
 				<input type="radio" name="category" value="3">LIFE
 				<input type="radio" name="category" value="4">OTHER
-				<br>
+				</div>
 				<?php if(isset($errors['title']) && $errors['title'] == 'blank'): ?>
 				<p class="red">タイトルを入力して下さい</p>
 				<?php endif; ?>
@@ -91,12 +104,16 @@ if ( !empty( $_POST ) ) {
 				<?php if(isset($errors['category']) && $errors['category'] == 'not_chosen'): ?>
 				<p class="red">カテゴリーを選択して下さい</p>
 				<?php endif; ?>
-				<input type="submit" value="投稿する"><br>
+				<div class="thbtn">
+				<input type="submit" value="投稿する">
+				</div>
 			</form>
 		</section>
-		<section class="list_back">
-			<a href="blog_list.php">一覧へ戻る</a>
-		</section>
 	</article>
+		<div class="list_back">
+			<a href="blog_list.php">一覧へ戻る</a>
+		</div>
+	</div>
+	<?php include ('../footer/footer.php'); ?>
 </body>
 </html>
