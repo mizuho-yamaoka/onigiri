@@ -136,63 +136,72 @@ if ( isset( $_GET[ 'wordsearch' ] ) ) {
 							<input type="submit" name="submit" value="search"><br>
 						</form>
 					</div>
-				<div class="bpost"><a href="feed.php"><img src="img/writebtn.png"></a></div>
-</div>
-					<!-- カテゴリボタン -->
-					<!--   <div>
+					<div class="bpost"><a href="feed.php"><img src="img/writebtn.png"></a>
+					</div>
+				</div>
+				<!-- カテゴリボタン -->
+				<!--   <div>
     <form action="bbs_list.php" method="GET">
       <button type='submit' name='category' value="1">eat</button>
       <button type='submit' name='category' value='2'>activity</button>
       <button type='submit' name='category' value='3'>life</button>
       <button type='submit' name='category' value='4'>other</button>
     </form> -->
-					<!-- 記事の出力 -->
-					<div>
-						<?php foreach ($feeds as $feed):?>
-						<form action="bbs.php" method="POST">
-							<!-- 1件づつ処理 -->
-							<div>NAME:
-								<?php echo $feed['name'] ?>
-							</div>
-							<div>BODY:
-								<?php echo $feed['feed'] ?>
-							</div>
-							<div>TIME:
-								<?php echo $feed['created'] ?>
-							</div>
-							<input type="hidden" name="feed_id" value="<?php echo $feed['id'] ?>">
-							<input type="submit" name="submit" value="詳しく読む"><br>
-						</form>
-						<?php endforeach; ?>
-					</div>
-					<div>
-						<ul>
-							<!-- GET送信のパラメータ
+				<!-- 記事の出力 -->
+				<article class="plw">
+					<section>
+					<?php foreach ($feeds as $feed):?>
+					<form action="bbs.php" method="POST">
+						<!-- 1件づつ処理 -->
+						<div class="bww">
+						<div class="bwi">
+							<ul>
+								<li>
+									<?php echo $feed['name'] ?>
+								</li>
+								<li>
+									<?php echo $feed['created'] ?>
+								</li>
+							</ul>
+						</div>
+						<div class="planc">
+							<?php echo $feed['feed'] ?>
+						</div>
+						</div>
+						<input type="hidden" name="feed_id" value="<?php echo $feed['id'] ?>">
+						<input type="submit" name="submit" value="JOIN..?"><br>
+					</form>
+					<?php endforeach; ?>
+					</section>
+					</article>
+				<div>
+					<ul>
+						<!-- GET送信のパラメータ
         URL?キー = 値
         URL?キー１ = 値１＆キー２= 値２ -->
-							<!-- 最初のページではNEWERは押せない -->
-							<li>
-								<?php if($page == 1): ?>
-								<a>Newer</a>
-								<?php else: ?>
-								<!-- それ以外の場合 -->
-								<a href="bbs_list.php?page=<?php echo $page -1; ?>">Newer</a>
-								<?php endif; ?>
-							</li>
-							<!-- 最後のページではOlderは押せない -->
-							<li>
-								<?php if ($page == $last_page):?>
-								<a>Older</a>
-								<!-- それ以外の場合 -->
-								<?php else: ?>
-								<a href="bbs_list.php?page=<?php echo $page +1; ?>">Older</a>
-								<?php endif; ?>
-							</li>
-						</ul>
-					</div>
+						<!-- 最初のページではNEWERは押せない -->
+						<li>
+							<?php if($page == 1): ?>
+							<a>Newer</a>
+							<?php else: ?>
+							<!-- それ以外の場合 -->
+							<a href="bbs_list.php?page=<?php echo $page -1; ?>">Newer</a>
+							<?php endif; ?>
+						</li>
+						<!-- 最後のページではOlderは押せない -->
+						<li>
+							<?php if ($page == $last_page):?>
+							<a>Older</a>
+							<!-- それ以外の場合 -->
+							<?php else: ?>
+							<a href="bbs_list.php?page=<?php echo $page +1; ?>">Older</a>
+							<?php endif; ?>
+						</li>
+					</ul>
 				</div>
 			</div>
 		</div>
-		<?php include ('../footer/footer.php'); ?>
+	</div>
+	<?php include ('../footer/footer.php'); ?>
 </body>
 </html>

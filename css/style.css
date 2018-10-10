@@ -33,7 +33,7 @@ p {
 h1, h2 {
     margin: 0;
 }
-button {
+button, input{
     background-color: transparent;
     border: none;
     cursor: pointer;
@@ -334,6 +334,8 @@ video {
     height: 38px;
     border-radius: 5px;
     width: 250px;
+	border: 1px solid #2b2b2b;
+    background-color: #fff;
 }
 .bpost {
     position: absolute;
@@ -463,6 +465,34 @@ video {
     background: url(../bbs/img/bbs_topimg.jpg) no-repeat center center;
     background-size: cover;
 }
+.plw .bww{
+	background-color: #fff;
+    border: 1px solid #2b2b2b;
+    padding: 2%;
+	border-bottom: none;
+}
+.plw input{
+    background-color: #3fd9d7;
+    height: 50px;
+    width: 100%;
+    margin-bottom: 40px;
+	font-size: 1.5rem;
+	color: #FFFFFF;
+	border: 1px solid #2b2b2b;
+	border-top:none;
+}
+.plw input:hover{
+	background-color: #14548a;
+}
+.bwi ul{
+	display: flex;
+	color: #2b2b2b;
+    justify-content: space-between;
+	border-bottom: 1px solid #575757;
+	margin-bottom: 1.5rem;
+}
+.bwi ul li:first-child{font-size: 1.3rem;}
+.bwi ul li:last-child{margin-top: 6px;}
 /*form*/
 .formWrap {
     background-color: #add9da;
