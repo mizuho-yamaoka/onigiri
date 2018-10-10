@@ -146,7 +146,7 @@
   <h1>MY PAGE</h1>
     <h3>YOUR INFORMATION</h3>
       <div>
-        <form action="mypage_edit.php" method="POST">
+        <form action="mypage_edit.php" method="GET">
           
           <div>
             <img src="../user_profile_img/<?= $user['img_name']?>" width="60" class="img-thumbnail"><br>
