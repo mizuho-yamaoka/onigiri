@@ -3,8 +3,6 @@ require( '../path.php' );
 session_start();
 require_once( '../dbconnect.php' );
 
-
-
 // ６記事で１ページの出力
 // 定数定義
 
@@ -123,13 +121,12 @@ if ( isset( $_GET[ 'category' ] ) ) {
 </head>
 
 <body>
-
 	<header>
 		<?php include ('../header/header.php'); ?>
 	</header>
 	<div class="topimg"></div>
 	<div class="wrap">
-		<div class="bbslistWrap">
+		<div class="bloglistWrap">
 			<div class="blcWrap">
 				<div class="psbar">
 					<!-- 検索ボックス -->
@@ -224,7 +221,7 @@ if ( isset( $_GET[ 'category' ] ) ) {
 			</div>
 			<!--blcWrap-->
 		</div>
-		<!--bbslistWrap-->
+		<!--bloglistWrap-->
 		<?php include ('../footer/footer.php'); ?>
 </body>
 </html>
