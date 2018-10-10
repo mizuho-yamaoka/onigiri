@@ -121,6 +121,10 @@ if ( isset( $_GET[ 'wordsearch' ] ) ) {
 	<div class="wrap">
 		<div class="bloglistWrap">
 			<div class="blcWrap">
+				<div class="htbox">
+					<img src="img/mofun.png">
+					<img src="img/tofun.png">
+				</div>
 				<div class="psbar">
 					<!-- 検索ボックス -->
 					<div class="search">

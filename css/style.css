@@ -446,7 +446,17 @@ video {
 .blch {
     display: flex;
 }
-/*blog*/
+/*bbs*/
+.blcWrap .psbar{top:-60px;}
+.htbox{
+	background-color: #add9da;
+	padding: 2rem;
+	width: 90%;
+	text-align: center;
+	margin: 0 auto;
+	top: -130px;
+	position: relative;
+}
 .topimg_b {
     height: 500px;
     width: 100%;
