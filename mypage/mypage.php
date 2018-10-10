@@ -17,6 +17,28 @@
     $data = [$signin_user_id];
     $stmt = $dbh->prepare($sql);
     $stmt->execute($data);
+
+  // ブログ編集画面への遷移
+    if(!empty($_POST['post_edit'])){
+      $_SESSION['post_id'] = $_POST['post_id'];
+      header('Location: ../blog/blog_edit.php');
+    }
+
+  // BBS編集画面への遷移
+    if(!empty($_POST['feed_edit'])){
+      $_SESSION['feed_id'] = $_POST['feed_id'];
+      header('Location: ../bbs/bbs_edit.php');
+    }
+
+
+
+
+
+
+
+
+
+
     // ブログの削除処理
     if (!empty($_POST['post_delete'])) {
     $str_post_id = $_POST['post_id'];
