@@ -205,6 +205,10 @@
               <input type="submit" value="確認(submit)">
             </div>
 
+            <div>
+              <a href="../signin.php">すでに登録済の方はこちらへ</a>
+            </div>
+
           </form>
         </body>
         </html>

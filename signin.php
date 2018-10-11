@@ -3,24 +3,23 @@
    session_start();
     require_once('dbconnect.php');
 
-echo '<pre>';
-var_dump ($_POST);
-echo '</pre>';
+    $errors = [];
+    $email = '';
 
     // サインインボタンが押されたら
     // $_POSTが空でなければ
-    $errors = [];
-    $email = '';
 
     if (!empty($_POST)) {
         $email = $_POST['email'];
         $password = $_POST['password'];
-        // バリデーション（emailとpasswordの入力空チェック）
+
+        // データベースとの照合
+        // 入力されたメールアドレスとパスワードの組み合わせがusersテーブルに存在するか
+        //バリデーション（emailとpasswordの入力空チェック）
         if ($email != '' && $password != '') {
-            // データベースとの照合
-            // 入力されたメールアドレスとパスワードの組み合わせがusersテーブルに存在するか
-                // SELECT文を使ってレコードを読み込む
-                    // 一致するデータがあるかどうか（存在）するかどうか
+          // $errors['signin'] = 'blank';
+            // SELECT文を使ってレコードを読み込む
+            // 一致するデータがあるかどうか（存在）するかどうか
             // ①SQL文の文字をセットする
             $sql = 'SELECT * FROM `users` WHERE `email` = ?';
             // ②SQL文に含みたいデータを配列で用意する(タプル処理)
@@ -47,32 +46,22 @@ echo '</pre>';
                   // 認証成功
                   // サインインするユーザーのIDをセッションに保存
               $_SESSION['register']['id'] = $record['id'];
-              header('Location: blog/post.php');
+              header('Location: index.php');
             }else{
                 // 認証失敗
               $errors['signin'] = 'failed';
             }
-            echo '<pre>';
-            var_dump ($errors['signin']);
-            echo '</pre>';
-
-
-            // SELECT文でメールアドレスとパスワードが一致するレコードをusersテーブルから読み込む
-            // データが1件読み込めれば存在するデータということでOK
-            // データが0件ならメールアドレスとパスワードの組み合わせが間違っっているということでNG
         }else{
-            // エラーを出す
-            $errors['signin'] = 'blank';
+          $errors['signin'] = 'blank';
         }
     }
-
 
 ?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="utf-8">
-  <title>Learn SNS</title>
+  <title></title>
   <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
   <link rel="stylesheet" type="text/css" href="assets/font-awesome/css/font-awesome.css">
   <link rel="stylesheet" type="text/css" href="assets/css/style.css">
@@ -85,11 +74,17 @@ echo '</pre>';
         <form method="POST" action="" enctype="multipart/form-data">
           <div class="form-group">
             <label for="email">メールアドレス(Email)</label>
-            <input type="email" name="email" class="form-control" id="email" placeholder="example@gmail.com">
+            <input type="email" name="email" class="form-control" id="email" placeholder="example@gmail.com" value="<?php echo $email ?>">
           </div>
           <div class="form-group">
             <label for="password">パスワード(Password)</label>
             <input type="password" name="password" class="form-control" id="password" placeholder="4 ~ 16文字のパスワード">
+          <?php if(isset($errors['signin']) && $errors['signin'] == 'blank'): ?>
+          <p class="red"> e-mail address と pasword を入力してください</p>
+        <?php endif; ?><br>
+        <?php if(isset($errors['signin']) && $errors['signin'] == 'failed'):?>
+             <span class="red">サインインに失敗しました</span>
+        <?php endif; ?>
           </div>
           <input type="submit" class="btn btn-info" value="サインイン">
         </form>

@@ -8,9 +8,11 @@ session_start();
 
     // 閲覧制限
     // サインイン処理をしていれば、セッション処理の中にidが保存されているので、idが存在するかどうかでこのタイムラインページの閲覧を制限する。
-    if (!isset($_SESSION['register']['id'])) {
-      header('../location: signin.php');
+    if (empty($_SESSION) || !isset($_SESSION['register']['id'])) {
+      header('Location: ../signin.php');
+      exit();
     }
+
     $signin_user_id = $_SESSION['register']['id'];
     //SELECTで現在サインインしているユーザーの情報をusersテーブルから読み込む
     $sql = 'SELECT `id`, `name`, `img_name` FROM `users` WHERE `id` = ?';
