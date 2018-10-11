@@ -550,12 +550,21 @@ video {
 .inputA li:nth-child(6) div{
 	    display: flex;
     align-items: center;
+	margin-right: 15px;
 }
-.inputA li:nth-child(6){padding-left: 20%;}
+.inputA li:nth-child(6) div img{margin-right: 10px;}
+.inputA li:nth-child(6){padding-left: 17%;}
 .inputA input[type="text"], .inputA input[type="email"],.inputA input[type="password"]{
 	height: 50px;
 	width: 100%;
 }
+input[type="submit"]{
+    background-color: #ffaa00;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    padding: 0;
+    appearance: none;}
 /*SPサイズ---------------------*/
 @media screen and (max-width: 750px) {
 /*sp非表示*/
