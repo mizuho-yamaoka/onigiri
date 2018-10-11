@@ -174,7 +174,7 @@
             <input type="submit" name="other" value="edit">
           </div>
         </form>
-
+        <a href="../signout.php">sign out</a>
 
 
   <div>
