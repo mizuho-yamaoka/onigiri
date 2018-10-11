@@ -119,8 +119,8 @@ if ( isset( $_GET[ 'wordsearch' ] ) ) {
 	</header>
 	<div class="topimg_b"></div>
 	<div class="wrap">
-		<div class="bloglistWrap">
-			<div class="blcWrap">
+		<div class="bbslistWrap">
+			<div class="bbsWrap">
 				<div class="htbox">
 					<img src="img/mofun.png">
 					<img src="img/tofun.png">

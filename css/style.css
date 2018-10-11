@@ -33,7 +33,7 @@ p {
 h1, h2 {
     margin: 0;
 }
-button, input{
+button{
     background-color: transparent;
     border: none;
     cursor: pointer;
@@ -288,18 +288,19 @@ video {
     text-indent: 2rem;
 }
 /*カテゴリーエリア-------------*/
+/*共通*/
+.blcWrap, .blogWrap, .bbsWrap, .coWrap{
+    margin: 0 10%;
+}
+.blogWrap, .bbsWrap ,.coWrap{
+    padding: 40px 0;
+}
 /*blog*/
 .topimg {
     height: 500px;
     width: 100%;
     background: url(../blog/img/blogtop.jpg) no-repeat center center;
     background-size: cover;
-}
-.blcWrap, .blogWrap, .bbsWrap {
-    margin: 0 10%;
-}
-.blogWrap, .bbsWrap {
-    padding: 40px 0;
 }
 .psbar {
     display: flex;
@@ -449,7 +450,7 @@ video {
     display: flex;
 }
 /*bbs*/
-.blcWrap .psbar{top:-60px;}
+.bbsWrap .psbar{top:-60px;}
 .htbox{
 	background-color: #add9da;
 	padding: 2rem;
@@ -531,6 +532,30 @@ video {
 .bl_input .contents input{height: 100px;}
 .title ,.contents, .acte{margin-bottom: 20px;}
 .list_back {margin-top: 40px;}
+/*NEW ACCOUNT*/
+.nAca article{background-color: #add9da;}
+.cotitle{text-align: center;}
+.coWrap h1{margin: 40px;}
+.coWrap h1 img{width: 15%;}
+.coWrap p{margin-bottom: 40px;}
+.inputA li{
+	margin-bottom: 20px;
+	display: flex;
+    align-items: center;
+}
+.inputA li label{
+	width: 20%;
+	color: #2b2b2b;
+}
+.inputA li:nth-child(6) div{
+	    display: flex;
+    align-items: center;
+}
+.inputA li:nth-child(6){padding-left: 20%;}
+.inputA input[type="text"], .inputA input[type="email"],.inputA input[type="password"]{
+	height: 50px;
+	width: 100%;
+}
 /*SPサイズ---------------------*/
 @media screen and (max-width: 750px) {
 /*sp非表示*/
@@ -656,10 +681,10 @@ video {
     font-size: 1rem;
 }
 /*SPサイズ カテゴリー----------------*/
-.topimg {
+.topimg, .topimg_b{
     height: 240px;
 }
-.blcWrap {
+.blcWrap, .bbsWrap{
     margin: 0 5%;
 }
 .psbar {
@@ -698,4 +723,11 @@ video {
 	.bl_input {
     width: 100%;
 }
+	/*bbs*/
+	.htbox{
+		width: 100%;
+		padding: 1.5rem;
+	}
+	.htbox img{width: 100%;}
+	.bbsWrap .psbar{top:-30px;}
 }
