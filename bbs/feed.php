@@ -2,10 +2,6 @@
 session_start();
     require_once('../dbconnect.php');
 
-      // echo '<pre>';
-      // var_dump($_POST);
-      // echo '</pre>';
-
     // 閲覧制限
     // サインイン処理をしていれば、セッション処理の中にidが保存されているので、idが存在するかどうかでこのタイムラインページの閲覧を制限する。
     if (empty($_SESSION) || !isset($_SESSION['register']['id'])) {
@@ -33,7 +29,6 @@ session_start();
       $username = $_POST['username'];
       $feed = $_POST['body'];
 
-      
       //バリデーション処理
       // 投稿の空チェック
       if ($feed != '') {
@@ -50,10 +45,6 @@ session_start();
         // 空だったら
         $errors['feed'] = 'blank';
     }
-
-
-
-
 
 ?>
 
