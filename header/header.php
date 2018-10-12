@@ -1,3 +1,30 @@
+<?php
+session_start();
+require_once( '../dbconnect.php' );
+
+$signin_user_id = '';
+if(isset($_SESSION['register']['id'])){
+	
+$signin_user_id = $_SESSION[ 'register' ][ 'id' ];
+//SELECTで現在サインインしているユーザーの情報をusersテーブルから読み込む
+$sql = 'SELECT `id`, `name`, `img_name` FROM `users` WHERE `id` = ?';
+$data = [ $signin_user_id ];
+$stmt = $dbh->prepare( $sql );
+$stmt->execute( $data );
+
+// フェッチする
+$user = $stmt->fetch( PDO::FETCH_ASSOC );
+
+}
+
+
+
+
+
+
+
+?>
+
 		<div id="groval-navi">
 			<div class="navi">
 				<h1 class="logo"><a href="/Lechon/index.php"><?php logoimg(); ?></a></h1>
