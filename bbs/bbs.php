@@ -65,9 +65,9 @@ require( '../path.php' );
   </div>
 		<?php include ('../footer/footer.php'); ?>
 <!-- 使う場合は３つのファイルのコピーをグループワークのファイルに作るのと、パス設定が必要です -->
-<!--     <script type="text/javascript" src="assets/js/jquery-3.1.1.js"></script>
+    <script type="text/javascript" src="assets/js/jquery-3.1.1.js"></script>
     <script type="text/javascript" src="assets/js/jquery-migrate-1.4.1.js"></script>
     <script type="text/javascript" src="assets/js/bootstrap.js"></script>
-    <script type="text/javascript" src="assets/js/app.js"></script> -->
+    <script type="text/javascript" src="assets/js/bbs_app.js"></script>
 </body>
 </html>
