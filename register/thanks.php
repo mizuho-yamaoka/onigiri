@@ -14,9 +14,9 @@ require( '../path.php' );
 	</header>
   <div class="nAcac">
     <div class="thanksAn">
-        <h2>アカウント作成完了(Account creation complete)</h2>
-        <p>ユーザーアカウントの作成が完了しました。(User account creation is complete)</p>
-          <a href="../signin.php" class="btn btn-info">サインイン(Sign in)</a>
+        <h2>アカウント作成完了<br>Account creation complete</h2>
+        <p>ユーザーアカウントの作成が完了しました。<br>User account creation is complete</p>
+		<a href="../signin.php" class="btn btn-info"><p class="sibtn">サインイン(Sign in)</p></a>
     </div>
     </div>
   </div>

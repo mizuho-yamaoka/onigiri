@@ -169,54 +169,54 @@ if ( isset( $_GET[ 'category' ] ) ) {
 				</div>
 				<div>
 					<div class="blw">
-					<?php foreach ($posts as $post):?>
-					<div class="blaw">
-						<form action="blog.php" method="POST">
-							<!-- 1件づつ処理 -->
-							<div>NAME:
-								<?php echo $post['name'] ?>
-							</div>
-							<div>TITLE:
-								<?php echo $post['title'] ?>
-							</div>
-							<div>BODY:
-								<?php echo $post['post'] ?>
-							</div>
-							<div>TIME:
-								<?php echo $post['created'] ?>
-							</div>
-							<input type="hidden" name="post_id" value="<?php echo $post['id'] ?>">
-							<input type="submit" name="submit" value="詳しく読む">
-						</form>
+						<?php foreach ($posts as $post):?>
+						<div class="blaw">
+							<form action="blog.php" method="POST">
+								<!-- 1件づつ処理 -->
+								<div>NAME:
+									<?php echo $post['name'] ?>
+								</div>
+								<div>TITLE:
+									<?php echo $post['title'] ?>
+								</div>
+								<div>BODY:
+									<?php echo $post['post'] ?>
+								</div>
+								<div>TIME:
+									<?php echo $post['created'] ?>
+								</div>
+								<input type="hidden" name="post_id" value="<?php echo $post['id'] ?>">
+								<input type="submit" name="submit" value="詳しく読む">
+							</form>
 						</div>
 						<?php endforeach; ?>
-					
-				</div>
-					<ul>
-						<!-- GET送信のパラメータ
+
+					</div>
+					<div class="ttp">
+						<ul>
+							<!-- GET送信のパラメータ
         URL?キー = 値
         URL?キー１ = 値１＆キー２= 値２ -->
-						<!-- 最初のページではNEWERは押せない -->
-						<li>
-							<?php if($page == 1): ?>
-							<a>Newer</a>
-							<?php else: ?>
-							<!-- それ以外の場合 -->
-							<a href="blog_list.php?page=<?php echo $page -1; ?>">Newer</a>
-							<?php endif; ?>
-						</li>
-						<!-- 最後のページではOlderは押せない -->
-						<li>
-							<?php if ($page == $last_page):?>
-
-
-							<a>Older</a>
-							<!-- それ以外の場合 -->
-							<?php else: ?>
-							<a href="blog_list.php?page=<?php echo $page +1; ?>">Older</a>
-							<?php endif; ?>
-						</li>
-					</ul>
+							<!-- 最初のページではNEWERは押せない -->
+							<li>
+								<?php if($page == 1): ?>
+								<a>Newer</a>
+								<?php else: ?>
+								<!-- それ以外の場合 -->
+								<a href="blog_list.php?page=<?php echo $page -1; ?>">Newer</a>
+								<?php endif; ?>
+							</li>
+							<!-- 最後のページではOlderは押せない -->
+							<li>
+								<?php if ($page == $last_page):?>
+								<a>Older</a>
+								<!-- それ以外の場合 -->
+								<?php else: ?>
+								<a href="blog_list.php?page=<?php echo $page +1; ?>">Older</a>
+								<?php endif; ?>
+							</li>
+						</ul>
+					</div>
 				</div>
 			</div>
 			<!--blcWrap-->
