@@ -19,9 +19,7 @@ $user = $stmt->fetch( PDO::FETCH_ASSOC );
 
 $img_name = $user['img_name'];
 $name = $user['name'];
-// echo '<pre>';
-// var_dump();
-// echo '</pre>';
+
 
 }
 ?>
@@ -49,24 +47,33 @@ $name = $user['name'];
 						</p>
 					</li>
 				</ul>
+
 				<div class="chda">
-					<div class="login">
-						<p><a href="/Lechon/signin.php">LOGIN</a>
-						</p>
-					</div>
-					<div class="newA">
-						<p><a href="/Lechon/register/signup.php">NEW ACCOUNT</a>
-						</p>
-					</div>
+					<?php if(!isset($_SESSION['register']['id'])) :?>
+						<div class="login">
+							<p><a href="/Lechon/signin.php">LOGIN</a>
+							</p>
+						</div>
+						<div class="newA">
+							<p><a href="/Lechon/register/signup.php">NEW ACCOUNT</a>
+							</p>
+						</div>
+					<?php endif; ?>
 				</div>
-				<div class="chda_2">
-					<p><img src="../user_profile_img/<?php echo $img_name ?>" alt="" width="60px"></a></p>
-				</div>
-				<div class="chda_2">
-					<p><a href="/Lechon/mypage/mypage.php"><?php echo $name ?></a></p>
-				</div>
-				<div class="chda_2">
-					<p><a href="/Lechon/signout.php">sign out</a></p>
+
+				<div class="chda2">
+					
+					<?php if(isset($_SESSION['register']['id'])): ?>
+						<div class="user_img">
+							<p><img src="../user_profile_img/<?php echo $img_name ?>" alt="" width="60px"></a></p>
+						</div>
+						<div class="user_name">
+							<p><a href="/Lechon/mypage/mypage.php"><?php echo $name ?></a></p>
+						</div>
+						<div class="logout">
+							<p><a href="/Lechon/signout.php">sign out</a></p>
+						</div>
+					<?php endif ;?>
 				</div>
 
 
@@ -84,10 +91,23 @@ $name = $user['name'];
 						</li>
 						<li><a href="/Lechon/bbs/bbs_list.php">BBS</a>
 						</li>
-						<li><a href="/Lechon/signin.php">LOGIN</a>
-						</li>
-						<li><a href="/Lechon/register/signup.php">NEW ACCOUNT</a>
-						</li>
+					<div>
+						<?php if(!isset($_SESSION['register']['id'])): ?>
+							<li><a href="/Lechon/signin.php">LOGIN</a>
+							</li>
+							<li><a href="/Lechon/register/signup.php">NEW ACCOUNT</a>
+							</li>
+						<?php endif ;?>
+					</div>
+					<div>
+						<?php if(isset($_SESSION['register']['id'])): ?>
+
+							<li><a href="/Lechon/signout.php">LOGOUT</a>
+							</li>
+							<li><a href="/Lechon/mypage/mypage.php">MY PAGE</a>
+							</li>
+						<?php endif ;?>
+					</div>
 					</ul>
 				</div>
 				<a class="menu-trigger" href="#"><span></span><span></span><span></span></a>
