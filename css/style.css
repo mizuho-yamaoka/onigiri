@@ -1,4 +1,4 @@
-@charset "UTF-8";
+thanksthanksAnthanksAnthanksAnthanksAnthanksAn@charset "UTF-8";
 /* CSS Document */
 
 /*reset----------------*/
@@ -537,7 +537,7 @@ video {
 .cotitle{text-align: center;}
 .coWrap h1{margin: 40px;}
 .coWrap h1 img{width: 15%;}
-.coWrap p{margin-bottom: 40px;}
+.coWrap p{margin-bottom: 1.5rem;}
 .inputA li{
 	margin-bottom: 20px;
 	display: flex;
@@ -559,7 +559,7 @@ video {
 	width: 100%;
 }
 .nAcac {
-	padding: 60px 0;
+	padding:5%;
 	background-color: #add9da;
 }
 .nAca input[type="submit"]{
@@ -776,9 +776,13 @@ video {
 	.bbsWrap .psbar{top:-30px;}
 	.coWrap h1 img {width: 80%;}
 	.coWrap p img {width: 100%;}
+	.nAcac .coWrap p img {width: 80%;}
 	.inputA li{display: block;}
 	.inputA li:nth-child(6) {
     padding-left: 0;
 		display: flex;
 }
+	.coco{display: block;}
+	.coco .bl_input{margin-top: 40px;}
+	.nbbtn input, .nbbtn a{font-size: 1rem;}
 }
