@@ -194,7 +194,7 @@ if ( !empty( $_POST ) ) {
 								</li>
 							</ul>
 						</div>
-						<div>
+						<div class="com_b">
 							<input type="submit" value="確認(submit)">
 						</div>
 					</form>
