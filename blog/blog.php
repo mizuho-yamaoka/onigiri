@@ -17,7 +17,7 @@ $record = $stmt->fetch( PDO::FETCH_ASSOC );
 
 // ログインしているユーザーがその投稿をしているか確認
 
-$likes_flg_sql = 'SELECT * FROM `post_likes` WHERE `user_id` = ? AND `feed_id` = ?';
+$likes_flg_sql = 'SELECT * FROM `post_likes` WHERE `user_id` = ? AND `post_id` = ?';
 $likes_flg_data = [$record['user_id'],$record['id']];
 $likes_flg_stmt = $dbh->prepare($likes_flg_sql);
 $likes_flg_stmt->execute($likes_flg_data);
@@ -63,7 +63,7 @@ $post = $record;
 				</div>
 			</section>
 				<div>
-					<?php if($feed['is_liked']):?>
+					<?php if($post['is_liked']):?>
 					<button class="js-unlike"><span>いいねを取り消す</span></button>
 					<?php else :?>
 					<button class="js-like"><span>いいね！</span></button>
@@ -74,9 +74,9 @@ $post = $record;
 	</article>
 	<?php include ('../footer/footer.php'); ?>
 <!-- 使う場合は３つのファイルのコピーをグループワークのファイルに作るのと、パス設定が必要です -->
-<!--     <script type="text/javascript" src="assets/js/jquery-3.1.1.js"></script>
-    <script type="text/javascript" src="assets/js/jquery-migrate-1.4.1.js"></script>
-    <script type="text/javascript" src="assets/js/bootstrap.js"></script>
-    <script type="text/javascript" src="assets/js/app.js"></script> -->
+    <script type="text/javascript" src="../js/jquery-3.1.1.js"></script>
+    <script type="text/javascript" src="../js/jquery-migrate-1.4.1.js"></script>
+    <script type="text/javascript" src="../js/bootstrap.js"></script>
+    <script type="text/javascript" src="../js/blog_app.js"></script>
 </body>
 </html>
