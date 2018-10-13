@@ -1,4 +1,4 @@
-@charset "UTF-8";
+thanksthanksAnthanksAnthanksAnthanksAnthanksAn@charset "UTF-8";
 /* CSS Document */
 
 /*reset----------------*/
@@ -289,11 +289,11 @@ video {
 }
 /*カテゴリーエリア-------------*/
 /*共通*/
-.blcWrap, .blogWrap, .bbsWrap, .coWrap{
-    margin: 0 10%;
-}
-.blogWrap, .bbsWrap ,.coWrap{
+.blogWrap, .bbsWrap {
     padding: 40px 0;
+}
+.bbsWrap, .blcWrap{
+    margin: 0 10%;
 }
 /*blog*/
 .topimg {
@@ -495,7 +495,7 @@ video {
 .bwi ul li:first-child{font-size: 1.3rem;}
 .bwi ul li:last-child{margin-top: 6px;}
 /*form*/
-.formWrap {
+.formWrap, .nAca{
     background-color: #add9da;
     padding: 5%;
 }
@@ -533,11 +533,11 @@ video {
 .title ,.contents, .acte{margin-bottom: 20px;}
 .list_back {margin-top: 40px;}
 /*NEW ACCOUNT*/
-.nAca article{background-color: #add9da;}
+.nAca article,.nAcac article{background-color: #add9da;}
 .cotitle{text-align: center;}
 .coWrap h1{margin: 40px;}
 .coWrap h1 img{width: 15%;}
-.coWrap p{margin-bottom: 40px;}
+.coWrap p{margin-bottom: 1.5rem;}
 .inputA li{
 	margin-bottom: 20px;
 	display: flex;
@@ -558,13 +558,48 @@ video {
 	height: 50px;
 	width: 100%;
 }
-input[type="submit"]{
+.nAcac {
+	padding:5%;
+	background-color: #add9da;
+}
+.nAca input[type="submit"]{
     background-color: #ffaa00;
     border: none;
     cursor: pointer;
     outline: none;
-    padding: 0;
-    appearance: none;}
+    padding: 1%;
+    appearance: none;
+	color: #FFFFFF;
+	font-size: 1.3rem;
+}
+.nAca input[type="submit"]:hover{
+    background-color: #C37900;
+}
+.com_b {text-align: right;}
+.coco {
+	display: flex;
+	justify-content: space-between;
+}
+.nbbtn form{
+	display: flex;
+	justify-content: center;
+}
+.nbbtn input[type="submit"]{
+    border: none;
+    cursor: pointer;
+    outline: none;
+    background-color: transparent;
+    appearance: none;
+}
+.nbbtn input[type="submit"]:hover{
+	opacity: 0.8;
+}
+.nbbtn input,.nbbtn a{
+	color: #2d93d6;
+	font-size: 1.3rem;
+	padding: 1%;
+	font-weight: bold;
+}
 /*SPサイズ---------------------*/
 @media screen and (max-width: 750px) {
 /*sp非表示*/
@@ -739,4 +774,15 @@ video {
 	}
 	.htbox img{width: 100%;}
 	.bbsWrap .psbar{top:-30px;}
+	.coWrap h1 img {width: 80%;}
+	.coWrap p img {width: 100%;}
+	.nAcac .coWrap p img {width: 80%;}
+	.inputA li{display: block;}
+	.inputA li:nth-child(6) {
+    padding-left: 0;
+		display: flex;
+}
+	.coco{display: block;}
+	.coco .bl_input{margin-top: 40px;}
+	.nbbtn input, .nbbtn a{font-size: 1rem;}
 }
