@@ -28,28 +28,6 @@ if ( isset( $_GET[ 'page' ] ) ) {
 	$start = ( $page - 1 ) * CONTENT_PER_PAGE;
 }
 
-// // カテゴリー検索
-// if (isset($_GET['category'])) {
-
-//     $category_number = $_GET['category'];
-
-//     $sql = 'SELECT `p`.*, `u`.`name` FROM `posts` AS `p` LEFT JOIN `users` AS `u` ON `p`. `user_id` = `u`. `id` WHERE category_id = ? ORDER BY `p`.`created` DESC LIMIT ' . CONTENT_PER_PAGE . ' OFFSET ' . $start;
-//     $data = [$category_number];
-//     $stmt = $dbh->prepare($sql);
-//     $stmt->execute($data);
-//     // ポストを入れる配列
-//     $posts = array();
-//     // レコードがなくなるまで取得処理
-//     while(true){
-//       // 1件ずつフェッチ
-//         $record = $stmt->fetch(PDO::FETCH_ASSOC);
-//         // レコードがなければ処理を抜ける
-//           if($record == false){
-//               break;
-//           }
-//           // レコードがあれば追加
-//           $posts[] = $record;
-//     }
 
 // ワード検索機能
 if ( isset( $_GET[ 'wordsearch' ] ) ) {
@@ -60,7 +38,7 @@ if ( isset( $_GET[ 'wordsearch' ] ) ) {
 	// LIKE"%' . $変数 . '%"  =>>> $変数が含まれているもの
 	// WHERE句内 条件式A OR 条件式B =>>> AまたはBのとき
 
-	$sql = 'SELECT f.*, u.name FROM feeds AS f LEFT JOIN users AS u ON f. user_id = u. id WHERE feed LIKE "%' . $word_search . '%" ORDER BY f.created DESC LIMIT ' . CONTENT_PER_PAGE . ' OFFSET ' . $start;
+	$sql = 'SELECT f.*, u.name FROM feeds AS f LEFT JOIN users AS u ON f. user_id = u. id WHERE feed LIKE "%"?"%" ORDER BY f.created DESC LIMIT ' . CONTENT_PER_PAGE . ' OFFSET ' . $start;
 
 	$data = [ $word_search ];
 	$stmt = $dbh->prepare( $sql );

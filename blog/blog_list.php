@@ -64,9 +64,8 @@ if ( isset( $_GET[ 'category' ] ) ) {
 	// LIKE"%' . $変数 . '%"  =>>> $変数が含まれているもの
 	// WHERE句内 条件式A OR 条件式B =>>> AまたはBのとき
 
-	$sql = 'SELECT p.*, u.name FROM posts AS p LEFT JOIN users AS u ON p. user_id = u. id WHERE post LIKE "%' . $word_search . '%" OR title LIKE "%' . $word_search . '%"ORDER BY p.created DESC LIMIT ' . CONTENT_PER_PAGE . ' OFFSET ' . $start;
-
-	$data = [ $word_search ];
+	$sql = 'SELECT p.*, u.name FROM posts AS p LEFT JOIN users AS u ON p. user_id = u. id WHERE post LIKE "%"?"%" OR title LIKE "%"?"%"ORDER BY p.created DESC LIMIT ' . CONTENT_PER_PAGE . ' OFFSET ' . $start;
+	$data = [$word_search,$word_search];
 	$stmt = $dbh->prepare( $sql );
 	$stmt->execute( $data );
 
