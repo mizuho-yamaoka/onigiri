@@ -1,22 +1,22 @@
 <?php
 require( '../path.php' );
-session_start();
+// session_start();
 require_once( '../dbconnect.php' );
 
 // ログイン不要のページなのでセッションの存在の確認は不要
 // if (!isset($_SESSION['register']['id'])) { //①:セッションに保存する一つ目にカラム名をhogehogeに入れる
 // }
 
-$signin_user_id = $_SESSION[ 'register' ][ 'id' ]; //②:①同様
+// $signin_user_id = $_SESSION[ 'register' ][ 'id' ]; //②:①同様
 
-$sql = 'SELECT `id`,`name`,`img_name` FROM `users` WHERE `id`=?'; //③:insert,select時に必要なカラム名を指定＊変更があれば
-$data = [ $signin_user_id ];
-$stmt = $dbh->prepare( $sql );
-$stmt->execute( $data );
+// $sql = 'SELECT `id`,`name`,`img_name` FROM `users` WHERE `id`=?'; //③:insert,select時に必要なカラム名を指定＊変更があれば
+// $data = [ $signin_user_id ];
+// $stmt = $dbh->prepare( $sql );
+// $stmt->execute( $data );
 
-$user = $stmt->fetch( PDO::FETCH_ASSOC );
+// $user = $stmt->fetch( PDO::FETCH_ASSOC );
 
-$user_img_name = $user[ 'img_name' ];
+// $user_img_name = $user[ 'img_name' ];
 
 $murmur = '';
 $errors = [];
@@ -32,9 +32,10 @@ if ( !empty( $_POST ) ) {
 // 投稿機能
 if ( !empty( $_POST[ 'murmur' ] ) ) {
 	$murmur = $_POST[ 'murmur' ];
+	$nickname = $_POST['nickname'];
 
-	$sql = 'INSERT INTO `murmurs` SET `murmur`=?,`user_id`=?,`user_img_name` = ?,`created`=NOW()';
-	$data = [ $murmur, $user[ 'id' ], $user_img_name ];
+	$sql = 'INSERT INTO `murmurs` SET `nickname` = ?,`murmur`=?,`created`=NOW()';
+	$data = [$nickname,$murmur];
 	$stmt = $dbh->prepare( $sql );
 	$stmt->execute( $data );
 
@@ -43,7 +44,7 @@ if ( !empty( $_POST[ 'murmur' ] ) ) {
 }
 
 // テーブル名変更とカラム名の追加（ユーザーイメージ）をしたのでSQL文を変更
-$sql = "SELECT m.*, u.name FROM murmurs AS m LEFT JOIN users AS u ON m.user_id = u.id ORDER BY m.created DESC";
+$sql = "SELECT * FROM murmurs WHERE 1 ORDER BY created DESC";
 // $sql='SELECT `f`.*,`u`.`name`,`u`.`img_name` FROM `murmurs` AS `f` LEFT JOIN `users` AS `u` ON `f`.`user_id`=`u`.`id` ORDER BY `f`.`created` DESC';//④:③同様
 $stmt = $dbh->prepare( $sql );
 $stmt->execute();
@@ -76,10 +77,10 @@ while ( true ) {
 		<article>
 				<?php foreach($murmurs as $murmur):?>
 			<section class="mur">
-				<!-- 表示するユーザー画像はデータベース（murmur）より参照 -->
-				<img src="../user_profile_img/<?php echo $murmur['user_img_name']?>" width="70" class="img-thumbnail">
 				<div>
-					<?php echo $murmur['name'] ?>
+					<?php echo $murmur['nickname'] ?>
+				</div>
+				<div>
 					<?php echo $murmur['created'] ?>
 				</div>
 				<div>
@@ -90,8 +91,11 @@ while ( true ) {
 		</article>
 		<article>
 			<section class="mpos">
-				<img src="../user_profile_img/<?php echo $user_img_name ?>" width="100" class="img-thumbnail">
 				<form action="" method="POST">
+					<label for="nickname">nickname</label>
+					<input type="text" name="nickname">
+					<br>
+					<label for="murmur">murmur</label>
 					<input type="text" name="murmur">
 					<br>
 					<?php if (isset($errors['murmur']) && $errors['murmur'] == 'blank'):?>
