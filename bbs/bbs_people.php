@@ -12,7 +12,7 @@
       header('../location: signin.php');
     }
 
-    $bbs_people = $_POST['user_id'];
+    $bbs_people = $_GET['id'];
     //SELECTで現在サインインしているユーザーの情報をusersテーブルから読み込む
     $sql = 'SELECT `id`, `name`, `img_name` FROM `users` WHERE `id` = ?';
     $data = [$bbs_people];
@@ -68,7 +68,7 @@
 
 
     $sql = 'SELECT * FROM `users` WHERE `id` = ?';
-    $data = [$bbe_people];
+    $data = [$bbs_people];
     $stmt = $dbh->prepare($sql);
     $stmt->execute($data);
 
@@ -150,7 +150,6 @@
           
           <div>
             <img src="../user_profile_img/<?= $user['img_name']?>" width="60" class="img-thumbnail"><br>
-            <input type="submit" name="img_name" value="edit">
           </div>
           <div>User Name:<?php echo $name?></div>
 
@@ -164,44 +163,29 @@
 
 
   <div>
-    <h3>YOUR BLOG POSTS</h3>
-
+    <h3>BLOG POSTS</h3>
     <?php foreach ($posts as $post):?>
-      <form action="mypage.php" method="POST">
+      <form action="../blog/blog.php" method="POST">
+      <input type="hidden" name="post_id" value="<?php echo $post['id'] ?>">
       <div>TITLE:<?php echo $post['title'] ?></div>
       <div>BODY:<?php echo $post['post'] ?></div>
       <div>TIME:<?php echo $post['created'] ?></div>
-      <input type="hidden" name="post_id" value="<?php echo $post['id'] ?>">
-      <input type="submit" name="post_edit" value="EDIT">
-      <input type="submit" name="post_delete" value="DELETE"><br>
-
-  </form>
+      <input type="submit" name="submit" value="CHECK">
+      <br>
+      </form>
     <?php endforeach; ?>
   </div>
   <div>
-        <h3>YOUR BBS POSTS</h3>
+    <h3>BBS POSTS</h3>
     <?php foreach ($feeds as $feed):?>
-      <form action="mypage.php" method="POST">
+      <form action="bbs.php" method="POST">
+      <input type="hidden" name="feed_id" value="<?php echo $feed['id'] ?>">
       <div>BODY:<?php echo $feed['feed'] ?></div>
       <div>TIME:<?php echo $feed['created'] ?></div>
-      <input type="hidden" name="feed_id" value="<?php echo $feed['id'] ?>">
-      <input type="submit" name="feed_edit" value="EDIT">
-      <input type="submit" name="feed_delete" value="DELETE"><br>
+      <input type="submit" name="submit" value="CHECK">
+      <br>
+    </form>
     <?php endforeach; ?>
-
   </div>
-
-  
-  <div id="modal-main">モーダルウィンドウ</div>
- 
-<!-- #contents START -->
-  <div id="contents">
-    <p><a id="modal-open">【クリックでモーダルウィンドウを開きます。】</a></p>
-    <p class="page-txt">ここからページ本文<br>
-    <br>
-    ↓↓↓　スクロールしてください ↓↓↓</p>
-  </div>
-<!--/#contents-->
-
 </body>
 </html>

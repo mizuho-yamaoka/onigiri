@@ -29,9 +29,7 @@ require( '../path.php' );
 
       // レコードがあれば追加
       $feed = $record;
-echo '<pre>';
-var_dump($feed);
-echo '</pre>';
+
 ?>
 
 
