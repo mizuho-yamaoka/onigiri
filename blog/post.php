@@ -1,6 +1,9 @@
 <?php
 require( '../path.php' );
-session_start();
+if(!isset($_SESSION)){ 
+session_start(); 
+} 
+
 require_once( '../dbconnect.php' );
 
 // 閲覧制限

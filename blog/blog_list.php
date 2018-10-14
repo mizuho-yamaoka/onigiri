@@ -1,6 +1,6 @@
 <?php
+session_start(); 
 require( '../path.php' );
-session_start();
 require_once( '../dbconnect.php' );
 
 // ６記事で１ページの出力
