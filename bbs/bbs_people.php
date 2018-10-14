@@ -4,10 +4,7 @@
 
     // 閲覧制限
     // サインイン処理をしていれば、セッション処理の中にidが保存されているので、idが存在するかどうかでこのタイムラインページの閲覧を制限する。
-// echo '<pre>';
-// var_dump ($_SESSION);
-// echo '</pre>';
-// die();
+
     if (!isset($_SESSION['register']['id'])) {
       header('../location: signin.php');
     }
@@ -19,61 +16,12 @@
     $stmt = $dbh->prepare($sql);
     $stmt->execute($data);
 
-  // // ブログ編集画面への遷移
-  //   if(!empty($_POST['post_edit'])){
-  //     $_SESSION['post_id'] = $_POST['post_id'];
-  //     header('Location: ../blog/blog_edit.php');
-  //   }
-
-  // // BBS編集画面への遷移
-  //   if(!empty($_POST['feed_edit'])){
-  //     $_SESSION['feed_id'] = $_POST['feed_id'];
-  //     header('Location: ../bbs/bbs_edit.php');
-  //   }
-
-
-
-
-
-
-
-
-
-
-    // // ブログの削除処理
-    // if (!empty($_POST['post_delete'])) {
-    // $str_post_id = $_POST['post_id'];
-    // $post_id = (int)$str_post_id;
-
-
-    // $sql = 'DELETE FROM `posts` WHERE `id` = ?';
-    // $data = [$post_id];
-    // $stmt = $dbh->prepare($sql);
-    // $stmt->execute($data);
-
-    // }
-    // // BBSの削除処理
-    // if (!empty($_POST['feed_delete'])) {
-    // $str_feed_id = $_POST['feed_id'];
-    // $feed_id = (int)$str_feed_id;
-
-
-    // $sql = 'DELETE FROM `feeds` WHERE `id` = ?';
-    // $data = [$feed_id];
-    // $stmt = $dbh->prepare($sql);
-    // $stmt->execute($data);
-
-    // }
-
-
-
     $sql = 'SELECT * FROM `users` WHERE `id` = ?';
     $data = [$bbs_people];
     $stmt = $dbh->prepare($sql);
     $stmt->execute($data);
 
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
-
 
     $name = $user['name'];
     $email = $user['email'];
@@ -130,21 +78,16 @@
       $gender = 'Not Chosen';
     }
 
-// echo '<pre>';
-// var_dump ($user['img_name']);
-// echo '</pre>';
-
-
 ?>
 
 <!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>mypage</title>
+  <title>投稿者情報</title>
 </head>
 <body>
-  <h1>MY PAGE</h1>
+  <h1>USER INFO</h1>
     <h3>YOUR INFORMATION</h3>
       <div>
           
