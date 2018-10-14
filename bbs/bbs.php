@@ -15,9 +15,6 @@ require( '../path.php' );
       // フェッチ
       $record = $stmt->fetch(PDO::FETCH_ASSOC);
 
-// echo '<pre>';
-// var_dump($record);
-// echo '</pre>';
 // die();
       // ログインしているユーザーがその投稿をしているか確認
 
@@ -32,6 +29,9 @@ require( '../path.php' );
 
       // レコードがあれば追加
       $feed = $record;
+echo '<pre>';
+var_dump($feed);
+echo '</pre>';
 ?>
 
 
@@ -48,8 +48,8 @@ require( '../path.php' );
 </header>
 	<div class="topimg_b"></div>
   <div class="bbsWrap">
-      <a href="feed.php">投稿する</a> 
-        <div><?php echo $feed['name'] ?></div>
+      <a href="feed.php">投稿する</a>
+        <a href="bbs_people.php?id=<?php echo $feed['user_id']?>"><?php echo $feed ['name'] ?></a>
         <div><?php echo $feed['feed'] ?></div>
         <div><?php echo $feed['created'] ?></div>
 
