@@ -172,17 +172,17 @@ if ( isset( $_GET[ 'category' ] ) ) {
 						<div class="blaw">
 							<form action="blog.php" method="POST">
 								<!-- 1件づつ処理 -->
-								<div>NAME:
-									<?php echo $post['name'] ?>
+								<div class="bwi">
+									<ul>
+										<li><?php echo $post['name'] ?></li>
+										<li><?php echo $post['created'] ?></li>
+									</ul>
 								</div>
-								<div>TITLE:
+								<div>
 									<?php echo $post['title'] ?>
 								</div>
-								<div>BODY:
+								<div>
 									<?php echo $post['post'] ?>
-								</div>
-								<div>TIME:
-									<?php echo $post['created'] ?>
 								</div>
 								<input type="hidden" name="post_id" value="<?php echo $post['id'] ?>">
 								<input type="submit" name="submit" value="詳しく読む">

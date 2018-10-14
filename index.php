@@ -157,7 +157,7 @@ $name = $user['name'];
 		<section id="nowWrap">
 			<div class="ncWrap">
 				<h1><img src="img/now.png" alt="つぶやき"></h1>
-				<iframe id="now" width="100%" height="200" src="now.php"></iframe>
+				<iframe id="now" width="100%" height="200" src="now/now.php"></iframe>
 			</div>
 		</section>
 		<!--nowWrap-->
