@@ -3,6 +3,10 @@ require( '../path.php' );
     session_start();
     require_once('../dbconnect.php');
 
+    if(isset($_SESSION['register']['id'])){
+    $signin_user_id = $_SESSION['register']['id'];
+    }
+
     $feed_id = $_POST['feed_id'];
 
     $sql= 'SELECT f.*,u.name FROM feeds AS f LEFT JOIN users AS u ON f.user_id = u.id WHERE f.id = ?';
@@ -15,10 +19,6 @@ require( '../path.php' );
       // フェッチ
       $record = $stmt->fetch(PDO::FETCH_ASSOC);
 
-// echo '<pre>';
-// var_dump($record);
-// echo '</pre>';
-// die();
       // ログインしているユーザーがその投稿をしているか確認
 
       $likes_flg_sql = 'SELECT * FROM `feed_likes` WHERE `user_id` = ? AND `feed_id` = ?';
@@ -30,6 +30,15 @@ require( '../path.php' );
       // 条件式 ? 真の場合:偽の場合;
       $record['is_liked'] = $is_liked ? true : false;
 
+      // 投稿に対して何件いいねされているか取得
+      $like_sql = 'SELECT COUNT(*) AS `like_count` FROM `feed_likes` WHERE `feed_id` = ?';
+      $like_data = [$record['id']];
+      $like_stmt = $dbh->prepare($like_sql);
+      $like_stmt->execute($like_data);
+      $result = $like_stmt->fetch(PDO::FETCH_ASSOC);
+
+      // feed１件ごとにいいねの数を新しく入れる
+      $record['like_count'] = $result['like_count'];
       // レコードがあれば追加
       $feed = $record;
 ?>
@@ -54,20 +63,29 @@ require( '../path.php' );
         <div><?php echo $feed['created'] ?></div>
 
         <!-- いいね!ボタン -->
-        <?php if($feed['is_liked']):?>
-        <button class="js-unlike"><span>いいねを取り消す</span></button>
-        <?php else :?>
-        <button class="js-like"><span>いいね！</span></button>
-        <?php endif ;?>
+        <div>
+          <?php if(isset($_SESSION['register']['id'])): ?>
+            <?php if($feed['is_liked']):?>
+              <button class="js-unlike"><span>いいねを取り消す</span></button>
+            <?php else :?>
+              <button class="js-like"><span>いいね！</span></button>
+            <?php endif ;?>
 
+            <span hidden class="user-id"><?php echo $signin_user_id;?></span>
+            <span hidden class="feed-id"><?php echo $feed['id'];?></span>
+            <span>いいね数：</span>
+            <span class="like-count"><?php echo $feed['like_count'] ?></span><br>
+          <?php endif ;?>
+        </div>
+      </div>
 
         <a href="bbs_list.php">BBS一覧に戻る</a>
   </div>
 		<?php include ('../footer/footer.php'); ?>
 <!-- 使う場合は３つのファイルのコピーをグループワークのファイルに作るのと、パス設定が必要です -->
-    <script type="text/javascript" src="assets/js/jquery-3.1.1.js"></script>
-    <script type="text/javascript" src="assets/js/jquery-migrate-1.4.1.js"></script>
-    <script type="text/javascript" src="assets/js/bootstrap.js"></script>
-    <script type="text/javascript" src="assets/js/bbs_app.js"></script>
+    <script type="text/javascript" src="../js/jquery-3.1.1.js"></script>  
+    <script type="text/javascript" src="../js/jquery-migrate-1.4.1.js"></script>
+    <script type="text/javascript" src="../js/bootstrap.js"></script>
+    <script type="text/javascript" src="../js/bbs_app.js"></script>
 </body>
 </html>

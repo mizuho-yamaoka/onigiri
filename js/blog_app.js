@@ -4,9 +4,9 @@
     $(document).on('click', '.js-like', function() {
 
     // どの投稿に関してか
-    var post_id = $(this).siblings('.post-id').text();
+    var post_id = $(this).siblings('.post_id').text();
     // 誰がいいねしたか
-    var user_id = $(this).siblings('.user-id').text();
+    var user_id = $(this).siblings('.user_id').text();
 
     var like_btn = $(this);
     var like_count = $(this).siblings('.like-count').text();
@@ -23,12 +23,16 @@
     }
     })
     .done(function(data) {
+        console.log(data);
     // 処理が成功したときのデータを記述
     // dataにはINSERT文の結果が入っている（成功したらtrue）
     if(data == 'true'){
     console.log('hoge');
         like_count++;
         like_btn.siblings('.like-count').text(like_count);
+        like_btn.removeClass('js-like');
+        like_btn.addClass('js-unlike');
+        like_btn.children('span').text('いいねを取り消す');
     }
     })
     .fail(function(error) {
@@ -42,9 +46,9 @@
 
     // 必要な値を取り出す
     // どの投稿に関してか
-    var post_id = $(this).siblings('.post-id').text();
+    var post_id = $(this).siblings('.post_id').text();
     // 誰がいいねしたか
-    var user_id = $(this).siblings('.user-id').text();
+    var user_id = $(this).siblings('.user_id').text();
     // 
     var like_btn = $(this)
     // 
@@ -65,10 +69,13 @@
         console.log('取り消すのDONEメゾット')
     // 処理が成功したときのデータを記述
     // dataにはINSERT文の結果が入っている（成功したらtrue）
-    // if(data == 'true'){
-        // like_count--;
-        // like_btn.siblings('.like-count').text(like_count);
-    // }
+    if(data == 'true'){
+        like_count--;
+        like_btn.siblings('.like-count').text(like_count);
+        like_btn.removeClass('js-unlike');
+        like_btn.addClass('js-like');
+        like_btn.children('span').text('いいね!');
+    }
     })
     .fail(function(error) {
     // 処理が失敗したときの処理を記述
