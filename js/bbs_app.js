@@ -2,7 +2,6 @@
 // $(要素)HTML要素の取得
 // .on (トリガー,処理);
     $(document).on('click', '.js-like', function() {
-        console.log('hoge');
     // どの投稿に関してか
     var feed_id = $(this).siblings('.feed-id').text();
     // 誰がいいねしたか
