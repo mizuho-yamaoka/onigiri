@@ -3,6 +3,11 @@ require( '../path.php' );
 session_start();
 require_once( '../dbconnect.php' );
 
+
+if(isset($_SESSION['register']['id'])){
+$signin_user_id = $_SESSION['register']['id'];
+}
+
 $post_id = $_POST[ 'post_id' ];
 
 $sql = 'SELECT p.*,u.name FROM posts AS p LEFT JOIN users AS u ON p.user_id = u.id WHERE p.id = ?';
@@ -18,13 +23,23 @@ $record = $stmt->fetch( PDO::FETCH_ASSOC );
 // ログインしているユーザーがその投稿をしているか確認
 
 $likes_flg_sql = 'SELECT * FROM `post_likes` WHERE `user_id` = ? AND `post_id` = ?';
-$likes_flg_data = [$record['user_id'],$record['id']];
+$likes_flg_data = [$signin_user_id,$record['id']];
 $likes_flg_stmt = $dbh->prepare($likes_flg_sql);
 $likes_flg_stmt->execute($likes_flg_data);
 $is_liked = $likes_flg_stmt->fetch(PDO::FETCH_ASSOC);
 // 三項演算子
 // 条件式 ? 真の場合:偽の場合;
 $record['is_liked'] = $is_liked ? true : false;
+
+// 投稿に対して何件いいねされているか取得
+$like_sql = 'SELECT COUNT(*) AS `like_count` FROM `post_likes` WHERE `post_id` = ?';
+$like_data = [$record['id']];
+$like_stmt = $dbh->prepare($like_sql);
+$like_stmt->execute($like_data);
+$result = $like_stmt->fetch(PDO::FETCH_ASSOC);
+
+// feed１件ごとにいいねの数を新しく入れる
+$record['like_count'] = $result['like_count'];
 // レコードがあれば追加
 $post = $record;
 ?>
@@ -63,14 +78,26 @@ $post = $record;
 				</div>
 			</section>
 				<div>
-					<?php if($post['is_liked']):?>
-					<button class="js-unlike"><span>いいねを取り消す</span></button>
-					<?php else :?>
-					<button class="js-like"><span>いいね！</span></button>
+					<?php if(isset($_SESSION['register']['id'])): ?>
+						<?php if($post['is_liked']):?>
+							<button class="js-unlike"><span>いいねを取り消す</span></button>
+							<?php else :?>
+							<button class="js-like"><span>いいね！</span></button>
+						<?php endif ;?>
+
+						<span hidden class="user_id"><?php echo $signin_user_id;?></span>
+						<span hidden class="post_id"><?php echo $post['id'];?></span>
+						<span>いいね数：</span>
+						<span class="like-count"><?php echo $post['like_count'] ?></span><br>
+				
 					<?php endif ;?>
 				</div>
+
+			</div>
+
+
 			<a href="blog_list.php">ブログ一覧に戻る</a>
-		</div>
+
 	</article>
 	<?php include ('../footer/footer.php'); ?>
 <!-- 使う場合は３つのファイルのコピーをグループワークのファイルに作るのと、パス設定が必要です -->

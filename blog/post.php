@@ -23,6 +23,21 @@ $stmt->execute( $data );
 // フェッチする
 $user = $stmt->fetch( PDO::FETCH_ASSOC );
 
+<<<<<<< HEAD
+=======
+
+// 画像挿入機能
+
+echo '<pre>';
+var_dump($_FILES);
+echo '</pre>';
+	if(isset($_FILES)){
+		$blog_img = $_FILES['blog_img']['name'];
+		$ext = substr($blog_img,-3);
+
+	}
+
+>>>>>>> feat_bbs
 // 投稿機能
 // エラーがあれば、この中に入れる
 $errors = [];
@@ -37,11 +52,14 @@ if ( !empty( $_POST ) ) {
 	$title = $_POST[ 'title' ];
 	$post = $_POST[ 'body' ];
 
+<<<<<<< HEAD
 	if(isset($_POST['category'])){
 		$category = $_POST['category'];
 		}
 	// $category = $_POST[ 'category' ];
 
+=======
+>>>>>>> feat_bbs
 	//バリデーション処理
 	// 投稿の空チェック
 	if ( $post == '' ){
@@ -104,6 +122,7 @@ if ( !empty( $_POST ) ) {
 		<section class="bl_input">
 			<form action="" method="POST">
 				<input type="hidden" name="username" value="<?php echo $user['id']; ?>">
+<<<<<<< HEAD
 				<div class="title">
 				<p>TITLE</p>
 				<input type="text" name="title" placeholder="Title" value="<?php echo $title ?>">
@@ -113,6 +132,16 @@ if ( !empty( $_POST ) ) {
 				<input type="text" name="body" placeholder="Body of letter" value="<?php echo $post ?>">
 				</div>
 				<div class="acte">
+=======
+				<br>
+				<input type="text" name="title" placeholder="Title">
+				<br>
+				<input type="text" name="body" placeholder="Body of letter">
+				<br>
+				<input type="file" form="img_insert" name="blog_img">
+				<input type="submit" form= "img_insert" name="img_insert" value="INSERT">
+				<br>
+>>>>>>> feat_bbs
 				<input type="radio" name="category" value="1">EAT
 				<input type="radio" name="category" value="2">ACTIVITY
 				<input type="radio" name="category" value="3">LIFE
@@ -127,9 +156,16 @@ if ( !empty( $_POST ) ) {
 				<?php if(isset($errors['category']) && $errors['category'] == 'not_chosen'): ?>
 				<p class="red">カテゴリーを選択して下さい</p>
 				<?php endif; ?>
+<<<<<<< HEAD
 				<div class="thbtn">
 				<input type="submit" value="投稿する">
 				</div>
+=======
+				<input type="submit" name="submit" value="投稿する"><br>
+			</form>
+			<form action="" method="GET">
+			<input id="img_insert" type="submit" >
+>>>>>>> feat_bbs
 			</form>
 		</section>
 	</article>
