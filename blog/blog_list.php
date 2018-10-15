@@ -64,9 +64,8 @@ if ( isset( $_GET[ 'category' ] ) ) {
 	// LIKE"%' . $変数 . '%"  =>>> $変数が含まれているもの
 	// WHERE句内 条件式A OR 条件式B =>>> AまたはBのとき
 
-	$sql = 'SELECT p.*, u.name FROM posts AS p LEFT JOIN users AS u ON p. user_id = u. id WHERE post LIKE "%' . $word_search . '%" OR title LIKE "%' . $word_search . '%"ORDER BY p.created DESC LIMIT ' . CONTENT_PER_PAGE . ' OFFSET ' . $start;
-
-	$data = [ $word_search ];
+	$sql = 'SELECT p.*, u.name FROM posts AS p LEFT JOIN users AS u ON p. user_id = u. id WHERE post LIKE "%"?"%" OR title LIKE "%"?"%"ORDER BY p.created DESC LIMIT ' . CONTENT_PER_PAGE . ' OFFSET ' . $start;
+	$data = [$word_search,$word_search];
 	$stmt = $dbh->prepare( $sql );
 	$stmt->execute( $data );
 
@@ -169,54 +168,54 @@ if ( isset( $_GET[ 'category' ] ) ) {
 				</div>
 				<div>
 					<div class="blw">
-					<?php foreach ($posts as $post):?>
-					<div class="blaw">
-						<form action="blog.php" method="POST">
-							<!-- 1件づつ処理 -->
-							<div>NAME:
-								<?php echo $post['name'] ?>
-							</div>
-							<div>TITLE:
-								<?php echo $post['title'] ?>
-							</div>
-							<div>BODY:
-								<?php echo $post['post'] ?>
-							</div>
-							<div>TIME:
-								<?php echo $post['created'] ?>
-							</div>
-							<input type="hidden" name="post_id" value="<?php echo $post['id'] ?>">
-							<input type="submit" name="submit" value="詳しく読む">
-						</form>
+						<?php foreach ($posts as $post):?>
+						<div class="blaw">
+							<form action="blog.php" method="POST">
+								<!-- 1件づつ処理 -->
+								<div class="bwi">
+									<ul>
+										<li><?php echo $post['name'] ?></li>
+										<li><?php echo $post['created'] ?></li>
+									</ul>
+								</div>
+								<div>
+									<?php echo $post['title'] ?>
+								</div>
+								<div>
+									<?php echo $post['post'] ?>
+								</div>
+								<input type="hidden" name="post_id" value="<?php echo $post['id'] ?>">
+								<input type="submit" name="submit" value="詳しく読む">
+							</form>
 						</div>
 						<?php endforeach; ?>
-					
-				</div>
-					<ul>
-						<!-- GET送信のパラメータ
+
+					</div>
+					<div class="ttp">
+						<ul>
+							<!-- GET送信のパラメータ
         URL?キー = 値
         URL?キー１ = 値１＆キー２= 値２ -->
-						<!-- 最初のページではNEWERは押せない -->
-						<li>
-							<?php if($page == 1): ?>
-							<a>Newer</a>
-							<?php else: ?>
-							<!-- それ以外の場合 -->
-							<a href="blog_list.php?page=<?php echo $page -1; ?>">Newer</a>
-							<?php endif; ?>
-						</li>
-						<!-- 最後のページではOlderは押せない -->
-						<li>
-							<?php if ($page == $last_page):?>
-
-
-							<a>Older</a>
-							<!-- それ以外の場合 -->
-							<?php else: ?>
-							<a href="blog_list.php?page=<?php echo $page +1; ?>">Older</a>
-							<?php endif; ?>
-						</li>
-					</ul>
+							<!-- 最初のページではNEWERは押せない -->
+							<li>
+								<?php if($page == 1): ?>
+								<a>Newer</a>
+								<?php else: ?>
+								<!-- それ以外の場合 -->
+								<a href="blog_list.php?page=<?php echo $page -1; ?>">Newer</a>
+								<?php endif; ?>
+							</li>
+							<!-- 最後のページではOlderは押せない -->
+							<li>
+								<?php if ($page == $last_page):?>
+								<a>Older</a>
+								<!-- それ以外の場合 -->
+								<?php else: ?>
+								<a href="blog_list.php?page=<?php echo $page +1; ?>">Older</a>
+								<?php endif; ?>
+							</li>
+						</ul>
+					</div>
 				</div>
 			</div>
 			<!--blcWrap-->

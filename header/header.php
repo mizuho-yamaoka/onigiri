@@ -1,6 +1,6 @@
 <?php
 // session_start();
-require_once( '../dbconnect.php' );
+// require_once( '../dbconnect.php' );
 
 $signin_user_id = '';
 if(isset($_SESSION['register']['id'])){

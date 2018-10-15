@@ -19,6 +19,7 @@ require( '../path.php' );
       // フェッチ
       $record = $stmt->fetch(PDO::FETCH_ASSOC);
 
+
       // ログインしているユーザーがその投稿をしているか確認
 
       $likes_flg_sql = 'SELECT * FROM `feed_likes` WHERE `user_id` = ? AND `feed_id` = ?';
@@ -41,6 +42,7 @@ require( '../path.php' );
       $record['like_count'] = $result['like_count'];
       // レコードがあれば追加
       $feed = $record;
+
 ?>
 
 
@@ -57,8 +59,8 @@ require( '../path.php' );
 </header>
 	<div class="topimg_b"></div>
   <div class="bbsWrap">
-      <a href="feed.php">投稿する</a> 
-        <div><?php echo $feed['name'] ?></div>
+      <a href="feed.php">投稿する</a>
+        <a href="bbs_people.php?id=<?php echo $feed['user_id']?>"><?php echo $feed ['name'] ?></a>
         <div><?php echo $feed['feed'] ?></div>
         <div><?php echo $feed['created'] ?></div>
 
