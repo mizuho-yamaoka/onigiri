@@ -19,6 +19,17 @@ $stmt->execute( $data );
 $user = $stmt->fetch( PDO::FETCH_ASSOC );
 
 
+// 画像挿入機能
+
+echo '<pre>';
+var_dump($_FILES);
+echo '</pre>';
+	if(isset($_FILES)){
+		$blog_img = $_FILES['blog_img']['name'];
+		$ext = substr($blog_img,-3);
+
+	}
+
 // 投稿機能
 // エラーがあれば、この中に入れる
 $errors = [];
@@ -29,7 +40,6 @@ if ( !empty( $_POST ) ) {
 	$title = $_POST[ 'title' ];
 	$post = $_POST[ 'body' ];
 	$category = $_POST[ 'category' ];
-
 
 	//バリデーション処理
 	// 投稿の空チェック
@@ -77,6 +87,9 @@ if ( !empty( $_POST ) ) {
 				<br>
 				<input type="text" name="body" placeholder="Body of letter">
 				<br>
+				<input type="file" form="img_insert" name="blog_img">
+				<input type="submit" form= "img_insert" name="img_insert" value="INSERT">
+				<br>
 				<input type="radio" name="category" value="1">EAT
 				<input type="radio" name="category" value="2">ACTIVITY
 				<input type="radio" name="category" value="3">LIFE
@@ -91,7 +104,10 @@ if ( !empty( $_POST ) ) {
 				<?php if(isset($errors['category']) && $errors['category'] == 'not_chosen'): ?>
 				<p class="red">カテゴリーを選択して下さい</p>
 				<?php endif; ?>
-				<input type="submit" value="投稿する"><br>
+				<input type="submit" name="submit" value="投稿する"><br>
+			</form>
+			<form action="" method="GET">
+			<input id="img_insert" type="submit" >
 			</form>
 		</section>
 		<section class="list_back">
