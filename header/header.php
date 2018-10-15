@@ -29,20 +29,13 @@ $name = $user['name'];
 				<h1 class="logo"><a href="/Lechon/index.php"><?php logoimg(); ?></a></h1>
 
 				<!--pcOnly navi-->
+				<div class="navb">
 				<ul class="navilist pcOnly">
-					<li>
-						<p><a href="#aboutWrap">ABOUT</a>
-						</p>
-					</li>
-					<li>
-						<p><a href="/Lechon/bbs/bbs_list.php">NOW</a>
-						</p>
-					</li>
 					<li>
 						<p><a href="/Lechon/blog/blog_list.php">BLOG</a>
 						</p>
 					</li>
-					<li class="lilast">
+					<li>
 						<p><a href="/Lechon/bbs/bbs_list.php">BBS</a>
 						</p>
 					</li>
@@ -64,29 +57,24 @@ $name = $user['name'];
 				<div class="chda2">
 					
 					<?php if(isset($_SESSION['register']['id'])): ?>
+						<div class="logout">
+							<p><a href="/Lechon/signout.php">logout</a></p>
+						</div>
 						<div class="user_img">
 							<p><img src="../user_profile_img/<?php echo $img_name ?>" alt="" width="60px"></a></p>
 						</div>
 						<div class="user_name">
 							<p><a href="/Lechon/mypage/mypage.php"><?php echo $name ?></a></p>
 						</div>
-						<div class="logout">
-							<p><a href="/Lechon/signout.php">sign out</a></p>
-						</div>
 					<?php endif ;?>
 				</div>
-
-
+</div>
 				<!--pcOnly navi-->
 
 				<!--spOnly navi-->
 				<div class="spnavi">
 				<div id="overlay">
 					<ul>
-						<li><a href="#">ABOUT</a>
-						</li>
-						<li><a href="../blog_list.php">NOW</a>
-						</li>
 						<li><a href="/Lechon/blog/blog_list.php">BLOG</a>
 						</li>
 						<li><a href="/Lechon/bbs/bbs_list.php">BBS</a>

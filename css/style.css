@@ -1,5 +1,4 @@
 /* CSS Document */
-
 /*reset----------------*/
 a {
     text-decoration: none;
@@ -50,44 +49,62 @@ body {
 #groval-navi {
     width: 100%;
 }
-.logo {
-    margin-top: 20px;
-    height: 40px;
-}
+.logo {margin-top: 20px;}
 .navi {
     display: flex;
     justify-content: space-between;
     margin: 0 10%;
+	align-items: center;
 }
-.navilist {
+.navilist ,.chda,.chda2{
     display: flex;
     margin: 3% 0;
+	white-space: nowrap;
+	align-items: center;
 }
+.navilist{height: 2rem;}
 .navilist li {
     border-left: solid 1px #2b2b2b;
     padding: 0 15px;
     display: table-cell;
     vertical-align: middle;
 }
-.navilist li:nth-child(4) {
+.navilist li:last-child {
     border-right: solid 1px #2b2b2b;
 }
-.navilist .login {
+.navb {
+	display: flex;
+	align-items: center;
+}
+.login,.logout {
     border-left: none!important;
     background-color: #2d93d6;
     margin-left: 15px;
 }
-.login a {
+.login a ,.logout a{
     color: #FFFFFF;
     display: block;
 }
+.login, .newA, .logout{padding: 0 5%;}
 .newA {
     border-left: none!important;
     background-color: #ffaa00;
-    margin-left: 10px
+    margin-left: 10px;
 }
 .newA a {
     color: #FFFFFF;
+}
+.user_img{margin-left: 15px;}
+.user_img img{
+    width: 60px;
+    height: 60px;
+    border-radius: 50px;
+    object-fit: cover;
+}
+.user_name{margin-left: 10px;}
+.user_name p a{
+	font-size: 1.8rem;
+	font-family: 'Kaushan Script', cursive;
 }
 .headimg {
     width: 100%;
@@ -119,23 +136,6 @@ video {
 .ajp, .aen {
     width: 48%;
     text-align: center;
-}
-.howbtn {
-    background-color: #ffaa00;
-    width: 210px;
-    text-align: center;
-    padding: 5px;
-    position: absolute;
-    right: 0px;
-    bottom: 0px;
-}
-.howbtn p {
-    font-weight: bold;
-    font-size: 25px;
-}
-.howbtn img {
-    vertical-align: middle;
-    margin-left: 15px;
 }
 /*now area---------------------------*/
 .ncWrap {

@@ -31,6 +31,7 @@ $name = $user['name'];
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="js/slick/slick.css">
 	<link rel="stylesheet" type="text/css" href="js/slick/slick-theme.css">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 
@@ -40,8 +41,8 @@ $name = $user['name'];
 		<div id="groval-navi">
 			<div class="navi">
 				<h1 class="logo"><a href="/Lechon/index.php"><?php logoimg(); ?></a></h1>
-
 				<!--pcOnly navi-->
+				<div class="navb">
 				<ul class="navilist pcOnly">
 					<li>
 						<p><a href="#aboutWrap">ABOUT</a>
@@ -59,7 +60,8 @@ $name = $user['name'];
 						<p><a href="#bbsWrap">BBS</a>
 						</p>
 					</li>
-
+				</ul>
+					<!--ログイン前-->
 					<div class="chda">
 						<?php if(!isset($_SESSION['register']['id'])) :?>
 							<div class="login">
@@ -72,9 +74,13 @@ $name = $user['name'];
 							</div>
 						<?php endif; ?>
 					</div>
-
+					<!--ログイン後-->
 					<div class="chda2">
 						<?php if(isset($_SESSION['register']['id'])): ?>
+							<div class="logout">
+								<p><a href="/Lechon/signout.php">LOGOUT</a>
+								</p>
+							</div>
 							<div class="user_img">
 								<p><img src="user_profile_img/<?php echo $img_name ?>" alt="" width="60px"></a>
 								</p>
@@ -83,17 +89,11 @@ $name = $user['name'];
 								<p><a href="/Lechon/mypage/mypage.php"><?php echo $name ?></a>
 								</p>
 							</div>
-							<div class="logout">
-								<p><a href="/Lechon/signout.php">LOGOUT</a>
-								</p>
-							</div>
 						<?php endif ;?>
 					</div>
-
-
-				</ul>
+				</div>
 				<!--pcOnly navi-->
-
+		
 				<!--spOnly navi-->
 				<div class="spnavi">
 				<div id="overlay">
@@ -106,6 +106,7 @@ $name = $user['name'];
 						</li>
 						<li><a href="bbs/bbs_list.php">BBS</a>
 						</li>
+					</ul>
 					<div>
 						<?php if(!isset($_SESSION['register']['id'])): ?>
 							<li><a href="/Lechon/signin.php">LOGIN</a>
@@ -122,7 +123,6 @@ $name = $user['name'];
 							</li>
 						<?php endif ;?>
 					</div>
-					</ul>
 				</div>
 				<a class="menu-trigger" href="#"><span></span><span></span><span></span></a>
 				</div>
@@ -144,10 +144,6 @@ $name = $user['name'];
 					<p class="aen">
 						This site is for Cebu international students by international students in Cebu.<br> Please raise this site with your information came to study in Cebu♪
 					</p>
-				</div>
-				<div class="howbtn">
-					<P><a href="#">How to use<span><img src="img/arrow.png" alt="サイトの使い方"></span></a>
-					</P>
 				</div>
 			</div>
 			</section>
