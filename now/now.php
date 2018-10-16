@@ -32,10 +32,10 @@ if ( !empty( $_POST ) ) {
 // 投稿機能
 if ( !empty( $_POST[ 'murmur' ] ) ) {
 	$murmur = $_POST[ 'murmur' ];
-	$nickname = $_POST['nickname'];
+	$nickname = $_POST[ 'nickname' ];
 
 	$sql = 'INSERT INTO `murmurs` SET `nickname` = ?,`murmur`=?,`created`=NOW()';
-	$data = [$nickname,$murmur];
+	$data = [ $nickname, $murmur ];
 	$stmt = $dbh->prepare( $sql );
 	$stmt->execute( $data );
 
@@ -67,45 +67,40 @@ while ( true ) {
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="../css/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 </head>
 
-<body>
-	<header>
-		<?php include ('../header/header.php'); ?>
-	</header>
+<body class="now">
 	<div class="nowWrap">
-		<article>
-				<?php foreach($murmurs as $murmur):?>
+		<article class="murti">
+			<?php foreach($murmurs as $murmur):?>
 			<section class="mur">
-				<div>
-					<?php echo $murmur['nickname'] ?>
-				</div>
-				<div>
-					<?php echo $murmur['created'] ?>
-				</div>
+				<ul>
+					<li><?php echo $murmur['nickname'] ?></li>
+					<li><?php echo $murmur['created'] ?></li>
+				</ul>
 				<div>
 					<?php echo $murmur['murmur'] ?>
 				</div>
 			</section>
-				<?php endforeach;?>
+			<?php endforeach;?>
 		</article>
-		<article>
-			<section class="mpos">
+		<div class="murform">
+			<div class="mpos">
 				<form action="" method="POST">
-					<label for="nickname">nickname</label>
-					<input type="text" name="nickname">
-					<br>
-					<label for="murmur">murmur</label>
-					<input type="text" name="murmur">
-					<br>
-					<?php if (isset($errors['murmur']) && $errors['murmur'] == 'blank'):?>
-					<p class="red">内容を入力してください</p>
-					<?php endif; ?><br>
+					<div class="nn">
+						<input type="text" name="nickname" value="Nickname">
+					</div>
+					<div class="mp">
+						<input type="text" name="murmur" value="Murmur"><br>
+						<?php if (isset($errors['murmur']) && $errors['murmur'] == 'blank'):?>
+						<p class="red">内容を入力してください</p>
+						<?php endif; ?>
+					</div>
 					<input type="submit" value="投稿する">
 				</form>
-			</section>
-		</article>
+			</div>
+		</div>
 	</div>
-	<?php include ('../footer/footer.php'); ?>
 </body>
 </html>

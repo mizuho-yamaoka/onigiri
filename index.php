@@ -153,7 +153,7 @@ $name = $user['name'];
 		<section id="nowWrap">
 			<div class="ncWrap">
 				<h1><img src="img/now.png" alt="つぶやき"></h1>
-				<iframe id="now" width="100%" height="200" src="now/now.php"></iframe>
+				<iframe id="now" width="100%" height="450" src="now/now.php" scrolling="no"></iframe>
 			</div>
 		</section>
 		<!--nowWrap-->
@@ -161,7 +161,7 @@ $name = $user['name'];
 		<section id="howToWrap">
 			<div class="hcWrap">
 				<div class="bgimg">
-					<h1><img src="img/howtocebu.png" alt="howtocebu"></h1>
+					<h1><img src="img/morefun.png" alt="もっと楽しもう"></h1>
 				</div>
 				<div class="teWrap">
 					<div class="howtoTxet">
@@ -172,7 +172,7 @@ $name = $user['name'];
 							Is it useful or not? ! Column collection. It is a must-see for those who want to know more about Cebu life!
 						</p>
 						<div class="howtobtn">
-							<P><a href="blog/blog_list.php">Blog list<span><img src="img/arrow.png" alt="サイトの使い方"></span></a>
+					<P><a href="bbs/bbs_list.php">BBS list<span><img src="img/arrow.png" alt="サイトの使い方"></span></a>
 							</P>
 						</div>
 					</div>
@@ -183,7 +183,7 @@ $name = $user['name'];
 
 		<section id="bbsWrap">
 			<div class="bcWrap">
-				<h1><img src="img/morefun.png" alt="もっと楽しもう"></h1>
+				<h1><img src="img/howtocebu.png" alt="howtocebu"></h1>
 				<div class="slick_container pcOnlylist">
 					<section class="regular slider">
 						<div>
@@ -207,7 +207,7 @@ $name = $user['name'];
 					</section>
 				</div>
 				<div class="bbsbtn">
-					<P><a href="bbs/bbs_list.php">BBS list<span><img src="img/arrow.png" alt="サイトの使い方"></span></a>
+				<P><a href="blog/blog_list.php">Blog list<span><img src="img/arrow.png" alt="サイトの使い方"></span></a>
 					</P>
 				</div>
 			</div>
