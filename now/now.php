@@ -89,10 +89,10 @@ while ( true ) {
 			<div class="mpos">
 				<form action="" method="POST">
 					<div class="nn">
-						<input type="text" name="nickname" value="Nickname">
+						<input type="text" name="nickname" placeholder="Nickname" >
 					</div>
 					<div class="mp">
-						<input type="text" name="murmur" value="Murmur"><br>
+						<input type="text" name="murmur" placeholder="Murmur"><br>
 						<?php if (isset($errors['murmur']) && $errors['murmur'] == 'blank'):?>
 						<p class="red">内容を入力してください</p>
 						<?php endif; ?>
