@@ -36,3 +36,8 @@ $("html, body").animate({scrollTop:position}, speed, "swing");
 return false;
 });
 });
+$(function(){
+$("#uinfo .user_img").on("click", function() {
+$('.edita').slideToggle(800);
+	
+});});
