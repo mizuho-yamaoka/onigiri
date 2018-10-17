@@ -1,13 +1,27 @@
 <?php
-require( '../path.php' );
+    require( '../path.php' );
     session_start();
     require_once('../dbconnect.php');
+    require_once('function.php');
 
     if(isset($_SESSION['register']['id'])){
     $signin_user_id = $_SESSION['register']['id'];
+    $sql= 'SELECT * FROM users WHERE id = ?';
+    $data = [$signin_user_id];
+    $stmt = $dbh->prepare($sql);
+    $stmt->execute($data);
+
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
     }
 
+    
+    if(isset($_SESSION['feed_id'])){
+      $feed_id = $_SESSION['feed_id'];
+    }
+    if(isset($_POST['feed_id'])){
     $feed_id = $_POST['feed_id'];
+    }
 
     $sql= 'SELECT f.*,u.name FROM feeds AS f LEFT JOIN users AS u ON f.user_id = u.id WHERE f.id = ?';
     $data = [$feed_id];
@@ -40,6 +54,10 @@ require( '../path.php' );
 
       // feed１件ごとにいいねの数を新しく入れる
       $record['like_count'] = $result['like_count'];
+      // feed１件ごとのコメント一覧を取得する
+      $record['comments'] = get_comments($dbh, $record['id']);
+      $record['comment_count'] = count_comments($dbh,$record['id']);
+
       // レコードがあれば追加
       $feed = $record;
 
@@ -76,7 +94,17 @@ require( '../path.php' );
             <span hidden class="user-id"><?php echo $signin_user_id;?></span>
             <span hidden class="feed-id"><?php echo $feed['id'];?></span>
             <span>いいね数：</span>
+
             <span class="like-count"><?php echo $feed['like_count'] ?></span><br>
+            <a href="#collapseComment<?php echo $feed['id'] ?>" data-toggle="collapse" aria-expanded ="false">
+            <span>コメントする</span>
+            </a>
+            <span>コメント数：</span>
+            <span class="comment-count"><?php echo $feed['comment_count']?></span>
+            </div>
+
+            <br>
+            <?php include('comment_view.php'); ?>
           <?php endif ;?>
         </div>
       </div>
