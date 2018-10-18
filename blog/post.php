@@ -41,6 +41,18 @@ if ( !empty( $_POST ) ) {
 	$title = $_POST[ 'title' ];
 	$post = $_POST[ 'body' ];
 
+	while(true){
+
+	if(strpos($post,'selected_picture') !== false){
+	echo 'ok';
+	}
+	}
+
+	echo '<pre>';
+	var_dump(strpos($post,'selected_picture') !== false);
+	echo '</pre>';
+	die();	
+
 	if(isset($_POST['category'])){
 		$category = $_POST['category'];
 		}
@@ -90,19 +102,37 @@ if ( !empty( $_POST ) ) {
 	<script src="../js/jquery-3.1.1.js"></script>
 	<script>
 
-    function sampleFunction() {
-      const blog_file = document.querySelector('#blog_file').files;
-      console.log(blog_file[0]['name']);
+ //    function getImg() {
+ //    const index_num = 
+ //      const blog_file = document.querySelector('#blog_file').files;
+ //      console.log(blog_file[0]['name']);
 
-      const blog_text = document.querySelector('#blog_text').value;
-      document.querySelector('#blog_text').value = blog_text + 'selected_picture' + blog_file[0]['name'];
-	}
+ //      const blog_text = document.querySelector('#blog_text').value;
+ //      document.querySelector('#blog_text').value = blog_text + 'selected_picture' + blog_file[0]['name'];
+	// }
 
       $(function() {
+      	$(document).on('click', '.add_blog_file_btn', function() {
+      		const num = $(this).attr('num');
+      		const file = $('.blog_file')[num].files[0];
+      		console.log(file['name']);
+      // 		const blog_file = document.querySelector('.blog_file').files;
+		    // console.log(blog_file[num]['name']);
+
+		    const blog_text = document.querySelector('#blog_text').value;
+		    document.querySelector('#blog_text').value = blog_text + '<selected_picture' + file['name'] + '>';
+      	})
+
+        const btns = $('.add_blog_file_btn');
+        let num = parseInt($(btns[btns.length - 1]).attr('num'), 10);
+        num++;
       	$this = $("#add_box");
         $this.click(function(e) {
           e.preventDefault();
-          $this.before('<input id="blog_file" type="file" name="blog_file[]"><input type="button" onclick="sampleFunction();" value="選択した画像を文末にINSERT"><br>');
+          let addHtml = '<input class="blog_file" type="file" name="blog_file[]"><input num="';
+          addHtml += num;
+          addHtml += '" class="add_blog_file_btn" type="button" value="選択した画像を文末にINSERT"><br>';
+          $this.before(addHtml);
         });
       });
 	</script>
@@ -135,12 +165,12 @@ if ( !empty( $_POST ) ) {
 				</div>
 				<div class="contents">
 				<p>CONTENTS</p>
-				<textarea id="blog_text" type="text" name="body" placeholder="Body of letter"><?php echo $post ?>"</textarea>
+				<textarea id="blog_text" type="text" name="body" placeholder="Body of letter"><?php echo $post ?></textarea>
 				</div>
 
 
-				<input id="blog_file" type="file" name="blog_file[]">
-				<input type="button" onclick="sampleFunction();" value="選択した画像を文末にINSERT"><br>
+				<input class="blog_file" type="file" name="blog_file[]">
+				<input num="0" class="add_blog_file_btn" type="button"  value="選択した画像を文末にINSERT"><br>
 				<button id="add_box">ファイルボックスを追加</button>
 			
 				
