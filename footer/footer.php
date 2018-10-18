@@ -1,3 +1,4 @@
+<script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script></head>
 		<div id="footer">
 			<div class="footerWrap">
 				<div class="flogo"><img src="img/flogo.png" alt="cebufull">

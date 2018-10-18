@@ -170,23 +170,28 @@ if ( isset( $_GET[ 'category' ] ) ) {
 					<div class="blw">
 						<?php foreach ($posts as $post):?>
 						<div class="blaw">
+							<div class="blog_thum">
+								<img src="img/ジンベイザメ横から.jpg">
+							</div>
+								<div class="bwi">
 							<form action="blog.php" method="POST">
 								<!-- 1件づつ処理 -->
-								<div class="bwi">
 									<ul>
 										<li><?php echo $post['name'] ?></li>
-										<li><?php echo $post['created'] ?></li>
+										<li class="time"><?php echo $post['created'] ?></li>
 									</ul>
-								</div>
-								<div>
+								<div class="title">
 									<?php echo $post['title'] ?>
 								</div>
-								<div>
+								<div class="body">
 									<?php echo $post['post'] ?>
 								</div>
+								<div class="ebtn">
 								<input type="hidden" name="post_id" value="<?php echo $post['id'] ?>">
-								<input type="submit" name="submit" value="詳しく読む">
+								<input type="submit" name="submit" value="More read">
+								</div>
 							</form>
+						</div>
 						</div>
 						<?php endforeach; ?>
 

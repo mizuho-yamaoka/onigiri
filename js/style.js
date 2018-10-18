@@ -36,8 +36,15 @@ $("html, body").animate({scrollTop:position}, speed, "swing");
 return false;
 });
 });
+//トグル
 $(function(){
 $("#uinfo .user_img").on("click", function() {
-$('.edita').slideToggle(800);
-	
+$('.edita').slideToggle(800);	
 });});
+
+$("#btn").click(function() {
+    $('#frameWindow').dialog('open');
+});
+
+
+//iframe
