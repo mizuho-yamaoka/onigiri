@@ -98,7 +98,7 @@ body {
 .user_img img{
     width: 60px;
     height: 60px;
-    border-radius: 50px;
+    border-radius: 50%;
     object-fit: cover;
 }
 .user_name{margin-left: 10px;}
@@ -301,10 +301,10 @@ video {
 .blogWrap, .bbsWrap, .lcWrap, .nowWrap, .blcWrap {
     padding: 40px 0;
 }
-.bbsWrap, .blcWrap, .lcWrap {
+.bbsWrap, .blcWrap, .lcWrap{
     margin: 0 10%;
 }
-.formWrap, .nAca {
+.formWrap, .nAca , .mpc{
     background-color: #add9da;
     padding: 5%;
 }
@@ -788,7 +788,64 @@ background-color: #14548a;
 	height: 3rem;
 	border-radius: 0 0 5px 5px;
 }
-
+.mpc h1{text-align: center;}
+.mpc .user_img{text-align: center;}
+.mpc .user_img img {
+	width: 200px;
+	height: 200px;
+	margin: 2rem 0;
+}
+#uinfo .user_img{
+display:block;
+text-align:center;
+cursor:pointer;
+}
+#uinfo .edita{
+background:#FFFFFF;
+text-align:center;
+border:#2b2b2b 1px solid;
+display:none;
+}
+.edita h2{margin-top: 2rem;}
+.edita p{
+	background-color: #14548a;
+	padding: 0.8em;
+}
+.edita a{	
+	color: #FFFFFF;
+	font-size: 1.3rem;
+	width: 100%;
+	font-weight: bold;
+}
+.edita form{
+	display: flex;
+	text-align: left;
+	padding: 0.8em;
+}
+.edita form ul{
+	margin:2rem;
+	width: 50%;
+}
+.edita form input{
+	border: none;
+	color: #2b2b2b;
+	cursor: pointer;
+}
+.isr{border-right:1px solid #2b2b2b;}
+.isr li,.edita form ul li{
+	font-size: 1rem;
+	margin-bottom: 2rem;
+	padding: 0;
+}
+.edita input{
+    width: 1.4rem;
+    background: url(../mypage/img/edit-regular.svg) no-repeat center center;
+    background-size: contain;
+    padding: 0;
+    height: 1.4rem;
+	margin-left: 5px;
+}
+.edita input:hover{opacity: 0.8;}
 /*SPサイズ---------------------*/
 @media screen and (max-width: 750px) {
 /*sp非表示*/

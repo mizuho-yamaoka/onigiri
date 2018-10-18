@@ -86,8 +86,6 @@ if ( isset( $_GET[ 'wordsearch' ] ) ) {
 	<meta charset="UTF-8">
 	<title>BBS一覧</title>
 	<link rel="stylesheet" type="text/css" href="../css/style.css">
-	<link rel="stylesheet" type="text/css" href="../js/slick/slick.css">
-	<link rel="stylesheet" type="text/css" href="../js/slick/slick-theme.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 
