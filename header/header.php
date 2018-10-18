@@ -16,10 +16,8 @@ $stmt->execute( $data );
 // フェッチする
 $user = $stmt->fetch( PDO::FETCH_ASSOC );
 
-
 $img_name = $user['img_name'];
 $name = $user['name'];
-
 
 }
 ?>

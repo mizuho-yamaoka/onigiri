@@ -126,54 +126,56 @@ if ( isset( $_GET[ 'wordsearch' ] ) ) {
 				<!-- 記事の出力 -->
 				<article class="plw">
 					<section>
-					<?php foreach ($feeds as $feed):?>
-					<form action="bbs.php" method="POST">
-						<!-- 1件づつ処理 -->
-						<div class="bww">
-						<div class="bwi">
-							<ul>
-								<li>
-									<?php echo $feed['name'] ?>
-								</li>
-								<li>
-									<?php echo $feed['created'] ?>
-								</li>
-							</ul>
-						</div>
-						<div class="planc">
-							<?php echo $feed['feed'] ?>
-						</div>
-						</div>
-						<input type="hidden" name="feed_id" value="<?php echo $feed['id'] ?>">
-						<input type="submit" name="submit" value="JOIN..?"><br>
-					</form>
-					<?php endforeach; ?>
+						<?php foreach ($feeds as $feed):?>
+						<form action="bbs.php" method="POST">
+							<!-- 1件づつ処理 -->
+							<div class="bww">
+								<div class="bwi">
+									<ul>
+										<li>
+											<?php echo $feed['name'] ?>
+										</li>
+										<li>
+											<?php echo $feed['created'] ?>
+										</li>
+									</ul>
+								</div>
+								<div class="planc">
+									<?php echo $feed['feed'] ?>
+								</div>
+							</div>
+							<input type="hidden" name="feed_id" value="<?php echo $feed['id'] ?>">
+							<input type="submit" name="submit" value="JOIN..?"><br>
+						</form>
+						<?php endforeach; ?>
 					</section>
-					</article>
+				</article>
 				<div>
-					<ul>
-						<!-- GET送信のパラメータ
+					<div class="ttp">
+						<ul>
+							<!-- GET送信のパラメータ
         URL?キー = 値
         URL?キー１ = 値１＆キー２= 値２ -->
-						<!-- 最初のページではNEWERは押せない -->
-						<li>
-							<?php if($page == 1): ?>
-							<a>Newer</a>
-							<?php else: ?>
-							<!-- それ以外の場合 -->
-							<a href="bbs_list.php?page=<?php echo $page -1; ?>">Newer</a>
-							<?php endif; ?>
-						</li>
-						<!-- 最後のページではOlderは押せない -->
-						<li>
-							<?php if ($page == $last_page):?>
-							<a>Older</a>
-							<!-- それ以外の場合 -->
-							<?php else: ?>
-							<a href="bbs_list.php?page=<?php echo $page +1; ?>">Older</a>
-							<?php endif; ?>
-						</li>
-					</ul>
+							<!-- 最初のページではNEWERは押せない -->
+							<li>
+								<?php if($page == 1): ?>
+								<a>Newer</a>
+								<?php else: ?>
+								<!-- それ以外の場合 -->
+								<a href="bbs_list.php?page=<?php echo $page -1; ?>">Newer</a>
+								<?php endif; ?>
+							</li>
+							<!-- 最後のページではOlderは押せない -->
+							<li>
+								<?php if ($page == $last_page):?>
+								<a>Older</a>
+								<!-- それ以外の場合 -->
+								<?php else: ?>
+								<a href="bbs_list.php?page=<?php echo $page +1; ?>">Older</a>
+								<?php endif; ?>
+							</li>
+						</ul>
+					</div>
 				</div>
 			</div>
 		</div>

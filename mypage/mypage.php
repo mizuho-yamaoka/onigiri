@@ -125,106 +125,121 @@ if ( $gender == '1' ) {
 	<title>mypage</title>
 	<link rel="stylesheet" type="text/css" href="../css/style.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
-</head>
 
-<body>
-	<header>
-		<?php include ('../header/header.php'); ?>
-	</header>
-	<div id="mypageWrap">
-		<div class="mpc">
-			<h1><img src="img/mypagepng"></h1>
-			<article>
-				<div id="uinfo">
-					<div class="user_img"><img src="../user_profile_img/<?= $user['img_name']?>" width="60" class="img-thumbnail">
-					</div>
-					<div class="edita">
+	<body>
+		<header>
+			<?php include ('../header/header.php'); ?>
+		</header>
+		<div id="mypageWrap">
+			<div class="mpc">
+				<h1><img src="img/mypagepng"></h1>
+				<article>
+					<div id="uinfo">
+						<div class="user_img"><img src="../user_profile_img/<?= $user['img_name']?>" width="60" class="img-thumbnail">
+						</div>
+						<div class="edita">
 							<h2>YOUR INFORMATION</h2>
-						<form action="mypage_edit.php" method="GET">
-							<ul class="isr">
-								<li>IMEAGE SETTING<input type="submit" name="img_name" value=""></li>
-								<li>PASS SETTING<input type="submit" name="password" value=""></li>
-							</ul>
-							<ul>
-								<li>
-								 	User Name:<?php echo $name?>
-									<input type="submit" name="name" value="">
-								</li>
-								<li>
-									E-mail:<?php echo $email?>
-									<input type="submit" name="email" value="">
-								</li>
-								<li>
-									gender:<?php echo $gender?>
-									<input type="submit" name="gender" value="">
-								</li>
-								<li>
-									age:<?php echo $age?>
-									<input type="submit" name="age" value="">
-								</li>
-								<li>
-									school:<?php echo $school?>
-									<input type="submit" name="school" value="">
-								</li>
-								<li>
-									introduction:<?php echo $other?>
-									<input type="submit" name="other" value="">
-								</li>
-							</ul>
-						</form>
-						<p><a href="../signout.php">sign out</a></p>
+							<form action="mypage_edit.php" method="GET">
+								<ul class="isr">
+									<li>IMEAGE SETTING<input type="submit" name="img_name" value="">
+									</li>
+									<li>PASS SETTING<input type="submit" name="password" value="">
+									</li>
+								</ul>
+								<ul>
+									<li>
+										User Name:
+										<?php echo $name?>
+										<input type="submit" name="name" value="">
+									</li>
+									<li>
+										E-mail:
+										<?php echo $email?>
+										<input type="submit" name="email" value="">
+									</li>
+									<li>
+										gender:
+										<?php echo $gender?>
+										<input type="submit" name="gender" value="">
+									</li>
+									<li>
+										age:
+										<?php echo $age?>
+										<input type="submit" name="age" value="">
+									</li>
+									<li>
+										school:
+										<?php echo $school?>
+										<input type="submit" name="school" value="">
+									</li>
+									<li>
+										introduction:
+										<?php echo $other?>
+										<input type="submit" name="other" value="">
+									</li>
+								</ul>
+							</form>
+							<p><a href="../signout.php">sign out</a>
+							</p>
+						</div>
 					</div>
-				</div>
+				</article>
+				<article class="secound_a">
+					<h3>YOUR BLOG POSTS</h3>
+					<section class="blw">
+						<?php foreach ($posts as $post):?>
+						<div class="blaw">
+							<div class="blog_thum">
+								<img src="img/ジンベイザメ横から.jpg">
+							</div>
+							<form action="mypage.php" method="POST" target="right">
+								<span class="time">
+									<?php echo $post['created'] ?>
+								</span>
+								<div class="title">
+									<?php echo $post['title'] ?>
+								</div>
+								<div class="body">
+									<?php echo $post['post'] ?>
+								</div>
+								<div class="ebtn">
+									<input type="hidden" name="post_id" value="<?php echo $post['id'] ?>">
+									<input type="submit" name="post_edit" value="EDIT">
+									<span>|</span>
+									<input type="submit" name="post_delete" value="DELETE">
+								</div>
+							</form>
+						</div>
+						<?php endforeach; ?>
+					</section>
+				</article>
+				<article>
+					<h3>YOUR BBS POSTS</h3>
+					<section class="bbsw">
+						<?php foreach ($feeds as $feed):?>
+						<div class="bbsaw">
+							<form action="mypage.php" method="POST">
+								<span class="time">
+									<?php echo $feed['created'] ?>
+								</span>
+								<div class="body">
+									<?php echo $feed['feed'] ?>
+								</div>
+								<div class="ebtn">
+									<input type="hidden" name="feed_id" value="<?php echo $feed['id'] ?>">
+									<input type="submit" name="feed_edit" value="EDIT">
+									<span>|</span>
+									<input type="submit" name="feed_delete" value="DELETE">
+								</div>
+							</form>
+						</div>
+						<?php endforeach; ?>
+					</section>
+			</div>
 			</article>
-			<h3>YOUR BLOG POSTS</h3>
-
-			<?php foreach ($posts as $post):?>
-			<form action="mypage.php" method="POST">
-				<div>TITLE:
-					<?php echo $post['title'] ?>
-				</div>
-				<div>BODY:
-					<?php echo $post['post'] ?>
-				</div>
-				<div>TIME:
-					<?php echo $post['created'] ?>
-				</div>
-				<input type="hidden" name="post_id" value="<?php echo $post['id'] ?>">
-				<input type="submit" name="post_edit" value="EDIT">
-				<input type="submit" name="post_delete" value="DELETE"><br>
-
-			</form>
-			<?php endforeach; ?>
-			<div>
-				<h3>YOUR BBS POSTS</h3>
-				<?php foreach ($feeds as $feed):?>
-				<form action="mypage.php" method="POST">
-					<div>BODY:
-						<?php echo $feed['feed'] ?>
-					</div>
-					<div>TIME:
-						<?php echo $feed['created'] ?>
-					</div>
-					<input type="hidden" name="feed_id" value="<?php echo $feed['id'] ?>">
-					<input type="submit" name="feed_edit" value="EDIT">
-					<input type="submit" name="feed_delete" value="DELETE"><br>
-					<?php endforeach; ?>
-
-			</div>
-
-
-			<div id="modal-main">モーダルウィンドウ</div>
-
-			<!-- #contents START -->
-			<div id="contents">
-				<p><a id="modal-open">【クリックでモーダルウィンドウを開きます。】</a>
-				</p>
-				<p class="page-txt">ここからページ本文<br>
-					<br> ↓↓↓　スクロールしてください ↓↓↓</p>
-			</div>
-			<!--/#contents-->
 		</div>
-	</div>
-	<?php include ('../footer/footer.php'); ?>
-</body>
+		<iframe width="100%" height="450" src="mypage_edit.php" name="right"></iframe>
+		</div>
+		<?php include ('../footer/footer.php'); ?>
+	</body>
 </html>
