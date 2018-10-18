@@ -53,11 +53,11 @@ $name = $user['name'];
 						</p>
 					</li>
 					<li>
-						<p><a href="#howToWrap">BLOG</a>
+						<p><a href="#bbsWrap">BBS</a>
 						</p>
 					</li>
 					<li>
-						<p><a href="#bbsWrap">BBS</a>
+						<p><a href="#howToWrap">BLOG</a>
 						</p>
 					</li>
 				</ul>
@@ -158,7 +158,7 @@ $name = $user['name'];
 		</section>
 		<!--nowWrap-->
 
-		<section id="howToWrap">
+		<section id="bbsWrap">
 			<div class="hcWrap">
 				<div class="bgimg">
 					<h1><img src="img/morefun.png" alt="もっと楽しもう"></h1>
@@ -181,7 +181,7 @@ $name = $user['name'];
 		</section>
 		<!--howToWrap-->
 
-		<section id="bbsWrap">
+		<section id="howToWrap">
 			<div class="bcWrap">
 				<h1><img src="img/howtocebu.png" alt="howtocebu"></h1>
 				<div class="slick_container pcOnlylist">
