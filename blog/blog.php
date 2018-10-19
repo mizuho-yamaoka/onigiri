@@ -78,12 +78,12 @@ $post = $record;
 		</article>
 	</div>
 	<div class="blogWrap">
-
-		<div>
+		<div class="blat">
 			<?php echo $post['post'] ?>
 		</div>
 		<div class="opt">
 			<a href="post.php"><i class="fas fa-pencil-alt"></i>投稿する</a>
+			<span>|</span>
 			<div>
 				<?php if(isset($_SESSION['register']['id'])): ?>
 				<?php if($post['is_liked']):?>
@@ -97,7 +97,6 @@ $post = $record;
 				<span hidden class="post_id">
 					<?php echo $post['id'];?>
 				</span>
-				<span>いいね数：</span>
 				<span class="like-count">
 					<?php echo $post['like_count'] ?>
 				</span><br>

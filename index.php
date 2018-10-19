@@ -17,7 +17,6 @@ $stmt->execute( $data );
 // フェッチする
 $user = $stmt->fetch( PDO::FETCH_ASSOC );
 
-
 $img_name = $user['img_name'];
 $name = $user['name'];
 }
@@ -28,10 +27,14 @@ $name = $user['name'];
 <head>
 	<meta charset="UTF-8">
 	<title>cebufull</title>
+	<!--共通-->
 	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<!--indexOnly-->
 	<link rel="stylesheet" type="text/css" href="js/slick/slick.css">
 	<link rel="stylesheet" type="text/css" href="js/slick/slick-theme.css">
+	<!--font-->
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+	<!--共通-->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 
@@ -247,12 +250,10 @@ $name = $user['name'];
 			</div>
 		</div>
 
-
 	</div>
 	<!--wrap-->
-
-	<script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
-	<script src="js/slick/slick.js" type="text/javascript" charset="utf-8"></script>
-	<script src="js/style.js" type="text/javascript" charset="utf-8"></script>
+	<script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script><!--＊-->
+	<script src="js/slick/slick.js" type="text/javascript" charset="utf-8"></script><!--indexOnly-->
+	<script src="js/style.js" type="text/javascript" charset="utf-8"></script><!--＊-->
 </body>
 </html>
