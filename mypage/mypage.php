@@ -204,7 +204,7 @@ if ( $gender == '1' ) {
 								</div>
 								<div class="ebtn">
 									<input type="hidden" name="post_id" value="<?php echo $post['id'] ?>">
-									<input type="submit" name="post_edit" value="EDIT">
+									<input type="submit" name="post_edit" value="EDIT" class="modalBtn">
 									<span>|</span>
 									<input type="submit" name="post_delete" value="DELETE">
 								</div>
