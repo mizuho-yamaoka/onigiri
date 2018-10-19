@@ -30,7 +30,7 @@
         like_btn.siblings('.like-count').text(like_count);
         like_btn.removeClass('js-like');
         like_btn.addClass('js-unlike');
-        like_btn.children('span').text('いいねを取り消す');
+        like_btn.children('span').text('<i class="far fa-thumbs-up"></i>');
     }
     })
     .fail(function(error) {
@@ -71,7 +71,7 @@
         like_btn.siblings('.like-count').text(like_count);
         like_btn.removeClass('js-unlike');
         like_btn.addClass('js-like');
-        like_btn.children('span').text('いいね!');
+        like_btn.children('span').text('<i class="fas fa-thumbs-up"></i>');
     }
     })
     .fail(function(error) {
