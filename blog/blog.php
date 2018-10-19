@@ -52,6 +52,8 @@ $post = $record;
 	<title>cebufull blog</title>
 	<link rel="stylesheet" type="text/css" href="../css/style.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+	<!--font-->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 </head>
 
 <body>
@@ -103,10 +105,11 @@ $post = $record;
 				<?php endif ;?>
 			</div>
 		</div>
+		<p class="bg"><a href="blog_list.php">ブログ一覧に戻る</a></p>
 	</div>
 
 
-	<a href="blog_list.php">ブログ一覧に戻る</a>
+	
 
 
 	<?php include ('../footer/footer.php'); ?>

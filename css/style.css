@@ -551,6 +551,11 @@ video {width: 100%;}
 	font-size: 15px;
 }
 .blat{font-size: 1.3rem;}
+.bg{
+	font-size: 1.8rem;
+	font-family: 'Kaushan Script', cursive;
+}
+
 /*bbs*/
 .bbsWrap .psbar {
     top: -60px;
