@@ -23,7 +23,7 @@
     $feed_id = $_POST['feed_id'];
     }
 
-    $sql= 'SELECT f.*,u.name FROM feeds AS f LEFT JOIN users AS u ON f.user_id = u.id WHERE f.id = ?';
+    $sql= 'SELECT f.*,u.name, u.email FROM feeds AS f LEFT JOIN users AS u ON f.user_id = u.id WHERE f.id = ?';
     $data = [$feed_id];
     $stmt = $dbh->prepare($sql);
     $stmt->execute($data);
@@ -82,28 +82,35 @@
         <div><?php echo $feed['feed'] ?></div>
         <div><?php echo $feed['created'] ?></div>
 
-        <!-- いいね!ボタン -->
         <div>
+        <!-- いいね!ボタン -->
           <?php if(isset($_SESSION['register']['id'])): ?>
             <?php if($feed['is_liked']):?>
               <button class="js-unlike"><span>いいねを取り消す</span></button>
             <?php else :?>
               <button class="js-like"><span>いいね！</span></button>
-            <?php endif ;?>
 
             <span hidden class="user-id"><?php echo $signin_user_id;?></span>
             <span hidden class="feed-id"><?php echo $feed['id'];?></span>
             <span>いいね数：</span>
 
             <span class="like-count"><?php echo $feed['like_count'] ?></span><br>
+            <!-- コメント機能 -->
             <a href="#collapseComment<?php echo $feed['id'] ?>" data-toggle="collapse" aria-expanded ="false">
             <span>コメントする</span>
             </a>
-            <span>コメント数：</span>
-            <span class="comment-count"><?php echo $feed['comment_count']?></span>
-            </div>
+            <span>コメント数：</span><br>
+            <!-- JOIN -->
+            <a href="#collapseComment<?php echo $feed['id'] ?>" data-toggle="collapse" aria-expanded ="false">
+            <span>JOIN</span>
+            </a>
+<!--             <span>JOIN数：</span>
+            <span class="comment-count"><?php echo $feed['join_count']?></span> -->
+            <?php endif ;?>
+        </div>
 
             <br>
+            <?php include('email_form.php'); ?>
             <?php include('comment_view.php'); ?>
           <?php endif ;?>
         </div>
