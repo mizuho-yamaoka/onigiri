@@ -16,6 +16,11 @@
             <div class="form-group">
                 <input type="text" name="write_comment" class="form-control" style="width:400px;border-radius: 100px!important; -webkit-appearance:none;" placeholder="コメントを書く">
             </div>
+            <div>
+                <?php if(isset($_SESSION['empty_comment'])): ?>
+                  <p>コメントを記入してください</p>
+                <?php endif; ?>
+            </div>
             <input type="hidden" name="feed_id" value="<?php echo $feed["id"] ?>">
             <div class="form-group">
                 <button type="submit" class="btn btn-sm btn-primary">コメントする</button>

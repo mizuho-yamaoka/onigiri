@@ -52,10 +52,11 @@ if ( !empty( $_POST ) ) {
 			$submit_file_name = $data_str . $picture;
 
 	 move_uploaded_file($temp,'../blog_img/' . $submit_file_name);
-	$replaced_post = preg_replace('/selected_picture(\w+....)/', '<img src="../blog_img/' . $submit_file_name . '">',$post);
+
+
+	$post = preg_replace('/selected_picture' . $picture . '/', '<img src="../blog_img/' . $submit_file_name . '">',$post);
 
 	}
-
 
 
 
@@ -85,7 +86,7 @@ if ( !empty( $_POST ) ) {
 
 		// 投稿処理
 		$sql = 'INSERT INTO `posts` SET `title`= ?, `post`= ?, `user_id`= ?, `category_id`= ?, `created` = NOW()';
-		$data = [ $title, $replaced_post, $username, $category ];
+		$data = [ $title, $post, $username, $category ];
 		$stmt = $dbh->prepare( $sql );
 		$stmt->execute( $data );
 
