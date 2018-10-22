@@ -189,7 +189,6 @@ $feed = $record;
 
 		<br>
 		<?php include('email_form.php'); ?>
-		<?php include('comment_view.php'); ?>
 		<?php endif ;?>
 
 
