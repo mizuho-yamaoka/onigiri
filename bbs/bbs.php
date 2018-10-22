@@ -181,7 +181,7 @@ $feed = $record;
 			<a href="#collapseComment<?php echo $feed['id'] ?>" data-toggle="collapse" aria-expanded="false">
             <span>JOIN</span>
             </a>
-<<<<<<< HEAD
+
 		<!--             <span>JOIN数：</span>
             <span class="comment-count">
               <?php //echo $feed['join_count']?></span> -->
@@ -191,7 +191,7 @@ $feed = $record;
 		<?php include('email_form.php'); ?>
 		<?php include('comment_view.php'); ?>
 		<?php endif ;?>
-=======
+
 
 <!--
 			<span>JOIN数：</span>
@@ -199,15 +199,13 @@ $feed = $record;
 				<?php //echo $feed['join_count']?>
 			</span>
 -->
-			<?php include('email_form.php'); ?>
-			<?php endif ;?>
+
 		</div>
 							</section>
 		</article>
 </div>
 
 
->>>>>>> f2e49e1bc81a98b3ba060ec1125dfa79a525e43d
 		<a href="bbs_list.php">BBS一覧に戻る</a>
 	</div>
 
