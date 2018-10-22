@@ -156,6 +156,7 @@ $feed = $record;
 				<span class="like-count">
 					<?php echo $feed['like_count'] ?>
 				</span>
+        <?php endif; ?>
 			</div>
 		</div>
 		<!-- コメント機能 -->
@@ -172,7 +173,7 @@ $feed = $record;
 		<!--             <span>JOIN数：</span>
             <span class="comment-count">
               <?php //echo $feed['join_count']?></span> -->
-		<?php endif ;?>
+
 
 		<br>
 		<?php include('email_form.php'); ?>

@@ -16,7 +16,7 @@ $poster_email = $_GET['poster_email'];
   // $sender = $joiner_email;
   // $content = 'We found a participant who want to join your activity!! Please, send e-mail to' . $joiner_email . ' and discuss about activity!!';
 
-  mail($to, $title, $content);
+  mb_send_mail($to, $title, $content);
 
 
   // $_SESSION['email'] = 'SENT';
