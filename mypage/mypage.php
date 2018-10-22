@@ -176,8 +176,8 @@ if ( $gender == '1' ) {
 			<div class="mpc">
 				<h1><img src="img/mypagepng"></h1>
 				<article>
-							<div id="modal-main"><iframe width="100%" height="450" src="mypage_edit.php" name="right"></iframe></div>
-
+					<div id="modal-main"><iframe width="100%" height="450" src="mypage_edit.php" name="right"></iframe>
+					</div>
 					<div id="uinfo">
 						<div class="user_img"><img src="../user_profile_img/<?= $user['img_name']?>" width="60" class="img-thumbnail">
 						</div>
@@ -313,6 +313,5 @@ if ( $gender == '1' ) {
 		</div>
 
 		<?php include ('../footer/footer.php'); ?>
-	
 	</body>
 </html>

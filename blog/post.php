@@ -58,13 +58,6 @@ if ( !empty( $_POST ) ) {
 
 	}
 
-
-
-
-
-
-
-
 	if(isset($_POST['category'])){
 		$category = $_POST['category'];
 		}
@@ -108,8 +101,6 @@ if ( !empty( $_POST ) ) {
 	<meta charset="UTF-8">
 	<title>ブログ投稿</title>
 	<link rel="stylesheet" type="text/css" href="../css/style.css">
-	<link rel="stylesheet" type="text/css" href="../js/slick/slick.css">
-	<link rel="stylesheet" type="text/css" href="../js/slick/slick-theme.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="../js/jquery-3.1.1.js"></script>
 	<script>
@@ -184,10 +175,6 @@ if ( !empty( $_POST ) ) {
 				<input class="blog_file" type="file" name="blog_file[]">
 				<input num="0" class="add_blog_file_btn" type="button"  value="選択した画像を文末にINSERT"><br>
 				<button id="add_box">ファイルボックスを追加</button>
-			
-				
-
-
 				<div class="acte">
 				<input type="radio" name="category" value="1">EAT
 				<input type="radio" name="category" value="2">ACTIVITY
@@ -203,11 +190,9 @@ if ( !empty( $_POST ) ) {
 				<?php if(isset($errors['category']) && $errors['category'] == 'not_chosen'): ?>
 				<p class="red">カテゴリーを選択して下さい</p>
 				<?php endif; ?>
-
 				<div class="thbtn">
 				<input type="submit" value="投稿する">
 				</div>
-
 			</form>
 		</section>
 	</article>

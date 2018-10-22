@@ -27,8 +27,8 @@ $name = $user['name'];
 				<h1 class="logo"><a href="/Lechon/index.php"><?php logoimg(); ?></a></h1>
 
 				<!--pcOnly navi-->
-				<div class="navb">
-				<ul class="navilist pcOnly">
+				<div class="navb pcOnly">
+				<ul class="navilist">
 					<li>
 						<p><a href="/Lechon/blog/blog_list.php">BLOG</a>
 						</p>
