@@ -12,9 +12,7 @@ if ( isset( $_SESSION[ 'register' ][ 'id' ] ) ) {
 	$stmt->execute( $data );
 
 	$user = $stmt->fetch( PDO::FETCH_ASSOC );
-
 }
-
 
 if ( isset( $_SESSION[ 'feed_id' ] ) ) {
 	$feed_id = $_SESSION[ 'feed_id' ];
@@ -33,9 +31,7 @@ $feed = '';
 // フェッチ
 $record = $stmt->fetch( PDO::FETCH_ASSOC );
 
-
 // ログインしているユーザーがその投稿をしているか確認
-
 $likes_flg_sql = 'SELECT * FROM `feed_likes` WHERE `user_id` = ? AND `feed_id` = ?';
 $likes_flg_data = [ $record[ 'user_id' ], $record[ 'id' ] ];
 $likes_flg_stmt = $dbh->prepare( $likes_flg_sql );
@@ -85,11 +81,6 @@ $feed = $record;
 					「もっと人数がいたらこのアクティビティ安くなるのに...」<br>
 					「他の学校の人と交流したいな」
 				</dt>
-			
-
-
-
-
 				<dd><img src="img/think.png">
 				</dd>
 				<dd class="arrow"><img src="img/arrow.png">
@@ -102,11 +93,6 @@ $feed = $record;
 					<i class="fas fa-check"></i>日程
 					<i class="fas fa-check"></i>募集人数等を記入
 				</dt>
-			
-
-
-
-
 				<dd><img src="img/write.png">
 				</dd>
 				<dd class="arrow"><img src="img/arrow.png">
@@ -120,8 +106,6 @@ $feed = $record;
 					<p>※連絡先送信後主催者からの返信をお待ちください</p>
 					<p>※なお、コミニュティでのアクティビティの実施に関しましては皆さま自身でのやりとりでお願いします。</p>
 				</dt>
-			
-
 				<dd><img src="img/think.png">
 				</dd>
 				<dd class="arrow"><img src="img/arrow.png">
@@ -170,48 +154,11 @@ $feed = $record;
 							<span class="like-count">
 								<?php echo $feed['like_count'] ?>
 							</span>
+							</section>
 							<?php endif; ?>
 						</div>
 					</div>
-					<article class="bpc">
-						<section>
-							<div class="bbsCheader">
-								<div>
-									<a href="bbs_people.php?id=<?php echo $feed['user_id']?>">
-										<?php echo $feed ['name'] ?>
-									</a>
-								</div>
-								<div>
-									<?php echo $feed['created'] ?>
-								</div>
-							</div>
-							<div class="body">
-								<?php echo $feed['feed'] ?>
-							</div>
-							<div class="opt">
-								<a href="feed.php"><i class="fas fa-pencil-alt"></i>投稿する</a>
-								<span>|</span>
-								<div>
-									<!-- いいね!ボタン -->
-									<?php if(isset($_SESSION['register']['id'])): ?>
-									<?php if($feed['is_liked']):?>
-									<button class="js-unlike"><span><i class="fas fa-thumbs-up"></i></span></button>
-									<?php else :?>
-									<button class="js-like"><span><i class="far fa-thumbs-up"></i></span></button>
-									<span hidden class="user-id">
-										<?php echo $signin_user_id;?>
-									</span>
-									<span hidden class="feed-id">
-										<?php echo $feed['id'];?>
-									</span>
-									<span class="like-count">
-										<?php echo $feed['like_count'] ?>
-									</span>
-									<?php endif; ?>
-								</div>
-							</div>
-						</section>
-					</article>
+			</article>
 					<article class="bpc_2">
 						<section>
 							<div class="post">
@@ -221,7 +168,6 @@ $feed = $record;
 								<!-- JOIN -->
 								<a href="#collapseComment<?php echo $feed['id'] ?>" data-toggle="collapse" aria-expanded="false"><span>JOIN</span></a>
 								<?php include('email_form.php'); ?>
-								<?php endif ;?>
 							</div>
 						</section>
 					</article>
