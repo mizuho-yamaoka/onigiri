@@ -134,6 +134,8 @@ if ( $gender == '1' ) {
 			<div class="mpc">
 				<h1><img src="img/mypagepng"></h1>
 				<article>
+							<div id="modal-main"><iframe width="100%" height="450" src="mypage_edit.php" name="right"></iframe></div>
+
 					<div id="uinfo">
 						<div class="user_img"><img src="../user_profile_img/<?= $user['img_name']?>" width="60" class="img-thumbnail">
 						</div>
@@ -204,7 +206,7 @@ if ( $gender == '1' ) {
 								</div>
 								<div class="ebtn">
 									<input type="hidden" name="post_id" value="<?php echo $post['id'] ?>">
-									<input type="submit" name="post_edit" value="EDIT" class="modalBtn">
+									<input type="submit" name="post_edit" value="EDIT" class="modal-open">
 									<span>|</span>
 									<input type="submit" name="post_delete" value="DELETE">
 								</div>
@@ -238,8 +240,11 @@ if ( $gender == '1' ) {
 			</div>
 			</article>
 		</div>
-		<iframe width="100%" height="450" src="mypage_edit.php" name="right"></iframe>
 		</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="../js/style.js" type="text/javascript" charset="utf-8"></script>
+
 		<?php include ('../footer/footer.php'); ?>
+	
 	</body>
 </html>
