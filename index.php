@@ -45,7 +45,7 @@ $name = $user['name'];
 			<div class="navi">
 				<h1 class="logo"><a href="/Lechon/index.php"><?php logoimg(); ?></a></h1>
 				<!--pcOnly navi-->
-				<div class="navb">
+				<div class="navb pcOnly">
 				<ul class="navilist pcOnly">
 					<li>
 						<p><a href="#aboutWrap">ABOUT</a>
@@ -94,7 +94,7 @@ $name = $user['name'];
 							</div>
 						<?php endif ;?>
 					</div>
-				</div>
+			</div>
 				<!--pcOnly navi-->
 		
 				<!--spOnly navi-->
@@ -110,22 +110,22 @@ $name = $user['name'];
 						<li><a href="bbs/bbs_list.php">BBS</a>
 						</li>
 					</ul>
-					<div>
+					<ul>
 						<?php if(!isset($_SESSION['register']['id'])): ?>
 							<li><a href="/Lechon/signin.php">LOGIN</a>
 							</li>
 							<li><a href="/Lechon/register/signup.php">NEW ACCOUNT</a>
 							</li>
 						<?php endif ;?>
-					</div>
-					<div>
+					</ul>
+					<ul>
 						<?php if(isset($_SESSION['register']['id'])): ?>
 							<li><a href="/Lechon/signout.php">LOGOUT</a>
 							</li>
 							<li><a href="/Lechon/mypage/mypage.php">MY PAGE</a>
 							</li>
 						<?php endif ;?>
-					</div>
+					</ul>
 				</div>
 				<a class="menu-trigger" href="#"><span></span><span></span><span></span></a>
 				</div>

@@ -78,6 +78,7 @@ body {
     margin: 3% 0;
 	white-space: nowrap;
 	align-items: center;
+	width: 100%;
 }
 .navilist{height: 2rem;}
 .navilist li {
@@ -671,6 +672,44 @@ video {width: 100%;}
 }
 .list_back {
     margin-top: 40px;
+}
+.useCo{
+	background-color: #add9da;
+	padding: 40px 10%;
+	text-align: center;
+	height: 400px;
+	overflow-y: scroll;
+}
+.useCo dt{
+	background-color: #FFFFFF;
+	border-radius: 10px;
+	color: #2b2b2b;
+	position: relative;
+	margin: 2rem;
+	padding: 0.8em;
+	font-size: 1.3rem;
+}
+.useCo dt:before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -15px;
+    border: 15px solid transparent;
+    border-top: 15px solid #FFFFFF;
+}
+.useCo dt span{
+	letter-spacing: 1px;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+.useCo dt p{
+	line-height: 1rem;
+	color: #FF0004;
+}
+.arrow img{
+    width: 100px;
+    margin: 1rem 0;
 }
 /*NEW ACCOUNT*/
 .cotitle {
