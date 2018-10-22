@@ -81,6 +81,7 @@ $feed = $record;
 					「もっと人数がいたらこのアクティビティ安くなるのに...」<br>
 					「他の学校の人と交流したいな」
 				</dt>
+			
 				<dd><img src="img/think.png">
 				</dd>
 				<dd class="arrow"><img src="img/arrow.png">
@@ -93,6 +94,7 @@ $feed = $record;
 					<i class="fas fa-check"></i>日程
 					<i class="fas fa-check"></i>募集人数等を記入
 				</dt>
+			
 				<dd><img src="img/write.png">
 				</dd>
 				<dd class="arrow"><img src="img/arrow.png">
@@ -106,6 +108,7 @@ $feed = $record;
 					<p>※連絡先送信後主催者からの返信をお待ちください</p>
 					<p>※なお、コミニュティでのアクティビティの実施に関しましては皆さま自身でのやりとりでお願いします。</p>
 				</dt>
+			
 				<dd><img src="img/think.png">
 				</dd>
 				<dd class="arrow"><img src="img/arrow.png">
@@ -116,8 +119,8 @@ $feed = $record;
 				<dd><img src="img/join.png">
 				</dd>
 			</dl>
-		</div>
-	</div>
+		</div><!--useCo-->
+	</div><!--bbsuse-->
 	<div class="bbsWrap">
 		<div class="bpcWrap">
 			<article class="bpc">
@@ -154,28 +157,29 @@ $feed = $record;
 							<span class="like-count">
 								<?php echo $feed['like_count'] ?>
 							</span>
-							</section>
-							<?php endif; ?>
 						</div>
 					</div>
+				</section>
+				<?php endif; ?>
 			</article>
-					<article class="bpc_2">
-						<section>
-							<div class="post">
-								<!-- コメント機能 -->
-								<?php include('comment_view.php'); ?>
-								<?php endif; ?>
-								<!-- JOIN -->
-								<a href="#collapseComment<?php echo $feed['id'] ?>" data-toggle="collapse" aria-expanded="false"><span>JOIN</span></a>
-								<?php include('email_form.php'); ?>
-							</div>
-						</section>
-					</article>
+			<article class="bpc_2">
+				<section>
+					<div class="post">
+						<!-- コメント機能 -->
+						<?php include('comment_view.php'); ?>
+						<!-- JOIN -->
+						<a href="#collapseComment<?php echo $feed['id'] ?>" data-toggle="collapse" aria-expanded="false"><span>JOIN</span></a>
+						<?php include('email_form.php'); ?>
+						<?php endif; ?>
+					</div>
+				</section>
+			</article>
 		</div>
-		<div class="list_back">
-			<a href="bbs_list.php">&#171;Go back</a>
-		</div>
+			<div class="list_back">
+				<a href="bbs_list.php">&#171;Go back</a>
+			</div>
 	</div>
+	
 	<?php include ('../footer/footer.php'); ?>
 	<!-- 使う場合は３つのファイルのコピーをグループワークのファイルに作るのと、パス設定が必要です -->
 	<script type="text/javascript" src="../js/jquery-3.1.1.js"></script>

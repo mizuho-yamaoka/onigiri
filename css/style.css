@@ -121,6 +121,7 @@ body {
     border-left: none!important;
     background-color: #ffaa00;
     margin-left: 10px;
+	width: 100%;
 }
 .newA a {
     color: #FFFFFF;
@@ -770,7 +771,7 @@ video {
     font-weight: bold;
 }
 .bpc {
-    width: 50%;
+    width: 100%;
     background-color: #fff;
     padding: 2rem;
     border-radius: 10px;
@@ -786,7 +787,10 @@ video {
     border: 15px solid transparent;
     border-top: 15px solid #FFFFFF;
 }
-.bpc_2{width: 40%;}
+.bpc_2{
+    width: 60%;
+    margin-left: 40px;
+}
 .bpc .body {
     font-size: 1.3rem;
 }
