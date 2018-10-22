@@ -89,6 +89,7 @@ $feed = $record;
 
 
 
+
 				<dd><img src="img/think.png">
 				</dd>
 				<dd class="arrow"><img src="img/arrow.png">
@@ -102,6 +103,7 @@ $feed = $record;
 					<i class="fas fa-check"></i>募集人数等を記入
 				</dt>
 			
+
 
 
 
@@ -119,6 +121,7 @@ $feed = $record;
 					<p>※なお、コミニュティでのアクティビティの実施に関しましては皆さま自身でのやりとりでお願いします。</p>
 				</dt>
 			
+
 				<dd><img src="img/think.png">
 				</dd>
 				<dd class="arrow"><img src="img/arrow.png">
@@ -133,7 +136,6 @@ $feed = $record;
 	</div>
 	<div class="bbsWrap">
 		<div class="bpcWrap">
-<<<<<<< HEAD
 			<article class="bpc">
 				<section>
 					<div class="bbsCheader">
@@ -171,78 +173,59 @@ $feed = $record;
 							<?php endif; ?>
 						</div>
 					</div>
-=======
-		<article class="bpc">
-			<section>
-		<div class="bbsCheader">
-			<div>
-			<a href="bbs_people.php?id=<?php echo $feed['user_id']?>">
-				<?php echo $feed ['name'] ?>
-			</a>
-			</div>
-			<div>
-				<?php echo $feed['created'] ?>
-			</div>
+					<article class="bpc">
+						<section>
+							<div class="bbsCheader">
+								<div>
+									<a href="bbs_people.php?id=<?php echo $feed['user_id']?>">
+										<?php echo $feed ['name'] ?>
+									</a>
+								</div>
+								<div>
+									<?php echo $feed['created'] ?>
+								</div>
+							</div>
+							<div class="body">
+								<?php echo $feed['feed'] ?>
+							</div>
+							<div class="opt">
+								<a href="feed.php"><i class="fas fa-pencil-alt"></i>投稿する</a>
+								<span>|</span>
+								<div>
+									<!-- いいね!ボタン -->
+									<?php if(isset($_SESSION['register']['id'])): ?>
+									<?php if($feed['is_liked']):?>
+									<button class="js-unlike"><span><i class="fas fa-thumbs-up"></i></span></button>
+									<?php else :?>
+									<button class="js-like"><span><i class="far fa-thumbs-up"></i></span></button>
+									<span hidden class="user-id">
+										<?php echo $signin_user_id;?>
+									</span>
+									<span hidden class="feed-id">
+										<?php echo $feed['id'];?>
+									</span>
+									<span class="like-count">
+										<?php echo $feed['like_count'] ?>
+									</span>
+									<?php endif; ?>
+								</div>
+							</div>
+						</section>
+					</article>
+					<article class="bpc_2">
+						<section>
+							<div class="post">
+								<!-- コメント機能 -->
+								<?php include('comment_view.php'); ?>
+								<?php endif; ?>
+								<!-- JOIN -->
+								<a href="#collapseComment<?php echo $feed['id'] ?>" data-toggle="collapse" aria-expanded="false"><span>JOIN</span></a>
+								<?php include('email_form.php'); ?>
+								<?php endif ;?>
+							</div>
+						</section>
+					</article>
 		</div>
-		<div class="body">
-			<?php echo $feed['feed'] ?>
-		</div>
-		<div class="opt">
-			<a href="feed.php"><i class="fas fa-pencil-alt"></i>投稿する</a>
-			<span>|</span>
-			<div>
-				<!-- いいね!ボタン -->
-				<?php if(isset($_SESSION['register']['id'])): ?>
-				<?php if($feed['is_liked']):?>
-				<button class="js-unlike"><span><i class="fas fa-thumbs-up"></i></span></button>
-				<?php else :?>
-				<button class="js-like"><span><i class="far fa-thumbs-up"></i></span></button>
-				<span hidden class="user-id"><?php echo $signin_user_id;?></span>
-				<span hidden class="feed-id"><?php echo $feed['id'];?></span>
-				<span class="like-count">
-					<?php echo $feed['like_count'] ?>
-				</span>
-
-        <?php endif; ?>
-
-
-			</div>
-		</div>
->>>>>>> 11224a665ba24bf1c7c2fa4df216d7bb5e195c6f
-				</section>
-			</article>
-			<article class="bpc_2">
-				<section>
-					<div class="post">
-						<!-- コメント機能 -->
-						<?php include('comment_view.php'); ?>
-						<!-- JOIN -->
-						<a href="#collapseComment<?php echo $feed['id'] ?>" data-toggle="collapse" aria-expanded="false">
-            <span>JOIN</span>
-            </a>
-					
-
-						<!--             <span>JOIN数：</span>
-            <span class="comment-count">
-              <?php //echo $feed['join_count']?></span> -->
-
-
-						<br>
-						<?php include('email_form.php'); ?>
-						<?php endif ;?>
-
-
-						<!--
-			<span>JOIN数：</span>
-			<span class="comment-count">
-				<?php //echo $feed['join_count']?>
-			</span>
--->
-					</div>
-				</section>
-			</article>
-		</div>
-
 		<div class="list_back">
 			<a href="bbs_list.php">&#171;Go back</a>
 		</div>
