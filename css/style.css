@@ -631,7 +631,6 @@ video {
     top: -130px;
     position: relative;
 }
-.htbox img{width: 100%;}
 .topimg_b {
     height: 500px;
     width: 100%;
@@ -663,6 +662,7 @@ video {
     justify-content: space-between;
     margin-bottom: 0.8em;
     border-bottom: 1px solid #2b2b2b;
+	padding-bottom: 0.8em;/*blog*/
 }
 .bwi ul li:first-child {
     font-size: 1.3rem;
@@ -1394,6 +1394,7 @@ video {
 .blaw {
     width: 100%;
 }
+.htbox img{width: 100%;}
 .form-group .btn span .fa-comments{
 font-size: 3rem!important;
     margin-left: 10px;

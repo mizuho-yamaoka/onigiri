@@ -252,6 +252,7 @@ $name = $user['name'];
 
 	</div>
 	<!--wrap-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script><!--＊-->
 	<script src="js/slick/slick.js" type="text/javascript" charset="utf-8"></script><!--indexOnly-->
 	<script src="js/style.js" type="text/javascript" charset="utf-8"></script><!--＊-->

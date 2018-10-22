@@ -101,18 +101,11 @@ $post = $record;
 				<?php endif ;?>
 			</div>
 		</div>
-		<p class="bg"><a href="blog_list.php">ブログ一覧に戻る</a></p>
+			<div class="list_back">
+				<a href="blog_list.php">&#171;Go back</a>
+			</div>
 	</div>
-
-
-	
-
-
 	<?php include ('../footer/footer.php'); ?>
-	<!-- 使う場合は３つのファイルのコピーをグループワークのファイルに作るのと、パス設定が必要です -->
-	<script type="text/javascript" src="../js/jquery-3.1.1.js"></script>
-	<script type="text/javascript" src="../js/jquery-migrate-1.4.1.js"></script>
-	<script type="text/javascript" src="../js/bootstrap.js"></script>
 	<script type="text/javascript" src="../js/blog_app.js"></script>
 </body>
 </html>
