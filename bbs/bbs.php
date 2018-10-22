@@ -170,7 +170,8 @@ $feed = $record;
             <span>JOIN</span>
             </a>
 		<!--             <span>JOIN数：</span>
-            <span class="comment-count"><?php echo $feed['join_count']?></span> -->
+            <span class="comment-count">
+              <?php //echo $feed['join_count']?></span> -->
 		<?php endif ;?>
 
 		<br>
