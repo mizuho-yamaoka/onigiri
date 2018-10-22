@@ -11,7 +11,7 @@ $start = 0;
 $last_page = '';
 $word_search = '';
 
-const CONTENT_PER_PAGE = 6;
+const CONTENT_PER_PAGE = 8;
 if ( isset( $_GET[ 'page' ] ) ) {
 	// -1などの不正な数字対策
 	$page = $_GET[ 'page' ];

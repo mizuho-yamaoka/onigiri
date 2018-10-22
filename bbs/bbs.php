@@ -133,6 +133,7 @@ $feed = $record;
 	</div>
 	<div class="bbsWrap">
 		<div class="bpcWrap">
+<<<<<<< HEAD
 			<article class="bpc">
 				<section>
 					<div class="bbsCheader">
@@ -170,6 +171,44 @@ $feed = $record;
 							<?php endif; ?>
 						</div>
 					</div>
+=======
+		<article class="bpc">
+			<section>
+		<div class="bbsCheader">
+			<div>
+			<a href="bbs_people.php?id=<?php echo $feed['user_id']?>">
+				<?php echo $feed ['name'] ?>
+			</a>
+			</div>
+			<div>
+				<?php echo $feed['created'] ?>
+			</div>
+		</div>
+		<div class="body">
+			<?php echo $feed['feed'] ?>
+		</div>
+		<div class="opt">
+			<a href="feed.php"><i class="fas fa-pencil-alt"></i>投稿する</a>
+			<span>|</span>
+			<div>
+				<!-- いいね!ボタン -->
+				<?php if(isset($_SESSION['register']['id'])): ?>
+				<?php if($feed['is_liked']):?>
+				<button class="js-unlike"><span><i class="fas fa-thumbs-up"></i></span></button>
+				<?php else :?>
+				<button class="js-like"><span><i class="far fa-thumbs-up"></i></span></button>
+				<span hidden class="user-id"><?php echo $signin_user_id;?></span>
+				<span hidden class="feed-id"><?php echo $feed['id'];?></span>
+				<span class="like-count">
+					<?php echo $feed['like_count'] ?>
+				</span>
+
+        <?php endif; ?>
+
+
+			</div>
+		</div>
+>>>>>>> 11224a665ba24bf1c7c2fa4df216d7bb5e195c6f
 				</section>
 			</article>
 			<article class="bpc_2">

@@ -24,8 +24,8 @@
     .done(function(data) {
     // 処理が成功したときのデータを記述
     // dataにはINSERT文の結果が入っている（成功したらtrue）
+    console.log(data);
     if(data == 'true'){
-    console.log('hoge');
         like_count++;
         like_btn.siblings('.like-count').text(like_count);
         like_btn.removeClass('js-like');
@@ -34,6 +34,7 @@
     }
     })
     .fail(function(error) {
+        console.log(error);
     // 処理が失敗したときの処理を記述
     })
 });
