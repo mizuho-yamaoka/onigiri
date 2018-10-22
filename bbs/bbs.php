@@ -155,12 +155,8 @@ $feed = $record;
 				<button class="js-unlike"><span><i class="fas fa-thumbs-up"></i></span></button>
 				<?php else :?>
 				<button class="js-like"><span><i class="far fa-thumbs-up"></i></span></button>
-				<span hidden class="user-id">
-					<?php echo $signin_user_id;?>
-				</span>
-				<span hidden class="feed-id">
-					<?php echo $feed['id'];?>
-				</span>
+				<span hidden class="user-id"><?php echo $signin_user_id;?></span>
+				<span hidden class="feed-id"><?php echo $feed['id'];?></span>
 				<span class="like-count">
 					<?php echo $feed['like_count'] ?>
 				</span>

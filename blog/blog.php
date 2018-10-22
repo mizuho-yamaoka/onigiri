@@ -93,12 +93,8 @@ $post = $record;
 				<?php else :?>
 				<button class="js-like"><span><i class="far fa-thumbs-up"></i></span></button>
 				<?php endif ;?>
-				<span hidden class="user_id">
-					<?php echo $signin_user_id;?>
-				</span>
-				<span hidden class="post_id">
-					<?php echo $post['id'];?>
-				</span>
+				<span hidden class="user_id"><?php echo $signin_user_id;?></span>
+				<span hidden class="post_id"><?php echo $post['id'];?></span>
 				<span class="like-count">
 					<?php echo $post['like_count'] ?>
 				</span><br>

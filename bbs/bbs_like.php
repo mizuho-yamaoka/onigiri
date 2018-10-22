@@ -1,5 +1,6 @@
 <?php
     require_once('../dbconnect.php');
+
 // echo 'Hello, world!';
 
 $user_id = $_POST['user_id'];
@@ -17,5 +18,3 @@ $res = $stmt->execute($data);
 // 結果を返す
 // JavaScriotで使えるようにjsonエンコードして返す
 echo json_encode($res);
-
-?>
