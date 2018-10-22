@@ -108,6 +108,48 @@ while ( true ) {
 	$feeds[] = $record;
 }
 
+// いいねしたBBS記事の出力
+
+$sql = "SELECT u.id, l.*, f.* FROM feed_likes AS l LEFT JOIN users AS u ON u.id = l.user_id LEFT JOIN feeds AS f ON l.feed_id = f.id WHERE l.user_id = ?";
+$data = [$signin_user_id];
+$stmt = $dbh->prepare($sql);
+$stmt->execute($data);
+
+// ポストを入れる配列
+$liked_feeds = array();
+// レコードがなくなるまで取得処理
+while ( true ) {
+	// 1件ずつフェッチ
+	$record = $stmt->fetch( PDO::FETCH_ASSOC );
+	// レコードがなければ処理を抜ける
+	if ( $record == false ) {
+		break;
+	}
+	// レコードがあれば追加
+	$liked_feeds[] = $record;
+}
+
+//いいねしたBLOG記事の出力
+$sql = "SELECT u.id, l.*, p.* FROM post_likes AS l LEFT JOIN users AS u ON u.id = l.user_id LEFT JOIN posts AS p ON l.post_id = p.id WHERE l.user_id = ?";
+$data = [$signin_user_id];
+$stmt = $dbh->prepare($sql);
+$stmt->execute($data);
+
+// ポストを入れる配列
+$liked_posts = array();
+// レコードがなくなるまで取得処理
+while ( true ) {
+	// 1件ずつフェッチ
+	$record = $stmt->fetch( PDO::FETCH_ASSOC );
+	// レコードがなければ処理を抜ける
+	if ( $record == false ) {
+		break;
+	}
+	// レコードがあれば追加
+	$liked_posts[] = $record;
+}
+
+
 // $genderの文字化
 if ( $gender == '1' ) {
 	$gender = 'Male';
@@ -186,6 +228,34 @@ if ( $gender == '1' ) {
 						</div>
 					</div>
 				</article>
+				
+				<!-- いいねしたBBS記事の出力 -->
+				<div>
+					<h3>BBS LIKE LIST</h3>
+						<?php foreach ($liked_feeds as $liked_feed) :?>
+							<form action="../bbs/bbs.php" method="POST">
+								<div><?php echo $liked_feed['created']?></div>
+								<div><?php echo $liked_feed['feed']?></div>
+								<div><input type="hidden" name="feed_id" value="<?php echo $liked_feed['feed_id']?>"></div>
+								<div><input type="submit" name="submit" value="CHECK"></div>
+							</form>
+						<?php endforeach; ?>
+				</div>
+				
+				<!-- いいねしたBLOG記事の出力 -->
+				<div>
+					<h3>BLOG LIKE LIST</h3>
+						<?php foreach ($liked_posts as $liked_post) :?>
+							<form action="../blog/blog.php" method="POST">
+								<div><?php echo $liked_post['created']?></div>
+								<div><?php echo $liked_post['title'] ?></div>
+								<div><?php echo $liked_post['post']?></div>
+								<div><input type="hidden" name="post_id" value="<?php echo $liked_post['post_id']?>"></div>
+								<div><input type="submit" name="submit" value="CHECK"></div>
+							</form>
+						<?php endforeach; ?>
+				</div>
+
 				<article class="secound_a">
 					<h3>YOUR BLOG POSTS</h3>
 					<section class="blw">
@@ -241,8 +311,6 @@ if ( $gender == '1' ) {
 			</article>
 		</div>
 		</div>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-		<script src="../js/style.js" type="text/javascript" charset="utf-8"></script>
 
 		<?php include ('../footer/footer.php'); ?>
 	
