@@ -191,12 +191,9 @@ $feed = $record;
 							</section>
 		</article>
 </div>
-		<?php endif ;?>
 
 		<br>
 		<?php include('email_form.php'); ?>
-		<?php include('comment_view.php'); ?>
-		<?php endif ;?>
 
 		<a href="bbs_list.php">BBS一覧に戻る</a>
 	</div>
