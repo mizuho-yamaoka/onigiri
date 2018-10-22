@@ -153,9 +153,7 @@ if ( isset( $_GET[ 'wordsearch' ] ) ) {
 				<div>
 					<div class="ttp">
 						<ul>
-							<!-- GET送信のパラメータ
-        URL?キー = 値
-        URL?キー１ = 値１＆キー２= 値２ -->
+							<!-- GET送信のパラメータ URL?キー = 値 URL?キー１ = 値１＆キー２= 値２ -->
 							<!-- 最初のページではNEWERは押せない -->
 							<li>
 								<?php if($page == 1): ?>

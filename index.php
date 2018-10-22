@@ -228,13 +228,13 @@ $name = $user['name'];
 							</p>
 						</li>
 						<li>
-							<p><a href="#"><span><img src="img/sankaku.png"></span>How to use</a>
+							<p><a href="#aboutWrap"><span><img src="img/sankaku.png"></span>How to use</a>
 							</p>
 						</li>
 					</ul>
 					<ul class="fmenu2">
 						<li>
-							<p><a href="index.php"><span><img src="img/farrow.png"></span>NOW</a>
+							<p><a href="#nowWrap"><span><img src="img/farrow.png"></span>NOW</a>
 							</p>
 						</li>
 						<li>
