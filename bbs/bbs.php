@@ -86,6 +86,8 @@ $feed = $record;
 					「他の学校の人と交流したいな」
 				</dt>
 			
+
+
 				<dd><img src="img/think.png">
 				</dd>
 				<dd class="arrow"><img src="img/arrow.png">
@@ -99,6 +101,8 @@ $feed = $record;
 					<i class="fas fa-check"></i>募集人数等を記入
 				</dt>
 			
+
+
 				<dd><img src="img/write.png">
 				</dd>
 				<dd class="arrow"><img src="img/arrow.png">
@@ -112,7 +116,6 @@ $feed = $record;
 					<p>※連絡先送信後主催者からの返信をお待ちください</p>
 					<p>※なお、コミニュティでのアクティビティの実施に関しましては皆さま自身でのやりとりでお願いします。</p>
 				</dt>
-			
 				<dd><img src="img/think.png">
 				</dd>
 				<dd class="arrow"><img src="img/arrow.png">
@@ -126,13 +129,18 @@ $feed = $record;
 		</div>
 	</div>
 	<div class="bbsWrap">
+		<div class="bpcWrap">
+		<article class="bpc">
+			<section>
 		<div class="bbsCheader">
+			<div>
 			<a href="bbs_people.php?id=<?php echo $feed['user_id']?>">
 				<?php echo $feed ['name'] ?>
 			</a>
-			<span>
+			</div>
+			<div>
 				<?php echo $feed['created'] ?>
-			</span>
+			</div>
 		</div>
 		<div class="body">
 			<?php echo $feed['feed'] ?>
@@ -156,20 +164,24 @@ $feed = $record;
 				<span class="like-count">
 					<?php echo $feed['like_count'] ?>
 				</span>
+
         <?php endif; ?>
+
+
 			</div>
 		</div>
-		<!-- コメント機能 -->
-		<a href="#collapseComment<?php echo $feed['id'] ?>" data-toggle="collapse" aria-expanded="false">
-            <span>コメントする</span>
-            </a>
-	
-
-		<span>コメント数：</span><br>
-		<!-- JOIN -->
-		<a href="#collapseComment<?php echo $feed['id'] ?>" data-toggle="collapse" aria-expanded="false">
+				</section>
+			</article>
+		<article>
+			<section>
+		<div class="post">
+			<!-- コメント機能 -->
+			<?php include('comment_view.php'); ?>
+			<!-- JOIN -->
+			<a href="#collapseComment<?php echo $feed['id'] ?>" data-toggle="collapse" aria-expanded="false">
             <span>JOIN</span>
             </a>
+<<<<<<< HEAD
 		<!--             <span>JOIN数：</span>
             <span class="comment-count">
               <?php //echo $feed['join_count']?></span> -->
@@ -179,6 +191,23 @@ $feed = $record;
 		<?php include('email_form.php'); ?>
 		<?php include('comment_view.php'); ?>
 		<?php endif ;?>
+=======
+
+<!--
+			<span>JOIN数：</span>
+			<span class="comment-count">
+				<?php //echo $feed['join_count']?>
+			</span>
+-->
+			<?php include('email_form.php'); ?>
+			<?php endif ;?>
+		</div>
+							</section>
+		</article>
+</div>
+
+
+>>>>>>> f2e49e1bc81a98b3ba060ec1125dfa79a525e43d
 		<a href="bbs_list.php">BBS一覧に戻る</a>
 	</div>
 

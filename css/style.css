@@ -711,6 +711,72 @@ video {width: 100%;}
     width: 100px;
     margin: 1rem 0;
 }
+.bpcWrap, .bbsCheader{
+	display: flex;
+    justify-content: space-between;
+}
+.bbsCheader{margin-bottom: 2rem;}
+.bbsCheader a{
+	font-size: 1.3rem;
+    font-weight: bold;
+}
+.bpc{
+    width: 50%;
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    height: 100%;
+	position: relative;
+}
+.bpc:before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -15px;
+    border: 15px solid transparent;
+    border-top: 15px solid #FFFFFF;
+}
+.bpc .body{font-size: 1.3rem;}
+.bbsComment {display: flex;}
+.bbsComment img,.comments img{
+	border-radius: 50%;
+	width: 50px;
+	height: 50px;
+	object-fit: cover;
+}
+.comments{
+	display: flex;
+	margin-bottom: 2rem;
+}
+.comments dl{
+    margin: 0 0 0 1rem;
+    width: 90%;
+    background-color: #2d93d6;
+    border-radius: 50px;
+    padding: 1rem 2rem;
+    color: #fff;
+	position: relative;
+}
+.comments dl:before {
+content: "";
+    position: absolute;
+    top: 29%;
+    left: -3%;
+    margin-left: -12px;
+    border: 10px solid transparent;
+    border-right: 20px solid #2d93d6;
+}}
+
+.comments dl a{
+	color: #FFFFFF;
+	font-weight: bold;
+}
+.comments dd{
+	margin: 0;
+	font-size: 1.3rem;
+}
+.comments p{width: 100%;}
 /*NEW ACCOUNT*/
 .cotitle {
     text-align: center;
