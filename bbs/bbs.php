@@ -191,17 +191,13 @@ $feed = $record;
 							</section>
 		</article>
 </div>
-=======
-		<!--             <span>JOIN数：</span>
-            <span class="comment-count">
-              <?php //echo $feed['join_count']?></span> -->
 		<?php endif ;?>
 
 		<br>
 		<?php include('email_form.php'); ?>
 		<?php include('comment_view.php'); ?>
 		<?php endif ;?>
->>>>>>> d6a840a9958b642dabe4e0ca8043cbf03a8295d2
+
 		<a href="bbs_list.php">BBS一覧に戻る</a>
 	</div>
 
