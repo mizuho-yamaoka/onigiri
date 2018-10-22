@@ -6,9 +6,7 @@ if(!empty($_GET['joiner_email'])){
 
 $joiner_email = $_GET['joiner_email'];
 $poster_email = $_GET['poster_email'];
-  echo '<pre>';
-  var_dump($poster_email);
-  echo '</pre>';
+
 
   $to = $poster_email;
   $title = 'CEBUFULL BBS INFO';
