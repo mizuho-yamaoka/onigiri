@@ -42,30 +42,23 @@ if ( !empty( $_POST ) ) {
 	$post = $_POST[ 'body' ];
 
 
-
-// $postから写真の入る位置を見つけるコード
-// preg_match_all('/selected_picture(\w+....)/',$post,$matchs);
-// foreach ($matchs as $match) {
-		// foreach ($match as $pic) {
-
 	$pictures = $_FILES['blog_file']['name'];
 	$temps = $_FILES['blog_file']['tmp_name'];
-	foreach ($pictures as $picture){
-		foreach ($temps as $temp) {
+	for ($i=0; $i < count($_FILES['blog_file']['name']); $i++) { 
+		$picture = $_FILES['blog_file']['name'][$i];
+		$temp = $_FILES['blog_file']['tmp_name'][$i];
 
 			$data_str = date('YmdHis');
 			$submit_file_name = $data_str . $picture;
 
 	 move_uploaded_file($temp,'../blog_img/' . $submit_file_name);
-	$replaced_post = preg_replace('/selected_picture(\w+....)/', '<img src="../blog_img/' . $submit_file_name . '">',$post);
 
 
-// echo'<pre>';
-// var_dump($blog_pic);
-// echo'</pre>';
-// die();
-		}
+	$post = preg_replace('/selected_picture' . $picture . '/', '<img src="../blog_img/' . $submit_file_name . '">',$post);
+
 	}
+
+
 
 
 
@@ -93,7 +86,7 @@ if ( !empty( $_POST ) ) {
 
 		// 投稿処理
 		$sql = 'INSERT INTO `posts` SET `title`= ?, `post`= ?, `user_id`= ?, `category_id`= ?, `created` = NOW()';
-		$data = [ $title, $replaced_post, $username, $category ];
+		$data = [ $title, $post, $username, $category ];
 		$stmt = $dbh->prepare( $sql );
 		$stmt->execute( $data );
 
