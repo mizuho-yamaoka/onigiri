@@ -20,10 +20,10 @@ $stmt = $dbh->prepare( $sql );
 $stmt->execute( $data );
 
 // ブログ編集
-// if ( !empty( $_POST[ 'post_edit' ] ) ) {
-// 	$_SESSION[ 'post_id' ] = $_POST[ 'post_id' ];
+ if ( !empty( $_POST[ 'post_edit' ] ) ) {
+ 	$_SESSION[ 'post_id' ] = $_POST[ 'post_id' ];
 // 	header( 'Location: ../blog/blog_edit.php' );
-// }
+ }
     if (!empty($_POST['blog_update'])) {
         $edit_title = $_POST['edit_title'];
         $edit_post = $_POST['edit_post'];
@@ -35,10 +35,10 @@ $stmt->execute( $data );
     }
 
 // BBS編集
-// if ( !empty( $_POST[ 'feed_edit' ] ) ) {
-// 	$_SESSION[ 'feed_id' ] = $_POST[ 'feed_id' ];
+ if ( !empty( $_POST[ 'feed_edit' ] ) ) {
+ 	$_SESSION[ 'feed_id' ] = $_POST[ 'feed_id' ];
 // 	header( 'Location: ../bbs/bbs_edit.php' );
-// }
+ }
      if (!empty($_POST['bbs_update'])) {
     $edit_feed = $_POST['edit_feed'];
 
@@ -46,7 +46,7 @@ $stmt->execute( $data );
     $data = [$edit_feed,$edit_feed_id];
     $stmt = $dbh->prepare($sql);
     $stmt->execute($data);
-    header('Location: ../mypage/mypage.php');
+//    header('Location: ../mypage/mypage.php');
     exit();
 
     }
@@ -196,34 +196,6 @@ if ( $gender == '1' ) {
 			<div class="mpc">
 				<h1><img src="img/mypagepng"></h1>
 				<article>
-					<div id="modal-main"><iframe width="100%" height="450" src="mypage_edit.php" name="right"></iframe>
-
-						<!-- ここにeditを入れる -->
-						<!-- blogの編集画面 -->
-						<form action="mypage.php" method="POST">
-						    <div>
-						      <label for="edit_blog_title">Title</label>
-						      <input type="text" name="edit_title" value="<?php echo $post['title']?>">
-						    </div>
-
-						    <div>
-						      <label for="edit_blog_post">Detail</label>
-						      <input type="text" name="edit_post" value="<?php echo $post['post']?>">
-						    </div>
-						    <div>
-						      <input type="submit" name="blog_update" value="update" >
-						    </div>
-						</form>
-						<form action="mypage.php" method="POST">
-						    <div>
-						      <label for="edit_bbs_feed">Detail</label>
-						      <input type="text" name="edit_feed" value="<?php echo $feed['feed']?>">
-						    </div>
-						    <div>
-						      <input type="submit" name="bbs_update" value="update" >
-						    </div>
-						</form>
-					</div>
 					<div id="uinfo">
 						<div class="user_img"><img src="../user_profile_img/<?= $user['img_name']?>" width="60" class="img-thumbnail">
 						</div>
@@ -310,7 +282,7 @@ if ( $gender == '1' ) {
 							<div class="blog_thum">
 								<img src="img/ジンベイザメ横から.jpg">
 							</div>
-							<form action="mypage.php" method="POST" target="right">
+							<form action="mypage.php" method="POST">
 								<span class="time">
 									<?php echo $post['created'] ?>
 								</span>
@@ -322,12 +294,29 @@ if ( $gender == '1' ) {
 								</div>
 								<div class="ebtn">
 									<input type="hidden" name="post_id" value="<?php echo $post['id'] ?>">
-									<input type="submit" name="post_edit" value="EDIT" class="modal-open">
+									<input type="button" name="post_edit" value="EDIT" class="modal-open">
 									<span>|</span>
 									<input type="submit" name="post_delete" value="DELETE">
 								</div>
 							</form>
 						</div>
+					<div id="modal-main">
+						<!-- ここにeditを入れる -->
+						<!-- blogの編集画面 -->
+						<form action="mypage.php" method="POST">
+						    <div>
+						      <label for="edit_blog_title">Title</label>
+						      <input type="text" name="edit_title" value="<?php echo $post['title']?>">
+						    </div>
+						    <div>
+						      <label for="edit_blog_post">Detail</label>
+						      <input type="text" name="edit_post" value="<?php echo $post['post']?>">
+						    </div>
+						    <div>
+						      <input type="submit" name="blog_update" value="update" >
+						    </div>
+						</form>
+					</div>
 						<?php endforeach; ?>
 					</section>
 				</article>
@@ -345,17 +334,27 @@ if ( $gender == '1' ) {
 								</div>
 								<div class="ebtn">
 									<input type="hidden" name="feed_id" value="<?php echo $feed['id'] ?>">
-									<input type="submit" name="feed_edit" value="EDIT">
+									<input type="button" name="feed_edit" value="EDIT" class="modal-openco">
 									<span>|</span>
 									<input type="submit" name="feed_delete" value="DELETE">
 								</div>
 							</form>
 						</div>
+						<div id="modal-mainCo">
+						<form action="mypage.php" method="POST">
+						    <div>
+						      <label for="edit_bbs_feed">Detail</label>
+						      <input type="text" name="edit_feed" value="<?php echo $feed['feed']?>">
+						    </div>
+						    <div>
+						      <input type="submit" name="bbs_update" value="update" >
+						    </div>
+						</form>
+					</div>
 						<?php endforeach; ?>
 					</section>
-			</div>
 			</article>
-		</div>
+			</div>
 		</div>
 		<?php include ('../footer/footer.php'); ?>
 	</body>
