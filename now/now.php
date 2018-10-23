@@ -92,12 +92,13 @@ while ( true ) {
 						<input type="text" name="nickname" placeholder="Nickname" >
 					</div>
 					<div class="mp">
-						<input type="text" name="murmur" placeholder="Murmur"><br>
+						<input type="text" name="murmur" placeholder="Hello!!"><br>
 						<?php if (isset($errors['murmur']) && $errors['murmur'] == 'blank'):?>
-						<p class="red">内容を入力してください</p>
+						<p class="red">内容を入力してください<br>
+						Plese write something.</p>
 						<?php endif; ?>
 					</div>
-					<input type="submit" value="投稿する">
+					<input type="submit" value="POST">
 				</form>
 			</div>
 		</div>
