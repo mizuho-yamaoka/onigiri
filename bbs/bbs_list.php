@@ -8,7 +8,7 @@ $page = 1;
 $start = 0;
 $last_page = '';
 $word_search = '';
-const CONTENT_PER_PAGE = 6;
+const CONTENT_PER_PAGE = 8;
 if ( isset( $_GET[ 'page' ] ) ) {
 	// -1などの不正な数字対策
 	$page = $_GET[ 'page' ];
@@ -28,28 +28,6 @@ if ( isset( $_GET[ 'page' ] ) ) {
 	$start = ( $page - 1 ) * CONTENT_PER_PAGE;
 }
 
-// // カテゴリー検索
-// if (isset($_GET['category'])) {
-
-//     $category_number = $_GET['category'];
-
-//     $sql = 'SELECT `p`.*, `u`.`name` FROM `posts` AS `p` LEFT JOIN `users` AS `u` ON `p`. `user_id` = `u`. `id` WHERE category_id = ? ORDER BY `p`.`created` DESC LIMIT ' . CONTENT_PER_PAGE . ' OFFSET ' . $start;
-//     $data = [$category_number];
-//     $stmt = $dbh->prepare($sql);
-//     $stmt->execute($data);
-//     // ポストを入れる配列
-//     $posts = array();
-//     // レコードがなくなるまで取得処理
-//     while(true){
-//       // 1件ずつフェッチ
-//         $record = $stmt->fetch(PDO::FETCH_ASSOC);
-//         // レコードがなければ処理を抜ける
-//           if($record == false){
-//               break;
-//           }
-//           // レコードがあれば追加
-//           $posts[] = $record;
-//     }
 
 // ワード検索機能
 if ( isset( $_GET[ 'wordsearch' ] ) ) {
@@ -60,7 +38,7 @@ if ( isset( $_GET[ 'wordsearch' ] ) ) {
 	// LIKE"%' . $変数 . '%"  =>>> $変数が含まれているもの
 	// WHERE句内 条件式A OR 条件式B =>>> AまたはBのとき
 
-	$sql = 'SELECT f.*, u.name FROM feeds AS f LEFT JOIN users AS u ON f. user_id = u. id WHERE feed LIKE "%' . $word_search . '%" ORDER BY f.created DESC LIMIT ' . CONTENT_PER_PAGE . ' OFFSET ' . $start;
+	$sql = 'SELECT f.*, u.name FROM feeds AS f LEFT JOIN users AS u ON f. user_id = u. id WHERE feed LIKE "%"?"%" ORDER BY f.created DESC LIMIT ' . CONTENT_PER_PAGE . ' OFFSET ' . $start;
 
 	$data = [ $word_search ];
 	$stmt = $dbh->prepare( $sql );
@@ -107,9 +85,7 @@ if ( isset( $_GET[ 'wordsearch' ] ) ) {
 <head>
 	<meta charset="UTF-8">
 	<title>BBS一覧</title>
-	<link rel="stylesheet" type="text/css" href="../css/style.css">
-	<link rel="stylesheet" type="text/css" href="../js/slick/slick.css">
-	<link rel="stylesheet" type="text/css" href="../js/slick/slick-theme.css">
+	<link rel="stylesheet" type="text/css" href="../css/style.css" media="screen">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 
@@ -119,8 +95,12 @@ if ( isset( $_GET[ 'wordsearch' ] ) ) {
 	</header>
 	<div class="topimg_b"></div>
 	<div class="wrap">
-		<div class="bloglistWrap">
-			<div class="blcWrap">
+		<div class="bbslistWrap">
+			<div class="bbsWrap">
+				<div class="htbox">
+					<img src="img/mofun.png">
+					<img src="img/tofun.png">
+				</div>
 				<div class="psbar">
 					<!-- 検索ボックス -->
 					<div class="search">
@@ -132,40 +112,48 @@ if ( isset( $_GET[ 'wordsearch' ] ) ) {
 							<input type="submit" name="submit" value="search"><br>
 						</form>
 					</div>
-				<div class="bpost"><a href="feed.php"><img src="img/writebtn.png"></a></div>
-</div>
-					<!-- カテゴリボタン -->
-					<!--   <div>
+					<div class="bpost"><a href="feed.php"><img src="img/writebtn.png"></a>
+					</div>
+				</div>
+				<!-- カテゴリボタン -->
+				<!--   <div>
     <form action="bbs_list.php" method="GET">
       <button type='submit' name='category' value="1">eat</button>
       <button type='submit' name='category' value='2'>activity</button>
       <button type='submit' name='category' value='3'>life</button>
       <button type='submit' name='category' value='4'>other</button>
     </form> -->
-					<!-- 記事の出力 -->
-					<div>
+				<!-- 記事の出力 -->
+				<article class="plw">
+					<section>
 						<?php foreach ($feeds as $feed):?>
 						<form action="bbs.php" method="POST">
 							<!-- 1件づつ処理 -->
-							<div>NAME:
-								<?php echo $feed['name'] ?>
-							</div>
-							<div>BODY:
-								<?php echo $feed['feed'] ?>
-							</div>
-							<div>TIME:
-								<?php echo $feed['created'] ?>
+							<div class="bww">
+								<div class="bwi">
+									<ul>
+										<li>
+											<?php echo $feed['name'] ?>
+										</li>
+										<li>
+											<?php echo $feed['created'] ?>
+										</li>
+									</ul>
+								</div>
+								<div class="planc">
+									<?php echo $feed['feed'] ?>
+								</div>
 							</div>
 							<input type="hidden" name="feed_id" value="<?php echo $feed['id'] ?>">
-							<input type="submit" name="submit" value="詳しく読む"><br>
+							<input type="submit" name="submit" value="JOIN..?"><br>
 						</form>
 						<?php endforeach; ?>
-					</div>
-					<div>
+					</section>
+				</article>
+				<div>
+					<div class="ttp">
 						<ul>
-							<!-- GET送信のパラメータ
-        URL?キー = 値
-        URL?キー１ = 値１＆キー２= 値２ -->
+							<!-- GET送信のパラメータ URL?キー = 値 URL?キー１ = 値１＆キー２= 値２ -->
 							<!-- 最初のページではNEWERは押せない -->
 							<li>
 								<?php if($page == 1): ?>
@@ -189,6 +177,7 @@ if ( isset( $_GET[ 'wordsearch' ] ) ) {
 				</div>
 			</div>
 		</div>
-		<?php include ('../footer/footer.php'); ?>
+	</div>
+	<?php include ('../footer/footer.php'); ?>
 </body>
 </html>

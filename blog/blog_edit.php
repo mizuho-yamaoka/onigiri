@@ -27,7 +27,7 @@ require_once( '../dbconnect.php' );
     $data = [$edit_title,$edit_post,$edit_post_id];
     $stmt = $dbh->prepare($sql);
     $stmt->execute($data);
-    header('Location: ../mypage/mypage.php');
+//    header('Location: ../mypage/mypage.php');
     exit();
 
     }

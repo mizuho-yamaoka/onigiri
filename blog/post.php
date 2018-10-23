@@ -1,13 +1,18 @@
 <?php
 require( '../path.php' );
-session_start();
+if(!isset($_SESSION)){ 
+session_start(); 
+} 
+
 require_once( '../dbconnect.php' );
 
 // 閲覧制限
 // サインイン処理をしていれば、セッション処理の中にidが保存されているので、idが存在するかどうかでこのタイムラインページの閲覧を制限する。
-if ( !isset( $_SESSION[ 'register' ][ 'id' ] ) ) {
-	header( '../location: signin.php' );
+if (empty($_SESSION) || !isset($_SESSION['register']['id'])) {
+	header('Location: ../signin.php');
+	exit();
 }
+
 $signin_user_id = $_SESSION[ 'register' ][ 'id' ];
 //SELECTで現在サインインしているユーザーの情報をusersテーブルから読み込む
 $sql = 'SELECT `id`, `name`, `img_name` FROM `users` WHERE `id` = ?';
@@ -18,33 +23,60 @@ $stmt->execute( $data );
 // フェッチする
 $user = $stmt->fetch( PDO::FETCH_ASSOC );
 
-
 // 画像挿入機能
 
-echo '<pre>';
-var_dump($_FILES);
-echo '</pre>';
-	if(isset($_FILES)){
-		$blog_img = $_FILES['blog_img']['name'];
-		$ext = substr($blog_img,-3);
 
-	}
 
 // 投稿機能
 // エラーがあれば、この中に入れる
 $errors = [];
+$category = '';
+$post = '';
+$title = '';
 // ポスト送信できたら
+// テキストエリアの内容を取り出す
+
 if ( !empty( $_POST ) ) {
-	// テキストエリアの内容を取り出す
 	$username = $_POST[ 'username' ];
 	$title = $_POST[ 'title' ];
 	$post = $_POST[ 'body' ];
-	$category = $_POST[ 'category' ];
+
+
+	$pictures = $_FILES['blog_file']['name'];
+	$temps = $_FILES['blog_file']['tmp_name'];
+	for ($i=0; $i < count($_FILES['blog_file']['name']); $i++) { 
+		$picture = $_FILES['blog_file']['name'][$i];
+		$temp = $_FILES['blog_file']['tmp_name'][$i];
+
+			$data_str = date('YmdHis');
+			$submit_file_name = $data_str . $picture;
+
+	 move_uploaded_file($temp,'../blog_img/' . $submit_file_name);
+
+
+	$post = preg_replace('/selected_picture' . $picture . '/', '<img src="../blog_img/' . $submit_file_name . '">',$post);
+
+	}
+
+	if(isset($_POST['category'])){
+		$category = $_POST['category'];
+		}
+	// $category = $_POST[ 'category' ];
 
 	//バリデーション処理
 	// 投稿の空チェック
-	if ( $post != '' && $title != '' && $category != '' ) {
-		// 空じゃなければ
+	if ( $post == '' ){
+		$errors['post'] = 'blank';
+	}
+
+	if( $title == '' ){
+		$errors['title'] = 'blank';
+	}
+	if(!isset($_POST['category'])) {
+		$errors['category'] = 'not_chosen';
+	}
+	if(empty($errors)){
+
 		// 投稿処理
 		$sql = 'INSERT INTO `posts` SET `title`= ?, `post`= ?, `user_id`= ?, `category_id`= ?, `created` = NOW()';
 		$data = [ $title, $post, $username, $category ];
@@ -53,12 +85,14 @@ if ( !empty( $_POST ) ) {
 
 		header( 'Location: blog_list.php' );
 		exit();
-	} else
-	// 空だったら
-		$errors[ 'post' ] = 'blank';
-	$errors[ 'title' ] = 'blank';
-	$errors[ 'catogory' ] = 'not_chosen';
+	}
 }
+// 	} else
+// 	// 空だったら
+// 	$errors[ 'post' ] = 'blank';
+// 	$errors[ 'title' ] = 'blank';
+// 	$errors[ 'category' ] = 'not_chosen';
+// }
 ?>
 
 <!DOCTYPE html>
@@ -66,35 +100,87 @@ if ( !empty( $_POST ) ) {
 <head>
 	<meta charset="UTF-8">
 	<title>ブログ投稿</title>
-	<link rel="stylesheet" type="text/css" href="../css/style.css">
-	<link rel="stylesheet" type="text/css" href="../js/slick/slick.css">
-	<link rel="stylesheet" type="text/css" href="../js/slick/slick-theme.css">
+	<link rel="stylesheet" type="text/css" href="../css/style.css" media="screen">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="../js/jquery-3.1.1.js"></script>
+	<script>
+
+ //    function getImg() {
+ //    const index_num = 
+ //      const blog_file = document.querySelector('#blog_file').files;
+ //      console.log(blog_file[0]['name']);
+
+ //      const blog_text = document.querySelector('#blog_text').value;
+ //      document.querySelector('#blog_text').value = blog_text + 'selected_picture' + blog_file[0]['name'];
+	// }
+
+      $(function() {
+      	$(document).on('click', '.add_blog_file_btn', function() {
+      		const num = $(this).attr('num');
+      		const file = $('.blog_file')[num].files[0];
+      		console.log(file['name']);
+      // 		const blog_file = document.querySelector('.blog_file').files;
+		    // console.log(blog_file[num]['name']);
+
+		    const blog_text = document.querySelector('#blog_text').value;
+		    document.querySelector('#blog_text').value = blog_text + 'selected_picture' + file['name'];
+      	})
+
+        const btns = $('.add_blog_file_btn');
+        let num = parseInt($(btns[btns.length - 1]).attr('num'), 10);
+        num++;
+      	$this = $("#add_box");
+        $this.click(function(e) {
+          e.preventDefault();
+          let addHtml = '<input class="blog_file" type="file" name="blog_file[]"><input num="';
+          addHtml += num;
+          addHtml += '" class="add_blog_file_btn" type="button" value="選択した画像を文末にINSERT"><br>';
+          $this.before(addHtml);
+        });
+      });
+	</script>
+
 </head>
 
 <body>
-	<article class="formWrap">
+	<header>
+		<?php include ('../header/header.php'); ?>
+	</header>
+	<div class="formWrap">
+			<h1>投稿</h1>
+		<article>
 		<section class="l_user">
-			<h1>投稿する<span>Post</span></h1>
-			<p><?php echo $user['name']?></p>
-			<img src="../user_profile_img/<?= $user['img_name']?>" width="60" class="img-thumbnail">
+			<div class="writer">
+				<h2>WRITER</h2>
+				<img src="../user_profile_img/<?= $user['img_name']?>" class="img-thumbnail">
+				<p>
+					<?php echo $user['name']?>
+				</p>
+			</div>
 		</section>
 		<section class="bl_input">
-			<form action="" method="POST">
+			<form action="" method="POST" enctype="multipart/form-data">
 				<input type="hidden" name="username" value="<?php echo $user['id']; ?>">
-				<br>
-				<input type="text" name="title" placeholder="Title">
-				<br>
-				<input type="text" name="body" placeholder="Body of letter">
-				<br>
-				<input type="file" form="img_insert" name="blog_img">
-				<input type="submit" form= "img_insert" name="img_insert" value="INSERT">
-				<br>
+
+				<div class="title">
+				<p>TITLE</p>
+				<input type="text" name="title" placeholder="Title" value="<?php echo $title ?>">
+				</div>
+				<div class="contents">
+				<p>CONTENTS</p>
+				<textarea id="blog_text" type="text" name="body" placeholder="Body of letter"><?php echo $post ?></textarea>
+				</div>
+
+
+				<input class="blog_file" type="file" name="blog_file[]">
+				<input num="0" class="add_blog_file_btn" type="button"  value="選択した画像を文末にINSERT"><br>
+				<button id="add_box">ファイルボックスを追加</button>
+				<div class="acte">
 				<input type="radio" name="category" value="1">EAT
 				<input type="radio" name="category" value="2">ACTIVITY
 				<input type="radio" name="category" value="3">LIFE
 				<input type="radio" name="category" value="4">OTHER
-				<br>
+				</div>
 				<?php if(isset($errors['title']) && $errors['title'] == 'blank'): ?>
 				<p class="red">タイトルを入力して下さい</p>
 				<?php endif; ?>
@@ -104,15 +190,16 @@ if ( !empty( $_POST ) ) {
 				<?php if(isset($errors['category']) && $errors['category'] == 'not_chosen'): ?>
 				<p class="red">カテゴリーを選択して下さい</p>
 				<?php endif; ?>
-				<input type="submit" name="submit" value="投稿する"><br>
+				<div class="thbtn">
+				<input type="submit" value="投稿する">
+				</div>
 			</form>
-			<form action="" method="GET">
-			<input id="img_insert" type="submit" >
-			</form>
-		</section>
-		<section class="list_back">
-			<a href="blog_list.php">一覧へ戻る</a>
 		</section>
 	</article>
+		<div class="list_back">
+			<a href="blog_list.php">一覧へ戻る</a>
+		</div>
+	</div>
+	<?php include ('../footer/footer.php'); ?>
 </body>
 </html>

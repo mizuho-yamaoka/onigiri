@@ -1,3 +1,4 @@
+<script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script></head>
 		<div id="footer">
 			<div class="footerWrap">
 				<div class="flogo"><img src="img/flogo.png" alt="cebufull">
@@ -9,13 +10,13 @@
 							</p>
 						</li>
 						<li>
-							<p><a href="#"><span><img src="img/sankaku.png"></span>How to use</a>
+							<p><a href="../index.php#aboutWrap"><span><img src="img/sankaku.png"></span>How to use</a>
 							</p>
 						</li>
 					</ul>
 					<ul class="fmenu2">
 						<li>
-							<p><a href="index.php"><span><img src="img/farrow.png"></span>NOW</a>
+							<p><a href="../index.php#nowWrap"><span><img src="img/farrow.png"></span>NOW</a>
 							</p>
 						</li>
 						<li>
@@ -30,14 +31,10 @@
 				</div>
 			</div>
 		</div>
-
-
 	</div>
 	<!--wrap-->
-
-	<script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
-	<script src="/Lechon/js/slick/slick.js" type="text/javascript" charset="utf-8"></script>
-	<script src="/Lechon/js/style.js" type="text/javascript" charset="utf-8"></script>
+	<script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script><!--＊-->
+	<script src="../js/style.js" type="text/javascript" charset="utf-8"></script><!--＊-->
 
 </body>
 </html>

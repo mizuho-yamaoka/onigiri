@@ -1,6 +1,6 @@
 <?php
+session_start(); 
 require( '../path.php' );
-session_start();
 require_once( '../dbconnect.php' );
 
 // ６記事で１ページの出力
@@ -11,7 +11,7 @@ $start = 0;
 $last_page = '';
 $word_search = '';
 
-const CONTENT_PER_PAGE = 6;
+const CONTENT_PER_PAGE = 8;
 if ( isset( $_GET[ 'page' ] ) ) {
 	// -1などの不正な数字対策
 	$page = $_GET[ 'page' ];
@@ -64,9 +64,8 @@ if ( isset( $_GET[ 'category' ] ) ) {
 	// LIKE"%' . $変数 . '%"  =>>> $変数が含まれているもの
 	// WHERE句内 条件式A OR 条件式B =>>> AまたはBのとき
 
-	$sql = 'SELECT p.*, u.name FROM posts AS p LEFT JOIN users AS u ON p. user_id = u. id WHERE post LIKE "%' . $word_search . '%" OR title LIKE "%' . $word_search . '%"ORDER BY p.created DESC LIMIT ' . CONTENT_PER_PAGE . ' OFFSET ' . $start;
-
-	$data = [ $word_search ];
+	$sql = 'SELECT p.*, u.name FROM posts AS p LEFT JOIN users AS u ON p. user_id = u. id WHERE post LIKE "%"?"%" OR title LIKE "%"?"%"ORDER BY p.created DESC LIMIT ' . CONTENT_PER_PAGE . ' OFFSET ' . $start;
+	$data = [$word_search,$word_search];
 	$stmt = $dbh->prepare( $sql );
 	$stmt->execute( $data );
 
@@ -114,9 +113,7 @@ if ( isset( $_GET[ 'category' ] ) ) {
 <head>
 	<meta charset="UTF-8">
 	<title>ブログ一覧</title>
-	<link rel="stylesheet" type="text/css" href="../css/style.css">
-	<link rel="stylesheet" type="text/css" href="../js/slick/slick.css">
-	<link rel="stylesheet" type="text/css" href="../js/slick/slick-theme.css">
+	<link rel="stylesheet" type="text/css" href="../css/style.css" media="screen">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 
@@ -169,54 +166,59 @@ if ( isset( $_GET[ 'category' ] ) ) {
 				</div>
 				<div>
 					<div class="blw">
-					<?php foreach ($posts as $post):?>
-					<div class="blaw">
-						<form action="blog.php" method="POST">
-							<!-- 1件づつ処理 -->
-							<div>NAME:
-								<?php echo $post['name'] ?>
+						<?php foreach ($posts as $post):?>
+						<div class="blaw">
+							<div class="blog_thum">
+								<img src="img/ジンベイザメ横から.jpg">
 							</div>
-							<div>TITLE:
-								<?php echo $post['title'] ?>
-							</div>
-							<div>BODY:
-								<?php echo $post['post'] ?>
-							</div>
-							<div>TIME:
-								<?php echo $post['created'] ?>
-							</div>
-							<input type="hidden" name="post_id" value="<?php echo $post['id'] ?>">
-							<input type="submit" name="submit" value="詳しく読む">
-						</form>
+								<div class="bwi">
+							<form action="blog.php" method="POST">
+								<!-- 1件づつ処理 -->
+									<ul>
+										<li><?php echo $post['name'] ?></li>
+										<li class="time"><?php echo $post['created'] ?></li>
+									</ul>
+								<div class="title">
+									<?php echo $post['title'] ?>
+								</div>
+								<div class="body">
+									<?php echo $post['post'] ?>
+								</div>
+								<div class="ebtn">
+								<input type="hidden" name="post_id" value="<?php echo $post['id'] ?>">
+								<input type="submit" name="submit" value="More read">
+								</div>
+							</form>
+						</div>
 						</div>
 						<?php endforeach; ?>
-					
-				</div>
-					<ul>
-						<!-- GET送信のパラメータ
+
+					</div>
+					<div class="ttp">
+						<ul>
+							<!-- GET送信のパラメータ
         URL?キー = 値
         URL?キー１ = 値１＆キー２= 値２ -->
-						<!-- 最初のページではNEWERは押せない -->
-						<li>
-							<?php if($page == 1): ?>
-							<a>Newer</a>
-							<?php else: ?>
-							<!-- それ以外の場合 -->
-							<a href="blog_list.php?page=<?php echo $page -1; ?>">Newer</a>
-							<?php endif; ?>
-						</li>
-						<!-- 最後のページではOlderは押せない -->
-						<li>
-							<?php if ($page == $last_page):?>
-
-
-							<a>Older</a>
-							<!-- それ以外の場合 -->
-							<?php else: ?>
-							<a href="blog_list.php?page=<?php echo $page +1; ?>">Older</a>
-							<?php endif; ?>
-						</li>
-					</ul>
+							<!-- 最初のページではNEWERは押せない -->
+							<li>
+								<?php if($page == 1): ?>
+								<a>Newer</a>
+								<?php else: ?>
+								<!-- それ以外の場合 -->
+								<a href="blog_list.php?page=<?php echo $page -1; ?>">Newer</a>
+								<?php endif; ?>
+							</li>
+							<!-- 最後のページではOlderは押せない -->
+							<li>
+								<?php if ($page == $last_page):?>
+								<a>Older</a>
+								<!-- それ以外の場合 -->
+								<?php else: ?>
+								<a href="blog_list.php?page=<?php echo $page +1; ?>">Older</a>
+								<?php endif; ?>
+							</li>
+						</ul>
+					</div>
 				</div>
 			</div>
 			<!--blcWrap-->
