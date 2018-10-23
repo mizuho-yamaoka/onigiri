@@ -48,9 +48,6 @@
 
     // if(!empty($_POST)){
       
-echo '<pre>';
-var_dump ($_POST);
-echo '</pre>';
 
     if(!empty($_POST['update_name'])){
       $update_name = $_POST['update_name'];
@@ -107,9 +104,6 @@ echo '</pre>';
       $hash_password = password_hash($_POST['update_password_new1'],PASSWORD_DEFAULT);
     }
 
-
-
-
     if(!empty($_POST['update_gender'])){
       $update_gender = $_POST['update_gender'];
     }
@@ -140,8 +134,6 @@ echo '</pre>';
 
     }
 
-
-
 ?>
 
 <!DOCTYPE html>
@@ -156,68 +148,51 @@ echo '</pre>';
     <form action="mypage_edit.php" method="POST" enctype="multipart/form-data">
       
       <!-- イメージ画像 -->
-    <?php if(isset($_GET['img_name'])):?>
       <img src="../user_profile_img/<?= $user['img_name']?>" width="60" class="img-thumbnail" ><br>
       <lavel for="img_name">イメージ画像を変更する</lavel><br>
       <input type="file" name="update_img_name" accept="image/*">
        <input type="submit" name="img_name" value="update">
-    <?php endif; ?>
        
-    <?php if(isset($_GET['name'])):?>
       <lavel for="name">USER NAME:</lavel>
        <input type="text" name="update_name" placeholder="<?php echo $name;?>">
        <input type="submit" name="name" value="update">
-    <?php endif; ?> 
 <!--     <?php if($update_name == ''): ?>
       <input type="hidden" name="update_name" value="<?php echo $name;?>">
     <?php endif ;?> -->
 
-    <?php if(isset($_GET['email'])):?>
       <lavel for="email">E-MAIL:</lavel>
       <input type="email" name="update_email" placeholder="<?php echo $email;?>">
       <input type="submit" name="email" value="update">
-    <?php endif; ?>
 <!--     <?php if($update_email == ''): ?>
       <input type="hidden" name="update_email" value="<?php echo $email;?>">
     <?php endif ;?> -->
 
 
-    <?php if(isset($_GET['password'])):?>
       <lavel for="password">PASSWORD</lavel><br>
       <input type="password" name="update_password_now" placeholder="your password">(現在のパスワード)<br>
       <input type="password" name="update_password_new1" placeholder="new password">(新しいパスワード)<br>
       <input type="password" name="update_password_new2" placeholder="new password (check)">(新しいパスワードの再入力)
       <input type="submit" name="password" value="update">
-    <?php endif; ?>
 
-
-    <?php if(isset($_GET['gender'])):?>
       <lavel for="email">GENDER:</lavel><br> 
       <input type="radio" name="update_gender" value="1">Male
       <input type="radio" name="update_gender" value="2">Female
       <input type="radio" name="update_gender" value="3">Not Chosen
       <input type="submit" name="gender" value="update">
-    <?php endif; ?>
 
-    <?php if(isset($_GET['age'])):?>
       <lavel for="age">AGE:</lavel>
       <input type="text" name="update_age" placeholder="<?php echo $age?>">
       <input type="submit" name="age" value="update">
-    <?php endif; ?>
 
 
-    <?php if(isset($_GET['school'])):?>
       <lavel for="school">SCHOOL:</lavel>
       <input type="text" name="update_school" placeholder="<?php echo $school?>">
       <input type="submit" name="school" value="update">
-    <?php endif; ?>
 
 
-    <?php if(isset($_GET['other'])):?>
       <lavel for="other">INTRODUCTION:</lavel>
       <input type="text" name="update_other" placeholder="<?php echo $other?>">
       <input type="submit" name="other" value="update">
-    <?php endif; ?>
 
     </form>
   <a href="mypage.php">Back to MyPage</a>
