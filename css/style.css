@@ -675,7 +675,12 @@ video {
 .formWrap article {
     display: flex;
     justify-content: space-between;
-    margin-top: 40px;
+	margin: 40px auto;/*feed*/
+    max-width: 720px;/*feed*/
+}
+.formWrap textarea{
+	width: 100%;
+	height: 200px;
 }
 .l_user {
     width: 40%;
@@ -702,6 +707,18 @@ video {
 }
 .bl_input .title input, .bl_input .contents input, .bl_input .thbtn input {
     width: 100%;
+}
+.thbtn input{
+	border: none;
+    background-color: #ffaa00;
+    color: #fff;
+    font-size: 1.3rem;
+    font-weight: bold;
+    padding: 3px;
+}
+.thbtn input:hover{
+	opacity: 0.8;
+	cursor: pointer;
 }
 .bl_input .title input {
     height: 50px;
