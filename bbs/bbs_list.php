@@ -115,14 +115,7 @@ if ( isset( $_GET[ 'wordsearch' ] ) ) {
 					<div class="bpost"><a href="feed.php"><img src="img/writebtn.png"></a>
 					</div>
 				</div>
-				<!-- カテゴリボタン -->
-				<!--   <div>
-    <form action="bbs_list.php" method="GET">
-      <button type='submit' name='category' value="1">eat</button>
-      <button type='submit' name='category' value='2'>activity</button>
-      <button type='submit' name='category' value='3'>life</button>
-      <button type='submit' name='category' value='4'>other</button>
-    </form> -->
+
 				<!-- 記事の出力 -->
 				<article class="plw">
 					<section>

@@ -81,7 +81,10 @@ $feed = $record;
 			<dl>
 				<dt>
 					「もっと人数がいたらこのアクティビティ安くなるのに...」<br>
-					「他の学校の人と交流したいな」
+					「他の学校の人と交流したいな」<br>
+					"I need more participants to get discount of tour payment..."<br>
+					"I want to get more friends in other language schools !"
+
 				</dt>
 			
 				<dd><img src="img/think.png">
@@ -91,10 +94,10 @@ $feed = $record;
 			</dl>
 			<dl>
 				<dt>
-					<span>募集しよう！</span><br>
-					<i class="fas fa-check"></i>やりたいこと（ツアーなら詳細）
-					<i class="fas fa-check"></i>日程
-					<i class="fas fa-check"></i>募集人数等を記入
+					<span>募集しよう！ Let's recruit !</span><br>
+					<i class="fas fa-check"></i>やりたいこと（ツアーなら詳細）Detail of activity
+					<i class="fas fa-check"></i>日程 Date
+					<i class="fas fa-check"></i>募集人数等を記入 Number of participants
 				</dt>
 			
 				<dd><img src="img/write.png">
@@ -104,11 +107,11 @@ $feed = $record;
 			</dl>
 			<dl>
 				<dt>
-					<span>参加したい！</span><br>
-					<i class="far fa-hand-point-right"></i>コメントで質問！
-					<i class="far fa-hand-point-right"></i>JOINボタンから主催者へコンタクトをとる！
-					<p>※連絡先送信後主催者からの返信をお待ちください</p>
-					<p>※なお、コミニュティでのアクティビティの実施に関しましては皆さま自身でのやりとりでお願いします。</p>
+					<span>参加したい！ Join the activity !</span><br>
+					<i class="far fa-hand-point-right"></i>コメントで質問！ Ask in comment field!
+					<i class="far fa-hand-point-right"></i>JOINボタンから主催者へコンタクトをとる！ SEND a e-mail to the host!
+					<p>※連絡先送信後主催者からの返信をお待ちください Plese wait a while to get the reply from the host.</p>
+					<p>※なお、コミニュティでのアクティビティの実施に関しましては皆さま自身でのやりとりでお願いします。 We are afraid that we won't guarantee about any troubles and accidents. Plese be sure about your safety.</p>
 				</dt>
 			
 				<dd><img src="img/think.png">
