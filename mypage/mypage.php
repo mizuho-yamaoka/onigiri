@@ -20,36 +20,37 @@ $stmt = $dbh->prepare( $sql );
 $stmt->execute( $data );
 
 // ブログ編集
- if ( !empty( $_POST[ 'post_edit' ] ) ) {
- 	$_SESSION[ 'post_id' ] = $_POST[ 'post_id' ];
-// 	header( 'Location: ../blog/blog_edit.php' );
- }
-    if (!empty($_POST['blog_update'])) {
-        $edit_title = $_POST['edit_title'];
-        $edit_post = $_POST['edit_post'];
+if ( !empty( $_POST[ 'post_edit' ] ) ) {
+	$_SESSION[ 'post_id' ] = $_POST[ 'post_id' ];
+	// 	header( 'Location: ../blog/blog_edit.php' );
+}
+$edit_post_id = $_SESSION['post_id'];
+if ( !empty( $_POST[ 'blog_update' ] ) ) {
+	$edit_title = $_POST[ 'edit_title' ];
+	$edit_post = $_POST[ 'edit_post' ];
 
-    $sql = 'UPDATE posts SET title = ?, post = ? WHERE id = ?';
-    $data = [$edit_title,$edit_post,$edit_post_id];
-    $stmt = $dbh->prepare($sql);
-    $stmt->execute($data);
-    }
+	$sql = 'UPDATE posts SET title = ?, post = ? WHERE id = ?';
+	$data = [ $edit_title, $edit_post, $edit_post_id ];
+	$stmt = $dbh->prepare( $sql );
+	$stmt->execute( $data );
+}
 
 // BBS編集
- if ( !empty( $_POST[ 'feed_edit' ] ) ) {
- 	$_SESSION[ 'feed_id' ] = $_POST[ 'feed_id' ];
-// 	header( 'Location: ../bbs/bbs_edit.php' );
- }
-     if (!empty($_POST['bbs_update'])) {
-    $edit_feed = $_POST['edit_feed'];
+if ( !empty( $_POST[ 'feed_edit' ] ) ) {
+	$_SESSION[ 'feed_id' ] = $_POST[ 'feed_id' ];
+	// 	header( 'Location: ../bbs/bbs_edit.php' );
+}
+if ( !empty( $_POST[ 'bbs_update' ] ) ) {
+	$edit_feed = $_POST[ 'edit_feed' ];
 
-    $sql = 'UPDATE feeds SET feed = ? WHERE id = ?';
-    $data = [$edit_feed,$edit_feed_id];
-    $stmt = $dbh->prepare($sql);
-    $stmt->execute($data);
-//    header('Location: ../mypage/mypage.php');
-    exit();
+	$sql = 'UPDATE feeds SET feed = ? WHERE id = ?';
+	$data = [ $edit_feed, $edit_feed_id ];
+	$stmt = $dbh->prepare( $sql );
+	$stmt->execute( $data );
+	//    header('Location: ../mypage/mypage.php');
+	exit();
 
-    }
+}
 
 // ブログの削除処理
 if ( !empty( $_POST[ 'post_delete' ] ) ) {
@@ -131,9 +132,9 @@ while ( true ) {
 // いいねしたBBS記事の出力
 
 $sql = "SELECT u.id, l.*, f.* FROM feed_likes AS l LEFT JOIN users AS u ON u.id = l.user_id LEFT JOIN feeds AS f ON l.feed_id = f.id WHERE l.user_id = ?";
-$data = [$signin_user_id];
-$stmt = $dbh->prepare($sql);
-$stmt->execute($data);
+$data = [ $signin_user_id ];
+$stmt = $dbh->prepare( $sql );
+$stmt->execute( $data );
 
 // ポストを入れる配列
 $liked_feeds = array();
@@ -151,9 +152,9 @@ while ( true ) {
 
 //いいねしたBLOG記事の出力
 $sql = "SELECT u.id, l.*, p.* FROM post_likes AS l LEFT JOIN users AS u ON u.id = l.user_id LEFT JOIN posts AS p ON l.post_id = p.id WHERE l.user_id = ?";
-$data = [$signin_user_id];
-$stmt = $dbh->prepare($sql);
-$stmt->execute($data);
+$data = [ $signin_user_id ];
+$stmt = $dbh->prepare( $sql );
+$stmt->execute( $data );
 
 // ポストを入れる配列
 $liked_posts = array();
@@ -199,69 +200,40 @@ if ( $gender == '1' ) {
 					<div id="uinfo">
 						<div class="user_img"><img src="../user_profile_img/<?= $user['img_name']?>" width="60" class="img-thumbnail">
 						</div>
-						<div class="edita">
-							<h2>YOUR INFORMATION</h2>
-							<form action="mypage_edit.php" method="GET">
-								<ul class="isr">
-									<li>IMEAGE SETTING<input type="submit" name="img_name" value="">
-									</li>
-									<li>PASS SETTING<input type="submit" name="password" value="">
-									</li>
-								</ul>
-								<ul>
-									<li>
-										User Name:
+						<div class="userInfo">
+							<ul>
+								<li>
+									<span>
 										<?php echo $name?>
-										<input type="submit" name="name" value="">
-									</li>
-									<li>
-										E-mail:
-										<?php echo $email?>
-										<input type="submit" name="email" value="">
-									</li>
-									<li>
-										gender:
-										<?php echo $gender?>
-										<input type="submit" name="gender" value="">
-									</li>
-									<li>
-										age:
-										<?php echo $age?>
-										<input type="submit" name="age" value="">
-									</li>
-									<li>
-										school:
-										<?php echo $school?>
-										<input type="submit" name="school" value="">
-									</li>
-									<li>
-										introduction:
-										<?php echo $other?>
-										<input type="submit" name="other" value="">
-									</li>
-								</ul>
-							</form>
-							<p><a href="../signout.php">sign out</a>
-							</p>
+									</span>
+									|<a href="../signout.php">sign out</a>
+								</li>
+								<li><a href="mypage_edit.php">ProfileEdit</a>
+								</li>
+								<li><button type="button" class="like"><i class="far fa-heart"></i></li>
+							</ul>
 						</div>
 					</div>
-				</article>
-				
 				<!-- いいねしたBBS記事の出力 -->
-				<div>
+				<div class="like_list">
+						<section>
 					<h3>BBS LIKE LIST</h3>
 						<?php foreach ($liked_feeds as $liked_feed) :?>
 							<form action="../bbs/bbs.php" method="POST">
-								<div><?php echo $liked_feed['created']?></div>
-								<div><?php echo $liked_feed['feed']?></div>
-								<div><input type="hidden" name="feed_id" value="<?php echo $liked_feed['feed_id']?>"></div>
-								<div><input type="submit" name="submit" value="CHECK"></div>
+								<ul>
+									<li class="time"><?php echo $liked_feed['created']?></li>
+									<li><?php echo $liked_feed['feed']?></li>
+								</ul>
+									<p>
+										<input type="hidden" name="feed_id" value="<?php echo $liked_feed['feed_id']?>">
+										<div class="check"><i class="fas fa-caret-right"></i><input type="submit" name="submit" value="CHECK"></div>
+									</p>
+								
 							</form>
 						<?php endforeach; ?>
-				</div>
-				
-				<!-- いいねしたBLOG記事の出力 -->
-				<div>
+							</section>
+						<section>
+							<!-- いいねしたBLOG記事の出力 -->
 					<h3>BLOG LIKE LIST</h3>
 						<?php foreach ($liked_posts as $liked_post) :?>
 							<form action="../blog/blog.php" method="POST">
@@ -272,8 +244,8 @@ if ( $gender == '1' ) {
 								<div><input type="submit" name="submit" value="CHECK"></div>
 							</form>
 						<?php endforeach; ?>
-				</div>
-
+						</section>
+					</article>
 				<article class="secound_a">
 					<h3>YOUR BLOG POSTS</h3>
 					<section class="blw">
@@ -356,6 +328,7 @@ if ( $gender == '1' ) {
 			</article>
 			</div>
 		</div>
+			</div>
 		<?php include ('../footer/footer.php'); ?>
 	</body>
 </html>

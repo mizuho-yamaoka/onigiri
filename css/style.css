@@ -1068,55 +1068,76 @@ display: none;
     display: block;
     text-align: center;
     cursor: pointer;
+	width: 50%;
 }
-#uinfo .edita {
-    background: #FFFFFF;
+#uinfo{
+display: flex;
+    max-width: 720px;
+    margin: 0 auto;
+    justify-content: space-around;
+	align-items: center;
+}
+.userInfo{width: 50%;}
+.userInfo li{
+	margin-bottom: 1rem;
+}
+.userInfo li span{
+	font-size: 2.5rem;
+	font-weight: bold;
+	margin-right: 5px;
+}
+.userInfo li:first-child a{
+	margin-left: 5px;
+}
+.userInfo li:nth-child(2){
+	width: 100%;
+    border: 1px solid #2b2b2b;
+    padding: 0.5em;
+    border-radius: 10px;
     text-align: center;
-    border: #2b2b2b 1px solid;
-    display: none;
+	letter-spacing: 1px;
 }
-.edita h2 {
-    margin-top: 2rem;
+.userInfo li:last-child{
+	width: 100%;
+    border: 1px solid #2b2b2b;
+    padding: 0.5em;
+    border-radius: 10px;
+    text-align: center;
 }
-.edita p {
-    background-color: #14548a;
-    padding: 0.8em;
+.userInfo li i{
+	font-size: 1.3rem;
 }
-.edita a {
-    color: #FFFFFF;
-    font-size: 1.3rem;
-    width: 100%;
-    font-weight: bold;
+.like_list{
+	display: none;
+	max-width: 720px;
+	margin: 2rem auto;
+	padding: 2rem 0;
+	border-top: 1px solid #484546;
+	border-bottom: 1px solid #484546;
 }
-.edita form {
-    display: flex;
-    text-align: left;
-    padding: 0.8em;
+.like_list ul{
+	display: flex;
 }
-.edita form ul {
-    margin: 2rem;
-    width: 50%;
+.like_list ul li:first-child{
+	margin-right: 10px;
 }
-.edita form input {
-    border: none;
-    color: #2b2b2b;
-    cursor: pointer;
+.like_list ul li:nth-child(2){
+	font-size: 1.3rem;
 }
-.isr {
-    border-right: 1px solid #2b2b2b;
+.check{
+	text-align: right;
 }
-.isr li, .edita form ul li {
-    font-size: 1rem;
-    margin-bottom: 2rem;
+.check i{
+    vertical-align: bottom;
+    margin-right: 5px;
+}
+.check input{
+	border: none;
+	background-color: transparent;
+	font-weight: bold;
+	vertical-align: bottom;
+	font-size: 1rem;
     padding: 0;
-}
-.edita input {
-    width: 1.4rem;
-    background: url(../mypage/img/edit-regular.svg) no-repeat center center;
-    background-size: contain;
-    padding: 0;
-    height: 1.4rem;
-    margin-left: 5px;
 }
 .mpbl section {
     display: flex;
@@ -1136,7 +1157,7 @@ display: none;
 .blw form {
     padding: 0.8em;
 }
-.blw form .time, .bbsaw form .time {
+.time {
     color: #FFFFFF;
     font-size: 0.6em;
     font-weight: bold;

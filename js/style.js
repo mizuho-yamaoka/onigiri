@@ -38,12 +38,12 @@ return false;
 });
 //トグルmy page
 $(function(){
-$("#uinfo .user_img").on("click", function() {
-$('.edita').slideToggle(800);	
+$(".like").on("click", function() {
+$('.like_list').slideToggle(800);	
 });});
-$("#btn").click(function() {
-    $('#frameWindow').dialog('open');
-});
+//$("#btn").click(function() {
+//    $('#frameWindow').dialog('open');
+//});
 //トグルbbs join
 $(function(){
 $("#joinbt a").on("click", function() {
