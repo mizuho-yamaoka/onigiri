@@ -3,7 +3,7 @@ require( '../path.php' );
 session_start();
 require_once( '../dbconnect.php' );
 
-
+	$signin_user_id = '';
 if ( isset( $_SESSION[ 'register' ][ 'id' ] ) ) {
 	$signin_user_id = $_SESSION[ 'register' ][ 'id' ];
 }
