@@ -84,7 +84,7 @@ $post = $record;
 			<?php echo $post['post'] ?>
 		</div>
 		<div class="opt">
-			<a href="post.php"><i class="fas fa-pencil-alt"></i>投稿する</a>
+			<a href="post.php"><i class="fas fa-pencil-alt"></i></a>
 			<span>|</span>
 			<div>
 				<?php if(isset($_SESSION['register']['id'])): ?>

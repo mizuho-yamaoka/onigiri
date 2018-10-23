@@ -134,7 +134,7 @@ if ( !empty( $_POST ) ) {
 				e.preventDefault();
 				let addHtml = '<input class="blog_file" type="file" name="blog_file[]"><input num="';
 				addHtml += num;
-				addHtml += '" class="add_blog_file_btn" type="button" value="選択した画像を文末にINSERT"><br>';
+				addHtml += '" class="add_blog_file_btn" type="button" value="INSERT IMAGE -本文に写真を挿入-"><br>';
 				$this.before( addHtml );
 			} );
 		} );
@@ -173,7 +173,7 @@ if ( !empty( $_POST ) ) {
 					<div class="pict">
 						<p>INSERT IMAGE</p>
 						<ul>
-						<li><input class="blog_file" type="file" name="blog_file[]"><button id="add_box"><i class="far fa-images"></i>Add Image</button></li>
+						<li><input class="blog_file" type="file" name="blog_file[]"><button id="add_box"><i class="far fa-images"></i>Add Image Box</button></li>
 						<li><input num="0" class="add_blog_file_btn" type="button" value="INSERT IMAGE-本文に写真を挿入-"></li>
 						</ul>
 					</div>
@@ -194,13 +194,13 @@ if ( !empty( $_POST ) ) {
 					<p class="red">カテゴリーを選択して下さい</p>
 					<?php endif; ?>
 					<div class="thbtn">
-						<input type="submit" value="投稿する">
+						<input type="submit" value="POST">
 					</div>
 				</form>
 			</section>
 		</article>
 		<div class="list_back">
-			<a href="blog_list.php">&#171;Go back</a>
+			<a href="blog_list.php">&#171;Back</a>
 		</div>
 	</div>
 	<?php include ('../footer/footer.php'); ?>

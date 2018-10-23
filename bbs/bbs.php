@@ -57,6 +57,8 @@ $record[ 'comment_count' ] = count_comments( $dbh, $record[ 'id' ] );
 // レコードがあれば追加
 $feed = $record;
 
+
+
 ?>
 
 
@@ -172,6 +174,9 @@ $feed = $record;
 						<div class="emailsend">
 						<?php include('email_form.php'); ?>
 						<?php endif; ?>
+            <?php if (isset($_GET['sent'])): ?>
+              <p>送信完了（SENT）</p>
+            <?php endif; ?>
 						</div>
 					</div>
 				</section>
