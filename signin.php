@@ -82,15 +82,15 @@ if ( !empty( $_POST ) ) {
 						</div>
 						<div class="form-group">
 							<p class="password">パスワード(Password)</p>
-							<input type="password" name="password" class="form-control" id="password" placeholder="4 ~ 16文字のパスワード">
+							<input type="password" name="password" class="form-control" id="password" placeholder="4 ~ 16 letters and numbers">
 							<?php if(isset($errors['signin']) && $errors['signin'] == 'blank'): ?>
-							<p class="red"> e-mail address と pasword を入力してください</p>
+							<p class="red"> メールアドレスとパスワードを入力してください(Plese enter correct e-mail adress and password.)</p>
 							<?php endif; ?><br>
 							<?php if(isset($errors['signin']) && $errors['signin'] == 'failed'):?>
-							<span class="red">サインインに失敗しました</span>
+							<span class="red">サインインに失敗しました(Sign in was failed.)</span>
 							<?php endif; ?>
 						</div>
-						<input type="submit" class="btn btn-info" value="サインイン">
+						<input type="submit" class="btn btn-info" value="SIGN IN">
 					</form>
 				</section>
 			</article>

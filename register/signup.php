@@ -165,7 +165,7 @@ if ( !empty( $_POST ) ) {
 										<input type="radio" name="gender" value="2">
 									</div>
 									<div>
-										Other<input type="radio" name="gender" value="3">
+										Do not register<input type="radio" name="gender" value="3">
 									</div>
 									<?php if(isset($errors['gender']) && $errors['gender'] == 'blank'): ?>
 									<p>Please select your gender</p>
@@ -186,7 +186,7 @@ if ( !empty( $_POST ) ) {
 									<?php endif; ?>
 								</li>
 								<li>
-									<label for="other">備考(other)</label>
+									<label for="other">追記事項(Extra profile)</label>
 									<input type="text" name="other" value="<?php echo htmlspecialchars($other);?>">
 									<?php if(isset($errors['other']) && $errors['other'] == 'blank') : ?>
 									<p>Please enter your other</p>
