@@ -186,7 +186,7 @@ $feed = $record;
 			</article>
 		</div>
 			<div class="list_back">
-				<a href="bbs_list.php">&#171;Go back</a>
+				<a href="bbs_list.php">&#171;Back</a>
 			</div>
 	</div>
 	
