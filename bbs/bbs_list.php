@@ -138,7 +138,7 @@ if ( isset( $_GET[ 'wordsearch' ] ) ) {
 								</div>
 							</div>
 							<input type="hidden" name="feed_id" value="<?php echo $feed['id'] ?>">
-							<input type="submit" name="submit" value="JOIN..?"><br>
+							<input type="submit" name="submit" value="Read more details"><br>
 						</form>
 						<?php endforeach; ?>
 					</section>
