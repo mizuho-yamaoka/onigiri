@@ -14,9 +14,9 @@
                 <img src="../user_profile_img/<?php echo $user['img_name']; ?>" class="img-circle">
             </div>
             <div class="form-group">
-                <input type="text" name="write_comment" class="form-control" placeholder="コメントを書く">
+                <input type="text" name="write_comment" class="form-control" placeholder="Comment">
                 <?php if(isset($_SESSION['empty_comment'])): ?>
-                  <p>コメントを記入してください</p>
+                  <p>コメントを記入してください(Plese write the comment)</p>
                 <?php endif; ?>
             <input type="hidden" name="feed_id" value="<?php echo $feed["id"] ?>">
                 <button type="submit" class="btn"><span style="font-size: 3rem;margin-left: 10px;
