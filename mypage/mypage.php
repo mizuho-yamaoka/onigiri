@@ -19,17 +19,37 @@ $data = [ $signin_user_id ];
 $stmt = $dbh->prepare( $sql );
 $stmt->execute( $data );
 
-// ブログ編集画面への遷移
-if ( !empty( $_POST[ 'post_edit' ] ) ) {
-	$_SESSION[ 'post_id' ] = $_POST[ 'post_id' ];
-	header( 'Location: ../blog/blog_edit.php' );
-}
+// ブログ編集
+// if ( !empty( $_POST[ 'post_edit' ] ) ) {
+// 	$_SESSION[ 'post_id' ] = $_POST[ 'post_id' ];
+// 	header( 'Location: ../blog/blog_edit.php' );
+// }
+    if (!empty($_POST['blog_update'])) {
+        $edit_title = $_POST['edit_title'];
+        $edit_post = $_POST['edit_post'];
 
-// BBS編集画面への遷移
-if ( !empty( $_POST[ 'feed_edit' ] ) ) {
-	$_SESSION[ 'feed_id' ] = $_POST[ 'feed_id' ];
-	header( 'Location: ../bbs/bbs_edit.php' );
-}
+    $sql = 'UPDATE posts SET title = ?, post = ? WHERE id = ?';
+    $data = [$edit_title,$edit_post,$edit_post_id];
+    $stmt = $dbh->prepare($sql);
+    $stmt->execute($data);
+    }
+
+// BBS編集
+// if ( !empty( $_POST[ 'feed_edit' ] ) ) {
+// 	$_SESSION[ 'feed_id' ] = $_POST[ 'feed_id' ];
+// 	header( 'Location: ../bbs/bbs_edit.php' );
+// }
+     if (!empty($_POST['bbs_update'])) {
+    $edit_feed = $_POST['edit_feed'];
+
+    $sql = 'UPDATE feeds SET feed = ? WHERE id = ?';
+    $data = [$edit_feed,$edit_feed_id];
+    $stmt = $dbh->prepare($sql);
+    $stmt->execute($data);
+    header('Location: ../mypage/mypage.php');
+    exit();
+
+    }
 
 // ブログの削除処理
 if ( !empty( $_POST[ 'post_delete' ] ) ) {
@@ -177,6 +197,32 @@ if ( $gender == '1' ) {
 				<h1><img src="img/mypagepng"></h1>
 				<article>
 					<div id="modal-main"><iframe width="100%" height="450" src="mypage_edit.php" name="right"></iframe>
+
+						<!-- ここにeditを入れる -->
+						<!-- blogの編集画面 -->
+						<form action="mypage.php" method="POST">
+						    <div>
+						      <label for="edit_blog_title">Title</label>
+						      <input type="text" name="edit_title" value="<?php echo $post['title']?>">
+						    </div>
+
+						    <div>
+						      <label for="edit_blog_post">Detail</label>
+						      <input type="text" name="edit_post" value="<?php echo $post['post']?>">
+						    </div>
+						    <div>
+						      <input type="submit" name="blog_update" value="update" >
+						    </div>
+						</form>
+						<form action="mypage.php" method="POST">
+						    <div>
+						      <label for="edit_bbs_feed">Detail</label>
+						      <input type="text" name="edit_feed" value="<?php echo $feed['feed']?>">
+						    </div>
+						    <div>
+						      <input type="submit" name="bbs_update" value="update" >
+						    </div>
+						</form>
 					</div>
 					<div id="uinfo">
 						<div class="user_img"><img src="../user_profile_img/<?= $user['img_name']?>" width="60" class="img-thumbnail">
