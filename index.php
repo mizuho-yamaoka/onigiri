@@ -145,7 +145,7 @@ $name = $user['name'];
 						このサイトはセブ留学生による、セブ留学生の為の情報交換サイトです。<br> セブに留学に来たあなたの情報で当サイトを育ててあげてください♪
 					</p>
 					<p class="aen">
-						This site is for Cebu international students by international students in Cebu.<br> Please raise this site with your information came to study in Cebu♪
+						This is an information exchange platform site, by international students in Cebu, for international students in Cebu.<br> Please share the infomations about Cebu to this site ♪
 					</p>
 				</div>
 			</div>
@@ -172,7 +172,7 @@ $name = $user['name'];
 							役に立ったり立たなかったり？！なコラム集。セブ生活をもっと知りたい方は必見です！
 						</p>
 						<p class="aen">
-							Is it useful or not? ! Column collection. It is a must-see for those who want to know more about Cebu life!
+							These blogs helping you on and off !? If you want to know the life of Cebu, this blog is must-see!
 						</p>
 						<div class="howtobtn">
 					<P><a href="bbs/bbs_list.php">BBS list<span><img src="img/arrow.png" alt="サイトの使い方"></span></a>
