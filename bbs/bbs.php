@@ -139,8 +139,6 @@ $feed = $record;
 						<?php echo $feed['feed'] ?>
 					</div>
 					<div class="opt">
-						<a href="feed.php"><i class="fas fa-pencil-alt"></i>投稿する</a>
-						<span>|</span>
 						<div>
 							<!-- いいね!ボタン -->
 							<?php if(isset($_SESSION['register']['id'])): ?>
@@ -168,9 +166,13 @@ $feed = $record;
 						<!-- コメント機能 -->
 						<?php include('comment_view.php'); ?>
 						<!-- JOIN -->
-						<a href="#collapseComment<?php echo $feed['id'] ?>" data-toggle="collapse" aria-expanded="false"><span>JOIN</span></a>
+						<div id="joinbt">
+						<a href="#collapseComment<?php echo $feed['id'] ?>" data-toggle="collapse" aria-expanded="false">JOIN</a>
+						</div>
+						<div class="emailsend">
 						<?php include('email_form.php'); ?>
 						<?php endif; ?>
+						</div>
 					</div>
 				</section>
 			</article>

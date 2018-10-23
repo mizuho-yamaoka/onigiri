@@ -28,9 +28,6 @@ a {
     color: #2b2b2b;
     cursor: pointer;
 }
-a:hover {
-    opacity: 0.8;
-}
 ul {
     padding: 0;
     margin: 0;
@@ -409,9 +406,6 @@ video {
     cursor: pointer;
     outline: none;
 }
-.search input[type="submit"]:hover {
-    background-image: url(../blog/img/searchb2.png);
-}
 .search input[type="text"] {
     height: 38px;
     border-radius: 5px;
@@ -455,16 +449,17 @@ video {
 }
 .ctbtn li .cteg1 {
     background: url(../blog/img/eat2.jpg) no-repeat;
+	background-size: cover;
 }
 .ctbtn li .cteg2 {
     background: url(../blog/img/activityb2.jpg) no-repeat;
-}
+    background-size: cover;}
 .ctbtn li .cteg3 {
     background: url(../blog/img/life2.jpg) no-repeat;
-}
+    background-size: cover;}
 .ctbtn li .cteg4 {
     background: url(../blog/img/other2.jpg) no-repeat;
-}
+    background-size: cover;}
 .ctbtn li:first-child {
     background: url(../blog/img/eatbg.jpg) no-repeat;
     background-size: cover;
@@ -481,9 +476,6 @@ video {
     background: url(../blog/img/otherbg.jpg) no-repeat;
     background-size: cover;
 }
-.ctbtn li :hover img {
-    visibility: hidden;
-}
 /*bpost Pulse btn*/
 @-webkit-keyframes hvr-pulse {
  25% {
@@ -494,36 +486,6 @@ video {
  -webkit-transform: scale(0.9);
  transform: scale(0.9);
 }
-}
-@keyframes hvr-pulse {
- 25% {
- -webkit-transform: scale(1.1);
- transform: scale(1.1);
-}
- 75% {
- -webkit-transform: scale(0.9);
- transform: scale(0.9);
-}
-}
-.bpost {
-    display: inline-block;
-    vertical-align: middle;
-    -webkit-transform: perspective(1px) translateZ(0);
-    transform: perspective(1px) translateZ(0);
-    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-}
-.bpost:hover, .bpost:focus, .bpost:active {
-    -webkit-animation-name: hvr-pulse;
-    animation-name: hvr-pulse;
-    -webkit-animation-duration: 1s;
-    animation-duration: 1s;
-    -webkit-animation-timing-function: linear;
-    animation-timing-function: linear;
-    -webkit-animation-iteration-count: infinite;
-    animation-iteration-count: infinite;
-}
-.bpost a:hover {
-    opacity: 1;
 }
 .blw {
     display: flex;
@@ -538,11 +500,6 @@ video {
     position: relative;
     height: 400px;
 }
-/*
-.blch {
-    display: flex;
-}
-*/
 .atop article {
     background-color: #2A93D5;
 }
@@ -587,10 +544,6 @@ video {
 }
 .atop ul li a {
     font-weight: bold;
-}
-.atop ul li a:hover {
-    opacity: 0.8;
-    cursor: pointer;
 }
 .blogWrap {
     max-width: 720px;
@@ -653,9 +606,6 @@ video {
     border: 1px solid #2b2b2b;
     border-top: none;
 }
-.plw input:hover {
-    background-color: #14548a;
-}
 .bwi ul {
     display: flex;
     color: #2b2b2b;
@@ -666,6 +616,29 @@ video {
 }
 .bwi ul li:first-child {
     font-size: 1.3rem;
+}
+.emailsend{
+display: none;
+}
+#joinbt{
+    text-align: center;
+    background-color: #ffaa00;
+    padding: 0.8em;
+    border-radius: 10px;
+	position: relative;
+	height: 50px;
+}
+#joinbt a {
+	font-size: 1.3rem;
+	color: #FFFFFF;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+	-webkit-transform: translateY(-50%);
+	transform: translateY(-50%);
+	padding: 0.5em 0
 }
 /*form*/
 .formWrap h1 {
@@ -715,10 +688,6 @@ video {
     font-size: 1.3rem;
     font-weight: bold;
     padding: 3px;
-}
-.thbtn input:hover{
-	opacity: 0.8;
-	cursor: pointer;
 }
 .bl_input .title input {
     height: 50px;
@@ -930,9 +899,6 @@ video {
     color: #FFFFFF;
     font-size: 1.3rem;
 }
-.nAca input[type="submit"]:hover {
-    background-color: #C37900;
-}
 .com_b {
     text-align: right;
 }
@@ -950,9 +916,6 @@ video {
     outline: none;
     background-color: transparent;
     appearance: none;
-}
-.nbbtn input[type="submit"]:hover {
-    opacity: 0.8;
 }
 .nbbtn input, .nbbtn a {
     color: #2d93d6;
@@ -976,9 +939,6 @@ video {
     margin: 3rem auto 40px;
     display: block;
     line-height: 50px;
-}
-.thanksAn .sibtn:hover {
-    background-color: #C37900;
 }
 /*signin*/
 .lcWrap article h1 {
@@ -1005,9 +965,6 @@ video {
 .lcWrap input[type="submit"] {
     font-size: 1.3rem;
     line-height: 45px;
-}
-.lcWrap input[type="submit"]:hover {
-    background-color: #C37900;
 }
 .now {
     overflow-x: hidden;
@@ -1145,9 +1102,6 @@ video {
     height: 1.4rem;
     margin-left: 5px;
 }
-.edita input:hover {
-    opacity: 0.8;
-}
 .mpbl section {
     display: flex;
     white-space: pre-wrap;
@@ -1201,10 +1155,6 @@ video {
     font-size: 0.8rem;
     font-weight: bold;
 }
-.ebtn input:hover {
-    opacity: 0.8;
-    cursor: pointer;
-}
 .bbsaw {
     position: relative;
 }
@@ -1251,7 +1201,80 @@ video {
     border-radius: 5px;
     text-align: center;
 }
-
+/*hoverイベントはpcOnly*/
+@media screen and (min-width: 920px){
+a:hover {
+    opacity: 0.8;
+}
+.search input[type="submit"]:hover {
+    background-image: url(../blog/img/searchb2.png);
+}
+.ctbtn li :hover img {
+    visibility: hidden;
+}
+.bpost a:hover {
+    opacity: 1;
+}
+.nAca input[type="submit"]:hover {
+    background-color: #C37900;
+}
+.atop ul li a:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
+.plw input:hover {
+    background-color: #14548a;
+}
+.thbtn input:hover{
+	opacity: 0.8;
+	cursor: pointer;
+}
+.nbbtn input[type="submit"]:hover {
+    opacity: 0.8;
+}
+.thanksAn .sibtn:hover {
+    background-color: #C37900;
+}
+.lcWrap input[type="submit"]:hover {
+    background-color: #C37900;
+}
+.edita input:hover {
+    opacity: 0.8;
+}
+.ebtn input:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
+/*writeボタンhoverアニメーション*/
+@keyframes hvr-pulse {
+ 25% {
+ -webkit-transform: scale(1.1);
+ transform: scale(1.1);
+}
+ 75% {
+ -webkit-transform: scale(0.9);
+ transform: scale(0.9);
+}
+}
+.bpost {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+}
+.bpost:hover, .bpost:focus, .bpost:active {
+    -webkit-animation-name: hvr-pulse;
+    animation-name: hvr-pulse;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+}
+/*writeボタンhoverアニメーション--end--*/
+}
 /*SPサイズ---------------------*/
 @media screen and (max-width: 750px) {
 /*sp非表示*/

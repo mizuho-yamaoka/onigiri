@@ -28,7 +28,7 @@ $name = $user['name'];
 	<meta charset="UTF-8">
 	<title>cebufull</title>
 	<!--共通-->
-	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css"  media="screen">
 	<!--indexOnly-->
 	<link rel="stylesheet" type="text/css" href="js/slick/slick.css">
 	<link rel="stylesheet" type="text/css" href="js/slick/slick-theme.css">

@@ -36,10 +36,18 @@ $("html, body").animate({scrollTop:position}, speed, "swing");
 return false;
 });
 });
-//トグル
+//トグルmy page
 $(function(){
 $("#uinfo .user_img").on("click", function() {
 $('.edita').slideToggle(800);	
+});});
+$("#btn").click(function() {
+    $('#frameWindow').dialog('open');
+});
+//トグルbbs join
+$(function(){
+$("#joinbt a").on("click", function() {
+$('.emailsend').slideToggle(1000);	
 });});
 $("#btn").click(function() {
     $('#frameWindow').dialog('open');

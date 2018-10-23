@@ -100,7 +100,7 @@ if ( !empty( $_POST ) ) {
 <head>
 	<meta charset="UTF-8">
 	<title>ブログ投稿</title>
-	<link rel="stylesheet" type="text/css" href="../css/style.css">
+	<link rel="stylesheet" type="text/css" href="../css/style.css" media="screen">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="../js/jquery-3.1.1.js"></script>
 	<script>
