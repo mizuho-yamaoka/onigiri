@@ -76,11 +76,13 @@ if ( !empty( $_POST ) ) {
 			<section class="bl_input">
 				<form action="" method="POST">
 					<input type="hidden" name="username" value="<?php echo $user['id']; ?>">
-					<input type="text" name="body" placeholder="notice board">
+					<textarea type="text" name="body" placeholder="notice board"></textarea>
 					<?php if(isset($errors['feed']) && $errors['feed'] == 'blank'): ?>
 					<p class="red">投稿データを入力して下さい</p>
 					<?php endif; ?>
+					<div class="thbtn">
 					<input type="submit" value="投稿する">
+					</div>
 				</form>
 			</section>
 		</article>
