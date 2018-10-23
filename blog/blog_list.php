@@ -83,6 +83,7 @@ if ( isset( $_GET[ 'category' ] ) ) {
 		$posts[] = $record;
 	}
 
+
 	// 全記事表示
 } else {
 	$sql = 'SELECT `p`.*, `u`.`name` FROM `posts` AS `p` LEFT JOIN `users` AS `u` ON `p`. `user_id` = `u`. `id` ORDER BY `p`.`created` DESC LIMIT ' . CONTENT_PER_PAGE . ' OFFSET ' . $start;
@@ -104,8 +105,15 @@ if ( isset( $_GET[ 'category' ] ) ) {
 		$posts[] = $record;
 
 	}
+
 }
 
+// echo '<pre>';
+// var_dump($posts);
+// echo '</pre>';
+
+	// $top_img = preg_match('(<img scr=)', $posts['post']);
+	// echo $top_img;
 ?>
 
 <!DOCTYPE html>
@@ -186,7 +194,7 @@ if ( isset( $_GET[ 'category' ] ) ) {
 								</div>
 								<div class="ebtn">
 								<input type="hidden" name="post_id" value="<?php echo $post['id'] ?>">
-								<input type="submit" name="submit" value="More read">
+								<input type="submit" name="submit" value="">
 								</div>
 							</form>
 						</div>
