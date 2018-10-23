@@ -20,7 +20,7 @@
 							</p>
 						</li>
 						<li>
-							<p><a href="blog/blog_list.php"><span><img src="img/farrow.png"></span>HOW TO CEBU</a>
+							<p><a href="blog/blog_list.php"><span><img src="img/farrow.png"></span>HOW TO ENJOY CEBU</a>
 							</p>
 						</li>
 						<li>
