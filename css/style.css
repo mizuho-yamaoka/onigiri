@@ -229,7 +229,6 @@ video {
     box-sizing: border-box;
 }
 .slider {
-    width: 64%;
     margin: 100px auto;
 }
 .slick-slide {
@@ -243,6 +242,8 @@ video {
 }
 .slick_container {
     position: relative;
+	width: 89%;
+    margin: 0 auto;
 }
 .slide-arrow {
     position: absolute;
@@ -254,7 +255,10 @@ video {
 .next-arrow {
     right: -60px;
 }
-.bbsbtn {
+.bbsbtn{
+	position: relative;
+}
+.bbsbtn p{
     background-color: #ffaa00;
     width: 210px;
     text-align: center;
@@ -262,14 +266,17 @@ video {
     position: absolute;
     right: 0px;
     bottom: 0px;
-}
-.bbsbtn p {
     font-weight: bold;
-    font-size: 25px;
-}
+    font-size: 25px;}
 .bbsbtn a {
     color: #FFFFFF;
 }
+.inblaw{
+width: 67%;
+    background-color: #FFFFFF;
+    margin: 0 3% 3% 0px;
+    position: relative;
+    height: 400px;}
 /*footer area---------------------*/
 .bbsbtn img {
     vertical-align: middle;
