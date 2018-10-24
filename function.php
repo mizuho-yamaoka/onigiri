@@ -37,7 +37,7 @@ function count_comments($dbh,$feed_id){
 
 function catch_that_image($post) {
     $first_img = '';
-    $output = preg_match_all('/<img.+src=[\'"]([^\'"]+).>/i', $post, $matches);
+    $output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post, $matches);
 
 if(!empty($matches[1][0])){
     $first_img = $matches [1] [0];
