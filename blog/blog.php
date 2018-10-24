@@ -9,7 +9,6 @@ if ( isset( $_SESSION[ 'register' ][ 'id' ] ) ) {
 }
 
 $post_id = $_POST[ 'post_id' ];
-
 $sql = 'SELECT p.*,u.name FROM posts AS p LEFT JOIN users AS u ON p.user_id = u.id WHERE p.id = ?';
 $data = [ $post_id ];
 $stmt = $dbh->prepare( $sql );

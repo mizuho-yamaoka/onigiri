@@ -104,9 +104,7 @@ if ( isset( $_GET[ 'category' ] ) ) {
 		}
 		// レコードがあれば追加
 		$posts[] = $record;
-
 	}
-
 }
 
 // echo '<pre>';
@@ -196,7 +194,7 @@ if ( isset( $_GET[ 'category' ] ) ) {
 								</div>
 								<div class="ebtn">
 								<input type="hidden" name="post_id" value="<?php echo $post['id'] ?>">
-								<input type="submit" name="submit" value="">
+								<input type="submit" name="submit" value="Read more">
 								</div>
 							</form>
 						</div>

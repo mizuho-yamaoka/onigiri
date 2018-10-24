@@ -4,8 +4,7 @@ require_once( 'dbconnect.php' );
 require('path.php');
 
 $signin_user_id = '';
-if(isset($_SESSION['register']['id'])){
-	
+if(isset($_SESSION['register']['id'])){	
 $signin_user_id = $_SESSION[ 'register' ][ 'id' ];
 
 //SELECTで現在サインインしているユーザーの情報をusersテーブルから読み込む
@@ -16,7 +15,6 @@ $stmt->execute( $data );
 
 // フェッチする
 $user = $stmt->fetch( PDO::FETCH_ASSOC );
-
 $img_name = $user['img_name'];
 $name = $user['name'];
 }
@@ -101,10 +99,6 @@ $name = $user['name'];
 				<div class="spnavi">
 				<div id="overlay">
 					<ul>
-						<li><a href="#">ABOUT</a>
-						</li>
-						<li><a href="#nowWrap">NOW</a>
-						</li>
 						<li><a href="blog/blog_list.php">BLOG</a>
 						</li>
 						<li><a href="bbs/bbs_list.php">BBS</a>
