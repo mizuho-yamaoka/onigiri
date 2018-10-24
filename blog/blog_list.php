@@ -2,6 +2,7 @@
 session_start(); 
 require( '../path.php' );
 require_once( '../dbconnect.php' );
+require_once('../bbs/function.php');
 
 // ６記事で１ページの出力
 // 定数定義
@@ -177,7 +178,8 @@ if ( isset( $_GET[ 'category' ] ) ) {
 						<?php foreach ($posts as $post):?>
 						<div class="blaw">
 							<div class="blog_thum">
-								<img src="img/ジンベイザメ横から.jpg">
+								<!-- <img src="img/ジンベイザメ横から.jpg"> -->
+								<img src="<?php echo catch_that_image(); ?>" alt="">
 							</div>
 								<div class="bwi">
 							<form action="blog.php" method="POST">
