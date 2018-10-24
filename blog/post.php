@@ -132,9 +132,9 @@ if ( !empty( $_POST ) ) {
 			$this = $( "#add_box" );
 			$this.click( function ( e ) {
 				e.preventDefault();
-				let addHtml = '<input class="blog_file" type="file" name="blog_file[]"><input num="';
+				let addHtml = '<p><input class="blog_file" type="file" name="blog_file[]"></p><p><input num="';
 				addHtml += num;
-				addHtml += '" class="add_blog_file_btn" type="button" value="INSERT IMAGE -本文に写真を挿入-"><br>';
+				addHtml += '" class="add_blog_file_btn" type="button" value="INSERT IMAGE -本文に写真を挿入-"></p>';
 				$this.before( addHtml );
 			} );
 		} );
@@ -172,9 +172,9 @@ if ( !empty( $_POST ) ) {
 					</div>
 					<div class="pict">
 						<p>INSERT IMAGE</p>
-						<ul>
-						<li><input class="blog_file" type="file" name="blog_file[]"><button id="add_box"><i class="far fa-images"></i>Add Image Box</button></li>
-						<li><input num="0" class="add_blog_file_btn" type="button" value="INSERT IMAGE-本文に写真を挿入-"></li>
+						<p><input class="blog_file" type="file" name="blog_file[]"></p>
+						<p><input num="0" class="add_blog_file_btn" type="button" value="INSERT IMAGE-本文に写真を挿入-"></p>
+						<button id="add_box"><i class="far fa-images"></i>Add Image Box-写真の追加-</button>
 						</ul>
 					</div>
 					<div class="acte">

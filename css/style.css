@@ -695,7 +695,7 @@ display: none;
 .bl_input .contents input {
     height: 100px;
 }
-.title, .contents, .acte, .pict ul{
+.title, .contents, .acte, .pict{
     margin-bottom: 20px;
 }
 .acte input{margin-left: 10px;}
@@ -911,19 +911,24 @@ display: none;
     display: flex;
     justify-content: center;
 }
-#add_box{
-	color: #2b2b2b;
-	letter-spacing: 1px;
-	font-size: 1rem;
-	margin-left: 3px;
-}
 .pict .add_blog_file_btn{
-	background-color: #2b2b2b;
-	color: #FFFFFF;
+	background-color: #FFFFFF;
+	color: #2b2b2b;
 	padding: 5px;
 	border-radius: 10px;
 	width: 100%;
 	margin-top: 10px;
+}
+#add_box{
+	color: #FFFFFF;
+	letter-spacing: 1px;
+	font-size: 1rem;
+	background-color: #14548a;
+	padding: 5px;
+	border-radius: 10px;
+	width: 100%;
+	margin-top: 10px;
+	text-align: center;
 }
 .nbbtn input[type="submit"] {
     border: none;
