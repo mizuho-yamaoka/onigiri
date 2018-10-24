@@ -211,7 +211,7 @@ while ( true ) {
 						<div class="inblaw">
 							<div class="blog_thum">
 								<!-- <img src="img/ジンベイザメ横から.jpg"> -->
-								<img src="<?php echo catch_that_image($post['post']); ?>" alt="">
+								<img src="<?php echo catch_that_image($post['post']); ?>">
 							</div>
 								<div class="bwi">
 							<form action="blog/blog.php" method="POST">
