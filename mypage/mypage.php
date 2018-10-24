@@ -282,7 +282,7 @@ if ( $gender == '1' ) {
 						    </div>
 						    <div>
 						      <label for="edit_blog_post">Detail</label>
-						      <input type="text" name="edit_post" value="<?php echo $post['post']?>">
+						      <textarea name="edit_post" id="" cols="60" rows="60"></textarea>
 						    </div>
 						    <div>
 						      <input type="submit" name="blog_update" value="update" >
