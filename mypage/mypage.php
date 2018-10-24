@@ -2,6 +2,7 @@
 require( '../path.php' );
 session_start();
 require_once( '../dbconnect.php' );
+require_once('function.php');
 
 // 閲覧制限
 // サインイン処理をしていれば、セッション処理の中にidが保存されているので、idが存在するかどうかでこのタイムラインページの閲覧を制限する。
@@ -291,7 +292,7 @@ if ( $gender == '1' ) {
 						<?php foreach ($posts as $post):?>
 						<div class="blaw">
 							<div class="blog_thum">
-								<img src="img/ジンベイザメ横から.jpg">
+								<img src="<?php echo catch_that_image($post['post']); ?>">
 							</div>
 							<form action="mypage.php" method="POST">
 								<span class="time">
