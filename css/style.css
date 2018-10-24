@@ -321,7 +321,7 @@ video {
 }
 .nAca {
     background-color: #add9da;
-    padding: 0 5%;
+    padding: 5%;
 }
 .nAca article, .nAcac article, .loginWrap {
     background-color: #add9da;
@@ -842,6 +842,7 @@ display: none;
 }
 .coWrap p {
     margin-bottom: 1.5rem;
+	color: red;
 }
 .inputA li {
     margin-bottom: 20px;
@@ -1515,6 +1516,16 @@ font-size: 3rem!important;
 .ncWrap {
     padding-bottom: 0;
 }
+.ctbtn li div {
+    height: 50px;
+}
+.ctbtn li {
+    height: 110px;
+}
+.search input[type="submit"] {
+    width: 103px;
+    background-size: cover;
+}
 /*bbs*/
 .htbox {
     width: 100%;
@@ -1547,7 +1558,9 @@ font-size: 3rem!important;
 .inputA li:nth-child(6) {
     padding-left: 0;
     display: flex;
+	flex-wrap: wrap;
 }
+	.nc{width: 50px;}
 .coco {
     display: block;
 }
@@ -1570,4 +1583,51 @@ font-size: 3rem!important;
 .form-group input {
     width: 100%;
 }
+.blogWrap {
+    max-width: 100%;
+    margin: 0 15px;
+}
+	.useCo h1 img{
+		width: 100%;
+	}
+	.useCo dt{
+		margin: 0;
+	}
+	.useCo dd{
+		margin: 1rem 0;
+	}
+	.bpcWrap, .bbsCheader {
+    display: block;
+}
+	.bpc_2 {
+    width: 100%;
+    margin: 2rem 0;
+}
+	.bbsWrap .form-group {
+    display: flex;
+}
+	#uinfo {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto;
+	}
+	#uinfo .user_img {
+    width: 100%;
+    margin: 0;
+}
+	.userInfo {
+     width: 100%;
+}
+	.mpc h1 img{
+    width: 100%;
+	padding: 5%
+}
+	#modal-main, #modal-mainCo {
+    width: 100%;
+    height: 300px;
+}
+	#modal-main textarea{
+		width: 100%;
+    height: 200px;
+	}
 }

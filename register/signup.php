@@ -167,9 +167,11 @@ if ( !empty( $_POST ) ) {
 									<div>
 										Do not register<input type="radio" name="gender" value="3">
 									</div>
+									<p>
 									<?php if(isset($errors['gender']) && $errors['gender'] == 'blank'): ?>
-									<p>Please select your gender</p>
+									Please select your gender
 									<?php endif; ?>
+									</p>
 								</li>
 								<li>
 									<label for="age">年齢(Age)</label>
