@@ -35,12 +35,15 @@ function count_comments($dbh,$feed_id){
 }
 // 最初の画像を取得する処理
 
-function catch_that_image() {
-    global $post, $posts;
+function catch_that_image($post) {
     $first_img = '';
-    ob_start();
-    ob_end_clean();
-    $output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches);
+    $output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post, $matches);
+    // echo'<pre>';
+    // var_dump($matches);
+    // echo'</pre>';
+    // die();
+    // return $matches;
+
     $first_img = $matches [1] [0];
   
 if(empty($first_img)){ //Defines a default image

@@ -105,14 +105,7 @@ if ( !empty( $_POST ) ) {
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="../js/jquery-3.1.1.js"></script>
 	<script>
-		//    function getImg() {
-		//    const index_num = 
-		//      const blog_file = document.querySelector('#blog_file').files;
-		//      console.log(blog_file[0]['name']);
 
-		//      const blog_text = document.querySelector('#blog_text').value;
-		//      document.querySelector('#blog_text').value = blog_text + 'selected_picture' + blog_file[0]['name'];
-		// }
 
 		$( function () {
 			$( document ).on( 'click', '.add_blog_file_btn', function () {

@@ -20,12 +20,13 @@ $stmt = $dbh->prepare( $sql );
 $stmt->execute( $data );
 
 // ブログ編集
-if ( !empty( $_POST[ 'post_edit' ] ) ) {
-	$_SESSION[ 'post_id' ] = $_POST[ 'post_id' ];
-	// 	header( 'Location: ../blog/blog_edit.php' );
-}
-$edit_post_id = $_SESSION['post_id'];
+// if ( !empty( $_POST[ 'post_edit' ] ) ) {
+
+// 	// 	header( 'Location: ../blog/blog_edit.php' );
+// }
+// $edit_post_id = $_SESSION['post_id'];
 if ( !empty( $_POST[ 'blog_update' ] ) ) {
+	$edit_post_id = $_POST['post_id'];
 	$edit_title = $_POST[ 'edit_title' ];
 	$edit_post = $_POST[ 'edit_post' ];
 
@@ -36,19 +37,20 @@ if ( !empty( $_POST[ 'blog_update' ] ) ) {
 }
 
 // BBS編集
-if ( !empty( $_POST[ 'feed_edit' ] ) ) {
-	$_SESSION[ 'feed_id' ] = $_POST[ 'feed_id' ];
-	// 	header( 'Location: ../bbs/bbs_edit.php' );
-}
+// if ( !empty( $_POST[ 'feed_edit' ] ) ) {
+// 	$_SESSION[ 'feed_id' ] = $_POST[ 'feed_id' ];
+// 	// 	header( 'Location: ../bbs/bbs_edit.php' );
+// }
 if ( !empty( $_POST[ 'bbs_update' ] ) ) {
 	$edit_feed = $_POST[ 'edit_feed' ];
+	$edit_feed_id = $_POST['feed_id'];
 
 	$sql = 'UPDATE feeds SET feed = ? WHERE id = ?';
 	$data = [ $edit_feed, $edit_feed_id ];
 	$stmt = $dbh->prepare( $sql );
 	$stmt->execute( $data );
 	//    header('Location: ../mypage/mypage.php');
-	exit();
+	// exit();
 
 }
 
@@ -188,7 +190,35 @@ if ( $gender == '1' ) {
 	<title>mypage</title>
 	<link rel="stylesheet" type="text/css" href="../css/style.css" media="screen">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+		<script>
 
+		$( function () {
+			$( document ).on( 'click', '.add_blog_file_btn', function () {
+				const num = $( this ).attr( 'num' );
+				const file = $( '.blog_file' )[ num ].files[ 0 ];
+				console.log( file[ 'name' ] );
+				// 		const blog_file = document.querySelector('.blog_file').files;
+				// console.log(blog_file[num]['name']);
+
+				const blog_text = document.querySelector( '#blog_text' ).value;
+				document.querySelector( '#blog_text' ).value = blog_text + 'selected_picture' + file[ 'name' ];
+			} )
+
+			const btns = $( '.add_blog_file_btn' );
+			let num = parseInt( $( btns[ btns.length - 1 ] ).attr( 'num' ), 10 );
+			num++;
+			$this = $( "#add_box" );
+			$this.click( function ( e ) {
+				e.preventDefault();
+				let addHtml = '<p><input class="blog_file" type="file" name="blog_file[]"></p><p><input num="';
+				addHtml += num;
+				addHtml += '" class="add_blog_file_btn" type="button" value="INSERT IMAGE -本文に写真を挿入-"></p>';
+				$this.before( addHtml );
+			} );
+		} );
+	</script>
+
+</head>
 	<body>
 		<header>
 			<?php include ('../header/header.php'); ?>
@@ -282,7 +312,12 @@ if ( $gender == '1' ) {
 						    </div>
 						    <div>
 						      <label for="edit_blog_post">Detail</label>
-						      <textarea name="edit_post" id="" cols="60" rows="60"></textarea>
+						      <textarea id="blog_text" name="edit_post"><?php echo $post['post']?></textarea><br>
+						      <input type="hidden" name="post_id" value="<?php echo $post['id']?>">
+						      
+						      <input class="blog_file" type="file" name="blog_file[]">
+									<input num="0" class="add_blog_file_btn" type="button" value="INSERT IMAGE-本文に写真を挿入-">
+									<button id="add_box"><i class="far fa-images"></i>Add Image Box-写真の追加-</button>
 						    </div>
 						    <div>
 						      <input type="submit" name="blog_update" value="update" >
@@ -316,7 +351,8 @@ if ( $gender == '1' ) {
 						<form action="mypage.php" method="POST">
 						    <div>
 						      <label for="edit_bbs_feed">Detail</label>
-						      <input type="text" name="edit_feed" value="<?php echo $feed['feed']?>">
+						      <input type="hidden" name="feed_id" value="<?php echo $feed['id']?>">
+						      <textarea name="edit_feed"><?php echo $feed['feed']?></textarea>
 						    </div>
 						    <div>
 						      <input type="submit" name="bbs_update" value="update" >
