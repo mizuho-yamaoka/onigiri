@@ -199,7 +199,6 @@ if ( isset( $_GET[ 'category' ] ) ) {
 						</div>
 						</div>
 						<?php endforeach; ?>
-
 					</div>
 					<div class="ttp">
 						<ul>
