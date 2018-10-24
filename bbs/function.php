@@ -38,15 +38,11 @@ function count_comments($dbh,$feed_id){
 function catch_that_image($post) {
     $first_img = '';
     $output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post, $matches);
-    // echo'<pre>';
-    // var_dump($matches);
-    // echo'</pre>';
-    // die();
-    // return $matches;
 
+if(!empty($matches[1][0])){
     $first_img = $matches [1] [0];
-  
-if(empty($first_img)){ //Defines a default image
+
+}else{ //Defines a default image
         $first_img = '../blog/img/ジンベイザメ横から.jpg';
     }
     return $first_img;

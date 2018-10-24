@@ -20,15 +20,26 @@ $stmt = $dbh->prepare( $sql );
 $stmt->execute( $data );
 
 // ブログ編集
-// if ( !empty( $_POST[ 'post_edit' ] ) ) {
 
-// 	// 	header( 'Location: ../blog/blog_edit.php' );
-// }
-// $edit_post_id = $_SESSION['post_id'];
 if ( !empty( $_POST[ 'blog_update' ] ) ) {
 	$edit_post_id = $_POST['post_id'];
 	$edit_title = $_POST[ 'edit_title' ];
 	$edit_post = $_POST[ 'edit_post' ];
+
+	$pictures = $_FILES[ 'blog_file' ][ 'name' ];
+	$temps = $_FILES[ 'blog_file' ][ 'tmp_name' ];
+	for ( $i = 0; $i < count( $_FILES[ 'blog_file' ][ 'name' ] ); $i++ ) {
+		$picture = $_FILES[ 'blog_file' ][ 'name' ][ $i ];
+		$temp = $_FILES[ 'blog_file' ][ 'tmp_name' ][ $i ];
+
+		$data_str = date( 'YmdHis' );
+		$submit_file_name = $data_str . $picture;
+
+		move_uploaded_file( $temp, '../blog_img/' . $submit_file_name );
+
+
+		$edit_post = preg_replace( '/selected_picture' . $picture . '/', '<img src="../blog_img/' . $submit_file_name . '">', $edit_post );
+	}
 
 	$sql = 'UPDATE posts SET title = ?, post = ? WHERE id = ?';
 	$data = [ $edit_title, $edit_post, $edit_post_id ];
@@ -37,10 +48,6 @@ if ( !empty( $_POST[ 'blog_update' ] ) ) {
 }
 
 // BBS編集
-// if ( !empty( $_POST[ 'feed_edit' ] ) ) {
-// 	$_SESSION[ 'feed_id' ] = $_POST[ 'feed_id' ];
-// 	// 	header( 'Location: ../bbs/bbs_edit.php' );
-// }
 if ( !empty( $_POST[ 'bbs_update' ] ) ) {
 	$edit_feed = $_POST[ 'edit_feed' ];
 	$edit_feed_id = $_POST['feed_id'];
@@ -190,6 +197,8 @@ if ( $gender == '1' ) {
 	<title>mypage</title>
 	<link rel="stylesheet" type="text/css" href="../css/style.css" media="screen">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="../js/jquery-3.1.1.js"></script>
 		<script>
 
 		$( function () {
@@ -210,7 +219,7 @@ if ( $gender == '1' ) {
 			$this = $( "#add_box" );
 			$this.click( function ( e ) {
 				e.preventDefault();
-				let addHtml = '<p><input class="blog_file" type="file" name="blog_file[]"></p><p><input num="';
+				let addHtml = '<input class="blog_file" type="file" name="blog_file[]"><input num="';
 				addHtml += num;
 				addHtml += '" class="add_blog_file_btn" type="button" value="INSERT IMAGE -本文に写真を挿入-"></p>';
 				$this.before( addHtml );
@@ -305,7 +314,7 @@ if ( $gender == '1' ) {
 					<div id="modal-main">
 						<!-- ここにeditを入れる -->
 						<!-- blogの編集画面 -->
-						<form action="mypage.php" method="POST">
+						<form action="mypage.php" method="POST" enctype="multipart/form-data">
 						    <div>
 						      <label for="edit_blog_title">Title</label>
 						      <input type="text" name="edit_title" value="<?php echo $post['title']?>">
@@ -314,7 +323,7 @@ if ( $gender == '1' ) {
 						      <label for="edit_blog_post">Detail</label>
 						      <textarea id="blog_text" name="edit_post"><?php echo $post['post']?></textarea><br>
 						      <input type="hidden" name="post_id" value="<?php echo $post['id']?>">
-						      
+
 						      <input class="blog_file" type="file" name="blog_file[]">
 									<input num="0" class="add_blog_file_btn" type="button" value="INSERT IMAGE-本文に写真を挿入-">
 									<button id="add_box"><i class="far fa-images"></i>Add Image Box-写真の追加-</button>

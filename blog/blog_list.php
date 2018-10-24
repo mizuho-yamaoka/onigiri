@@ -176,7 +176,6 @@ if ( isset( $_GET[ 'category' ] ) ) {
 						<?php foreach ($posts as $post):?>
 						<div class="blaw">
 							<div class="blog_thum">
-								<!-- <img src="img/ジンベイザメ横から.jpg"> -->
 								<img src="<?php echo catch_that_image($post['post']); ?>" alt="">
 							</div>
 								<div class="bwi">
