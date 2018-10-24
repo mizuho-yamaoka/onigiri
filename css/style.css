@@ -1,27 +1,4 @@
 /* CSS Document */
-/* モーダル コンテンツエリア */
-#modal-main, #modal-mainCo {
-    display: none;
-    width: 500px;
-    height: 300px;
-    margin: 0;
-    padding: 0;
-    background-color: #ffffff;
-    color: #666666;
-    position: fixed;
-    z-index: 2;
-}
-/* モーダル 背景エリア */
-#modal-bg ,#modal-bgc{
-    display: none;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.5);
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1;
-}
 /*reset----------------*/
 a {
     text-decoration: none;
@@ -1220,28 +1197,58 @@ display: flex;
     background-color: #EDFAFD!important;
 }
 /* モーダル コンテンツエリア */
-#layer {
-    display: none;  /* 初期表示は非表示 */
+#modal-main, #modal-mainCo {
+    display: none;
+    width: 500px;
+    height: 300px;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    color: #666666;
     position: fixed;
-    left: 0px;
-    top: 0px;
+    z-index: 2;
+}
+/* モーダル 背景エリア */
+#modal-bg ,#modal-bgc{
+    display: none;
     width: 100%;
     height: 100%;
-    background-color: black;
-    opacity: 0.20;
-}
-#popup {
-    display: none;  /* 初期表示は非表示 */
+    background-color: rgba(0,0,0,0.5);
     position: fixed;
-    left: 50%;
-    top: 50%;
-    width: 300px;
-    height: 200px;
-    margin-left: -150px;
-    margin-top: -100px;
-    background-color: white;
-    border-radius: 5px;
-    text-align: center;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+.img_edit {
+	margin-bottom: 1rem;
+}
+.user_ew{
+	max-width: 600px;
+	margin: 0 auto;
+}
+.user_ew section{
+	margin-bottom: 2rem;
+}
+.user_ew p{display: flex;}
+.user_ew input[type="submit"]{
+    background-color: #14548a;
+    font-size: 1rem;
+    vertical-align: text-bottom;
+	color: #FFFFFF;
+}
+.user_ew input{
+	width: 100%;
+	height: 30px;
+}
+.psi{
+    justify-content: flex-end;
+}
+.gender input[type="radio"]{
+    width: 20px;
+    margin-left: 14px;
+}
+.gender{
+    justify-content: space-between;
 }
 /*hoverイベントはpcOnly*/
 @media screen and (min-width: 920px){
@@ -1316,6 +1323,7 @@ input:hover{
     -webkit-animation-iteration-count: infinite;
     animation-iteration-count: infinite;
 }
+	
 /*writeボタンhoverアニメーション--end--*/
 }
 /*SPサイズ---------------------*/
