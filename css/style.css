@@ -544,6 +544,9 @@ video {
 .blat {
     font-size: 1.3rem;
 }
+.blat img{
+	width: 100%;
+}
 .bg {
     font-size: 1.8rem;
     font-family: 'Kaushan Script', cursive;
