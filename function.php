@@ -5,6 +5,7 @@ function catch_that_image($post) {
     $first_img = '';
 
     $output = mb_strstr($post, '../');
+    $output = mb_strstr($output,'">',true);
     $edit_output = str_replace('../', '', $output);
     $edit_output = str_replace('">', '',$edit_output);
 

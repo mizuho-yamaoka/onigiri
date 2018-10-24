@@ -332,6 +332,19 @@ if ( $gender == '1' ) {
 						    <div>
 						      <input type="submit" name="blog_update" value="update" >
 						    </div>
+						    <div>
+						    	<p>画像の編集の仕方</p>
+						    	<ol>
+						    		
+						    	<li>1.削除したい画像に対応した'img src'から始まる画像名を削除する</li>
+						    	<li>2.新しく入れたい写真を選び、'INSERT IMAGE'ボタンを押してください。</li>
+						    	<li>3.新しい写真の画像名が文末に表示されます。必要に応じて、場所を移動して使ってください。</li>
+						    	<li>1.Plese delete the image name you want to change that start from 'img src'.</li>
+						    	<li>2.Plese select a new pictute, and push 'INSERT IMAGE' button.</li>
+						    	<li>A new image name will come in sight in the end of article. Plese move the image name to place you want to insert.</li>
+						    	</li>
+						    	</ol>
+						    </div>
 						</form>
 					</div>
 						<?php endforeach; ?>
