@@ -842,6 +842,8 @@ display: none;
 }
 .coWrap p {
     margin-bottom: 1.5rem;
+}
+.coWrap .caution{
 	color: red;
 }
 .inputA li {

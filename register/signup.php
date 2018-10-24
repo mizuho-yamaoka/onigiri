@@ -123,26 +123,26 @@ if ( !empty( $_POST ) ) {
 									<label for="name">ユーザー名(Username)</label>
 									<input type="text" name="name" placeholder="username" value="<?php echo htmlspecialchars($name); ?>">
 									<?php if(isset($errors['name']) && $errors['name'] == 'blank') : ?>
-									<p>Please enter username</p>
+									<p class="caution">Please enter username</p>
 									<?php endif; ?>
 								</li>
 								<li>
 									<label for="email">メールアドレス(email)</label>
 									<input type="email" name="email" placeholder="example@.com" value="<?php echo htmlspecialchars($email); ?>">
 									<?php if(isset($errors['email']) && $errors['email'] == 'blank') : ?>
-									<p>Please enter email</p>
+									<p class="caution">Please enter email</p>
 									<?php endif; ?>
 								</li>
 								<li>
 									<label for="password">パスワード(password)</label>
 									<input type="password" name="password" placeholder="password">
 									<?php if(isset($errors['password']) && $errors['password'] == 'blank'): ?>
-									<span class="red">Please Enter Password</span>
+									<span class="caution">Please Enter Password</span>
 									<?php endif; ?>
 								</li>
 								<li>
 									<?php if(isset($errors['password'])&& $errors['password'] == 'length'):?>
-									<span class="red">パスワードをは4〜16文字で入力して下さい。<s></s></span>
+									<span class="caution">パスワードをは4〜16文字で入力して下さい。<s></s></span>
 									<?php endif; ?>
 								</li>
 								<li>
@@ -152,7 +152,7 @@ if ( !empty( $_POST ) ) {
 									<p>画像を選択して下さい(Pleae choose a your image picture)</p>
 									<?php endif; ?>
 									<?php if(isset($errors['img_name']) && $errors['img_name'] == 'type'):?>
-									<p>拡張子が「jpg」「png」「gif」の画像を選択してください(Please select an image with the extension "jpg" "png" "gif")</p>
+									<p class="caution">拡張子が「jpg」「png」「gif」の画像を選択してください(Please select an image with the extension "jpg" "png" "gif")</p>
 									<?php endif; ?>
 								</li>
 								<li>
@@ -164,34 +164,34 @@ if ( !empty( $_POST ) ) {
 										<img src="img/female.png"><span>Female</span>
 										<input type="radio" name="gender" value="2">
 									</div>
-									<div>
+									<div class="nc caution">
 										Do not register<input type="radio" name="gender" value="3">
 									</div>
-									<p>
+									
 									<?php if(isset($errors['gender']) && $errors['gender'] == 'blank'): ?>
-									Please select your gender
+									<p class="caution">Please select your gender</p>
 									<?php endif; ?>
-									</p>
 								</li>
 								<li>
 									<label for="age">年齢(Age)</label>
 									<input type="text" name="age" placeholder="age" value="<?php echo $age; ?>">
+									
 									<?php if(isset($errors['age']) && $errors['age'] == 'blank') : ?>
-									<p>Please enter your age</p>
+									<p class="caution">Please enter your age</p>
 									<?php endif; ?>
 								</li>
 								<li>
 									<label for="school">語学学校(School)</label>
 									<input type="text" name="school" placeholder="QQ English" value="<?php echo htmlspecialchars($school);?>">
 									<?php if(isset($errors['school']) && $errors['school'] == 'blank') : ?>
-									<p>Please enter your school</p>
+									<p class="caution">Please enter your school</p>
 									<?php endif; ?>
 								</li>
 								<li>
 									<label for="other">追記事項(Extra profile)</label>
 									<input type="text" name="other" value="<?php echo htmlspecialchars($other);?>">
 									<?php if(isset($errors['other']) && $errors['other'] == 'blank') : ?>
-									<p>Please enter your other</p>
+									<p class="caution">Please enter your other</p>
 									<?php endif; ?>
 								</li>
 							</ul>
