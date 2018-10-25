@@ -1119,6 +1119,9 @@ video {
     border-top: 1px solid #484546;
     border-bottom: 1px solid #484546;
 }
+.like_list img{
+    width: 100%;
+}
 .like_list ul {
     display: flex;
 }

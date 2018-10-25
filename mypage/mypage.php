@@ -283,7 +283,7 @@ if ( $gender == '1' ) {
 							<form action="../blog/blog.php" method="POST">
 								<div><?php echo $liked_post['created']?></div>
 								<div><?php echo $liked_post['title'] ?></div>
-								<div><?php echo $liked_post['post']?></div>
+								<!-- <div><?php //echo $liked_post['post']?></div> -->
 								<div><input type="hidden" name="post_id" value="<?php echo $liked_post['post_id']?>"></div>
 								<div><input type="submit" name="submit" value="CHECK"></div>
 							</form>
