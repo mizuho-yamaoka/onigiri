@@ -56,6 +56,8 @@ if ( !empty( $_POST ) ) {
 
 		$post = preg_replace( '/selected_picture' . $picture . '/', '<img src="../blog_img/' . $submit_file_name . '">', $post );
 
+		$post = str_replace(array("\r", "\n"), "<br />", $post);
+
 	}
 
 	if ( isset( $_POST[ 'category' ] ) ) {
@@ -87,12 +89,7 @@ if ( !empty( $_POST ) ) {
 		exit();
 	}
 }
-// 	} else
-// 	// 空だったら
-// 	$errors[ 'post' ] = 'blank';
-// 	$errors[ 'title' ] = 'blank';
-// 	$errors[ 'category' ] = 'not_chosen';
-// }
+
 ?>
 
 <!DOCTYPE html>

@@ -33,6 +33,8 @@ if ( !empty( $_POST ) ) {
 	//バリデーション処理
 	// 投稿の空チェック
 	if ( $feed != '' ) {
+
+		$feed = str_replace(array("\r", "\n"), "<br />", $feed);
 		// 空じゃなければ
 		// 投稿処理
 		$sql = 'INSERT INTO `feeds` SET `feed`= ?, `user_id`= ?, `created` = NOW()';
