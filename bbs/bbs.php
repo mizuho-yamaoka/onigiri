@@ -110,7 +110,7 @@ $feed = $record;
 					<span>参加したい！ Join the activity !</span><br>
 					<i class="far fa-hand-point-right"></i>コメントで質問！ Ask in comment field!
 					<i class="far fa-hand-point-right"></i>JOINボタンから主催者へコンタクトをとる！ SEND a e-mail to the host!
-					<p>※連絡先送信後主催者からの返信をお待ちください Plese wait a while to get the reply from the host.</p>
+					<p>※連絡先送信後主催者からの返信をお待ちください Please wait a while to get the reply from the host.</p>
 					<p>※なお、コミニュティでのアクティビティの実施に関しましては皆さま自身でのやりとりでお願いします。 We are afraid that we won't guarantee about any troubles and accidents. Plese be sure about your safety.</p>
 				</dt>
 			

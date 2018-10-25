@@ -79,3 +79,25 @@
     // 処理が失敗したときの処理を記述
     })
 });
+
+// $('#submit').click(function(e) {
+//     console.log('hoge');
+//     e.preventDefault();
+//     var info = $('#foo').val();
+//     info = info.replace(/\n/g, "<br />");
+//     $.ajax({
+//         type: "POST",
+//         url: 'feed.php',
+//         data: {foo: info}
+//     });
+//     // .done(function(data)){
+//     //     console.log('data');
+//     // }
+// });
+
+// $("textarea").change( function() {
+//     var txtVal = $(this).val();
+//     txtVal = txtVal.replace(/\r\n/g, "&lt;br /&gt;<br />");
+//     txtVal = txtVal.replace(/(\n|\r)/g, "&lt;br /&gt;<br />");
+//     $('#testpre').html('<p>'+ txtVal +'</p>');
+// });
