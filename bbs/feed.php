@@ -2,7 +2,7 @@
 require( '../path.php' );
 session_start();
 require_once( '../dbconnect.php' );
-
+require_once('function.php');
 // 閲覧制限
 // サインイン処理をしていれば、セッション処理の中にidが保存されているので、idが存在するかどうかでこのタイムラインページの閲覧を制限する。
 if ( empty( $_SESSION ) || !isset( $_SESSION[ 'register' ][ 'id' ] ) ) {

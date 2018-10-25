@@ -48,4 +48,10 @@ if(!empty($matches[1][0])){
     return $first_img;
 }
 
+function change_indention_php($post){
+
+    $post = str_replace(array("<br />"), "\n", $post);
+
+    return $post;
+}
 ?>

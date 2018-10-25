@@ -27,6 +27,8 @@ if ( !empty( $_POST[ 'blog_update' ] ) ) {
 	$edit_title = $_POST[ 'edit_title' ];
 	$edit_post = $_POST[ 'edit_post' ];
 
+	$edit_post = str_replace(array("\r", "\n"), "<br />", $edit_post);
+
 	$pictures = $_FILES[ 'blog_file' ][ 'name' ];
 	$temps = $_FILES[ 'blog_file' ][ 'tmp_name' ];
 	for ( $i = 0; $i < count( $_FILES[ 'blog_file' ][ 'name' ] ); $i++ ) {
@@ -52,6 +54,8 @@ if ( !empty( $_POST[ 'blog_update' ] ) ) {
 if ( !empty( $_POST[ 'bbs_update' ] ) ) {
 	$edit_feed = $_POST[ 'edit_feed' ];
 	$edit_feed_id = $_POST['feed_id'];
+
+	$edit_feed = str_replace(array("\r", "\n"), "<br />", $edit_feed);
 
 	$sql = 'UPDATE feeds SET feed = ? WHERE id = ?';
 	$data = [ $edit_feed, $edit_feed_id ];
@@ -322,7 +326,7 @@ if ( $gender == '1' ) {
 						    </div>
 						    <div>
 						      <label for="edit_blog_post">Detail</label>
-						      <textarea id="blog_text" name="edit_post"><?php echo $post['post']?></textarea><br>
+						      <textarea id="blog_text" name="edit_post"><?php echo change_indention_php($post['post'])?></textarea><br>
 						      <input type="hidden" name="post_id" value="<?php echo $post['id']?>">
 						      <input class="blog_file" type="file" name="blog_file[]">
 									<input num="0" class="add_blog_file_btn" type="button" value="INSERT IMAGE-本文に写真を挿入-">
@@ -374,7 +378,7 @@ if ( $gender == '1' ) {
 						    <div>
 						      <label for="edit_bbs_feed">Detail</label>
 						      <input type="hidden" name="feed_id" value="<?php echo $feed['id']?>">
-						      <textarea name="edit_feed"><?php echo $feed['feed']?></textarea>
+						      <textarea name="edit_feed"><?php echo change_indention_php($feed['feed'])?></textarea>
 						    </div>
 						    <div>
 						      <input type="submit" name="bbs_update" value="update" >

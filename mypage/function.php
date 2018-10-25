@@ -18,4 +18,11 @@ if(!empty($edit_output)){
     return $first_img;
 }
 
+function change_indention_php($post){
+
+    $post = str_replace(array("<br />"), "\n", $post);
+
+    return $post;
+}
+
 ?>

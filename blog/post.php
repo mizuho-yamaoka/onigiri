@@ -1,5 +1,6 @@
 <?php
 require( '../path.php' );
+require('../bbs/function.php');
 if ( !isset( $_SESSION ) ) {
 	session_start();
 }
@@ -158,7 +159,7 @@ if ( !empty( $_POST ) ) {
 					</div>
 					<div class="contents">
 						<p>CONTENTS</p>
-						<textarea id="blog_text" type="text" name="body" placeholder="Body of letter"><?php echo $post ?></textarea>
+						<textarea id="blog_text" type="text" name="body" placeholder="Body of letter"><?php echo change_indention_php($post) ?></textarea>
 					</div>
 					<div class="pict">
 						<p>INSERT IMAGE</p>
