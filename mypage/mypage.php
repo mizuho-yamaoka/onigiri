@@ -306,13 +306,13 @@ if ( $gender == '1' ) {
 								</div>
 								<div class="ebtn">
 									<input type="hidden" name="post_id" value="<?php echo $post['id'] ?>">
-									<input type="button" name="post_edit" value="EDIT" class="modal-open">
+									<input type="button" name="post_edit" value="EDIT" class="modal-open" post_id="<?php echo $post['id'] ?>">
 									<span>|</span>
 									<input type="submit" name="post_delete" value="DELETE">
 								</div>
 							</form>
 						</div>
-					<div class="modal-main">
+					<div class="modal-main modal_number<?php echo $post['id'] ?>">
 						<!-- ここにeditを入れる -->
 						<!-- blogの編集画面 -->
 						<form action="mypage.php" method="POST" enctype="multipart/form-data">
@@ -334,7 +334,6 @@ if ( $gender == '1' ) {
 						    <div>
 						    	<p>画像の編集の仕方</p>
 						    	<ol>
-						    		
 						    	<li>1.削除したい画像に対応した'img src'から始まる画像名を削除する</li>
 						    	<li>2.新しく入れたい写真を選び、'INSERT IMAGE'ボタンを押してください。</li>
 						    	<li>3.新しい写真の画像名が文末に表示されます。必要に応じて、場所を移動して使ってください。</li>
@@ -363,13 +362,13 @@ if ( $gender == '1' ) {
 								</div>
 								<div class="ebtn">
 									<input type="hidden" name="feed_id" value="<?php echo $feed['id'] ?>">
-									<input type="button" name="feed_edit" value="EDIT" class="modal-openco">
+									<input type="button" name="feed_edit" value="EDIT" class="modal-openco" post_id="<?php echo $feed['id'] ?>">
 									<span>|</span>
 									<input type="submit" name="feed_delete" value="DELETE">
 								</div>
 							</form>
 						</div>
-						<div class="modal-mainCo">
+						<div class="modal-mainCo modal_number<?php echo $feed['id']?>">
 						<form action="mypage.php" method="POST">
 						    <div>
 						      <label for="edit_bbs_feed">Detail</label>
