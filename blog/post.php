@@ -41,6 +41,7 @@ if ( !empty( $_POST ) ) {
 	$title = $_POST[ 'title' ];
 	$post = $_POST[ 'body' ];
 
+	$post = str_replace(array("\r", "\n"), "<br />", $post);
 
 	$pictures = $_FILES[ 'blog_file' ][ 'name' ];
 	$temps = $_FILES[ 'blog_file' ][ 'tmp_name' ];
@@ -54,9 +55,8 @@ if ( !empty( $_POST ) ) {
 		move_uploaded_file( $temp, '../blog_img/' . $submit_file_name );
 
 
-		$post = preg_replace( '/selected_picture' . $picture . '/', '<img src="../blog_img/' . $submit_file_name . '">', $post );
+	$post = preg_replace( '/selected_picture' . $picture . '/', '<img src="../blog_img/' . $submit_file_name . '">', $post );
 
-		$post = str_replace(array("\r", "\n"), "<br />", $post);
 
 	}
 
