@@ -42,7 +42,7 @@ if ( !empty( $_POST ) ) {
 	$title = $_POST[ 'title' ];
 	$post = $_POST[ 'body' ];
 
-	$post = str_replace(array("\r", "\n"), "<br />", $post);
+	// $post = str_replace(array("\r", "\n"), "<br />", $post);
 
 	$pictures = $_FILES[ 'blog_file' ][ 'name' ];
 	$temps = $_FILES[ 'blog_file' ][ 'tmp_name' ];
@@ -119,10 +119,11 @@ if ( !empty( $_POST ) ) {
 
 			const btns = $( '.add_blog_file_btn' );
 			let num = parseInt( $( btns[ btns.length - 1 ] ).attr( 'num' ), 10 );
-			num++;
 			$this = $( "#add_box" );
 			$this.click( function ( e ) {
 				e.preventDefault();
+				num++;
+				console.log(num);
 				let addHtml = '<p><input class="blog_file" type="file" name="blog_file[]"></p><p><input num="';
 				addHtml += num;
 				addHtml += '" class="add_blog_file_btn" type="button" value="INSERT IMAGE -本文に写真を挿入-"></p>';
