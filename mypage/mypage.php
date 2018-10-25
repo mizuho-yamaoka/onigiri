@@ -39,7 +39,8 @@ if ( !empty( $_POST[ 'blog_update' ] ) ) {
 		move_uploaded_file( $temp, '../blog_img/' . $submit_file_name );
 
 
-		$edit_post = preg_replace( '/selected_picture' . $picture . '/', '<img src="../blog_img/' . $submit_file_name . '">', $edit_post );}
+		$edit_post = preg_replace( '/selected_picture' . $picture . '/', '<img src="../blog_img/' . $submit_file_name . '">', $edit_post );
+	}
 
 	$sql = 'UPDATE posts SET title = ?, post = ? WHERE id = ?';
 	$data = [ $edit_title, $edit_post, $edit_post_id ];
@@ -118,9 +119,6 @@ while ( true ) {
 	// レコードがあれば追加
 	$posts[] = $record;
 }
-	//echo '<pre>';
-	//var_dump($posts);
-	//echo '</pre>';
 
 $sql = 'SELECT `f`.* FROM `feeds`AS `f` LEFT JOIN `users` AS `u` ON `f`. `user_id`= `u`.`id` WHERE u.`id` = ?';
 $data = [ $signin_user_id ];
@@ -139,7 +137,6 @@ while ( true ) {
 	}
 	// レコードがあれば追加
 	$feeds[] = $record;
-
 }
 
 // いいねしたBBS記事の出力
@@ -236,7 +233,6 @@ if ( $gender == '1' ) {
 		<header>
 			<?php include ('../header/header.php'); ?>
 		</header>
-
 		<div id="mypageWrap">
 			<div class="mpc">
 				<h1><img src="img/mypagepng"></h1>
@@ -309,11 +305,6 @@ if ( $gender == '1' ) {
 									<?php echo $post['post'] ?>
 								</div>
 								<div class="ebtn">
-									<!--ボタンが押された時に、$post['id']に記事のidを入れる。-->
-									<?php echo '<pre>';
-									//押した記事の'id'を取得
-									var_dump($post['id']);
-									echo '</pre>';?>
 									<input type="hidden" name="post_id" value="<?php echo $post['id'] ?>">
 									<input type="button" name="post_edit" value="EDIT" class="modal-open">
 									<span>|</span>
@@ -321,20 +312,13 @@ if ( $gender == '1' ) {
 								</div>
 							</form>
 						</div>
-						<?php endforeach; ?>
 					<div id="modal-main">
 						<!-- ここにeditを入れる -->
 						<!-- blogの編集画面 -->
 						<form action="mypage.php" method="POST" enctype="multipart/form-data">
-							<?php echo '<pre>';
-							//押した記事の'id'を取得
-							var_dump($post['id']);
-							//取得した'id'を数字に変換して、$posts[ここ]に入れる。
-							var_dump($posts[0]);
-							echo '</pre>';?>
 						    <div>
 						      <label for="edit_blog_title">Title</label>
-						      <input type="text" name="edit_title" value="<?php echo /*押されたidのきじのタイトルを取り出す。*/$posts[1]['title']//$post['title']?>">
+						      <input type="text" name="edit_title" value="<?php echo $post['title']?>">
 						    </div>
 						    <div>
 						      <label for="edit_blog_post">Detail</label>
@@ -356,14 +340,14 @@ if ( $gender == '1' ) {
 						    	<li>2.新しく入れたい写真を選び、'INSERT IMAGE'ボタンを押してください。</li>
 						    	<li>3.新しい写真の画像名が文末に表示されます。必要に応じて、場所を移動して使ってください。</li>
 						    	<li>1.Plese delete the image name you want to change that start from 'img src'.</li>
-						    	<li>2.Plese select a new pictute, and push 'INSERT IMAGE' button.</li>
+						    	<li>2.Please select a new pictute, and push 'INSERT IMAGE' button.</li>
 						    	<li>A new image name will come in sight in the end of article. Plese move the image name to place you want to insert.</li>
 						    	</li>
 						    	</ol>
 						    </div>
 						</form>
 					</div>
-						<?php //endforeach; ?>
+						<?php endforeach; ?>
 					</section>
 				</article>
 				<article>
