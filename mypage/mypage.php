@@ -298,7 +298,7 @@ if ( $gender == '1' ) {
 							<div class="blog_thum">
 								<img src="<?php echo catch_that_image($post['post']); ?>">
 							</div>
-							<form action="mypage.php" method="POST">
+							<form action="mypage.php" method="POST" >
 								<span class="time">
 									<?php echo $post['created'] ?>
 								</span>
@@ -310,10 +310,6 @@ if ( $gender == '1' ) {
 								</div>
 								<div class="ebtn">
 									<!--ボタンが押された時に、$post['id']に記事のidを入れる。-->
-									<?php echo '<pre>';
-									//押した記事の'id'を取得
-									var_dump($post['id']);
-									echo '</pre>';?>
 									<input type="hidden" name="post_id" value="<?php echo $post['id'] ?>">
 									<input type="button" name="post_edit" value="EDIT" class="modal-open">
 									<span>|</span>
@@ -321,26 +317,18 @@ if ( $gender == '1' ) {
 								</div>
 							</form>
 						</div>
-						<?php endforeach; ?>
-					<div id="modal-main">
+					<div class="modal-main">
 						<!-- ここにeditを入れる -->
 						<!-- blogの編集画面 -->
 						<form action="mypage.php" method="POST" enctype="multipart/form-data">
-							<?php echo '<pre>';
-							//押した記事の'id'を取得
-							var_dump($post['id']);
-							//取得した'id'を数字に変換して、$posts[ここ]に入れる。
-							var_dump($posts[0]);
-							echo '</pre>';?>
 						    <div>
 						      <label for="edit_blog_title">Title</label>
-						      <input type="text" name="edit_title" value="<?php echo /*押されたidのきじのタイトルを取り出す。*/$posts[1]['title']//$post['title']?>">
+						      <input type="text" name="edit_title" value="<?php echo $post['title']?>">
 						    </div>
 						    <div>
 						      <label for="edit_blog_post">Detail</label>
 						      <textarea id="blog_text" name="edit_post"><?php echo $post['post']?></textarea><br>
 						      <input type="hidden" name="post_id" value="<?php echo $post['id']?>">
-
 						      <input class="blog_file" type="file" name="blog_file[]">
 									<input num="0" class="add_blog_file_btn" type="button" value="INSERT IMAGE-本文に写真を挿入-">
 									<button id="add_box"><i class="far fa-images"></i>Add Image Box-写真の追加-</button>
@@ -363,13 +351,13 @@ if ( $gender == '1' ) {
 						    </div>
 						</form>
 					</div>
-						<?php //endforeach; ?>
+						<?php endforeach; ?>
 					</section>
 				</article>
 				<article>
 					<h3>YOUR BBS POSTS</h3>
-					<section class="bbsw">
 						<?php foreach ($feeds as $feed):?>
+					<section class="bbsw">
 						<div class="bbsaw">
 							<form action="mypage.php" method="POST">
 								<span class="time">
@@ -386,7 +374,7 @@ if ( $gender == '1' ) {
 								</div>
 							</form>
 						</div>
-						<div id="modal-mainCo">
+						<div class="modal-mainCo">
 						<form action="mypage.php" method="POST">
 						    <div>
 						      <label for="edit_bbs_feed">Detail</label>
@@ -398,8 +386,8 @@ if ( $gender == '1' ) {
 						    </div>
 						</form>
 					</div>
-						<?php endforeach; ?>
 					</section>
+					<?php endforeach; ?>
 			</article>
 			</div>
 		</div>
