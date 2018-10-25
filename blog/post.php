@@ -1,5 +1,6 @@
 <?php
 require( '../path.php' );
+require('../bbs/function.php');
 if ( !isset( $_SESSION ) ) {
 	session_start();
 }
@@ -41,6 +42,7 @@ if ( !empty( $_POST ) ) {
 	$title = $_POST[ 'title' ];
 	$post = $_POST[ 'body' ];
 
+	// $post = str_replace(array("\r", "\n"), "<br />", $post);
 
 	$pictures = $_FILES[ 'blog_file' ][ 'name' ];
 	$temps = $_FILES[ 'blog_file' ][ 'tmp_name' ];
@@ -54,9 +56,8 @@ if ( !empty( $_POST ) ) {
 		move_uploaded_file( $temp, '../blog_img/' . $submit_file_name );
 
 
-		$post = preg_replace( '/selected_picture' . $picture . '/', '<img src="../blog_img/' . $submit_file_name . '">', $post );
+	$post = preg_replace( '/selected_picture' . $picture . '/', '<img src="../blog_img/' . $submit_file_name . '">', $post );
 
-		$post = str_replace(array("\r", "\n"), "<br />", $post);
 
 	}
 
@@ -118,10 +119,11 @@ if ( !empty( $_POST ) ) {
 
 			const btns = $( '.add_blog_file_btn' );
 			let num = parseInt( $( btns[ btns.length - 1 ] ).attr( 'num' ), 10 );
-			num++;
 			$this = $( "#add_box" );
 			$this.click( function ( e ) {
 				e.preventDefault();
+				num++;
+				console.log(num);
 				let addHtml = '<p><input class="blog_file" type="file" name="blog_file[]"></p><p><input num="';
 				addHtml += num;
 				addHtml += '" class="add_blog_file_btn" type="button" value="INSERT IMAGE -本文に写真を挿入-"></p>';
@@ -158,7 +160,7 @@ if ( !empty( $_POST ) ) {
 					</div>
 					<div class="contents">
 						<p>CONTENTS</p>
-						<textarea id="blog_text" type="text" name="body" placeholder="Body of letter"><?php echo $post ?></textarea>
+						<textarea id="blog_text" type="text" name="body" placeholder="Body of letter"><?php echo change_indention_php($post) ?></textarea>
 					</div>
 					<div class="pict">
 						<p>INSERT IMAGE</p>
