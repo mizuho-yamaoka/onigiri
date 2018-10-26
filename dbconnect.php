@@ -1,7 +1,7 @@
 <?php
     $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
-    $dsn = 'mysql:dbname' . substr($url['path'],1) . ';host=' . $url['host'];
+    $dsn = 'mysql:dbname=' . substr($url['path'],1) . ';host=' . $url['host'];
     $user = $url['user'];
     $password= $url['pass'];
     $dbh = new PDO($dsn, $user, $password);
