@@ -1,8 +1,11 @@
 <?php
-    $dsn = 'mysql:dbname=CEBUFULL;host=localhost';
-    $name = 'root';
-    $password='';
-    $dbh = new PDO($dsn, $name, $password);
+    $url = parse_url(getenv("
+        CLEARDB_DATABASE_URL"));
+
+    $dsn = 'mysql:dbname' . substr($url['path'],1) . ';host=' . $uql['host'];
+    $user = $url['user'];
+    $password= $user['pass'];
+    $dbh = new PDO($dsn, $user, $password);
     // SQL文にエラーがあった際、画面にエラーを出力する設定
     $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $dbh->query('SET NAMES utf8');
