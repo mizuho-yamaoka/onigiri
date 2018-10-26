@@ -27,9 +27,15 @@ $stmt = $dbh->prepare( $sql );
 $stmt->execute( $data );
 
 // フィード一覧を入れる配列
-$feed = '';
+$feed = array();
 // フェッチ
 $record = $stmt->fetch( PDO::FETCH_ASSOC );
+
+$feed[] = $record;
+
+// echo '<pre>';
+// var_dump($feed);
+// echo '</pre>';
 
 // ログインしているユーザーがその投稿をしているか確認
 $likes_flg_sql = 'SELECT * FROM `feed_likes` WHERE `user_id` = ? AND `feed_id` = ?';

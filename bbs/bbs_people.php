@@ -12,11 +12,15 @@ if ( !isset( $_SESSION[ 'register' ][ 'id' ] ) ) {
 }
 
 $bbs_people = $_GET[ 'id' ];
+
+// echo'<pre>';
+// var_dump($_GET['id']);
+// echo '</pre>';
 //SELECTで現在サインインしているユーザーの情報をusersテーブルから読み込む
-$sql = 'SELECT `id`, `name`, `img_name` FROM `users` WHERE `id` = ?';
-$data = [ $bbs_people ];
-$stmt = $dbh->prepare( $sql );
-$stmt->execute( $data );
+// $sql = 'SELECT `id`, `name`, `img_name` FROM `users` WHERE `id` = ?';
+// $data = [ $bbs_people ];
+// $stmt = $dbh->prepare( $sql );
+// $stmt->execute( $data );
 
 $sql = 'SELECT * FROM `users` WHERE `id` = ?';
 $data = [ $bbs_people ];
