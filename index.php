@@ -85,11 +85,11 @@ while ( true ) {
 					<div class="chda">
 						<?php if(!isset($_SESSION['register']['id'])) :?>
 						<div class="login">
-							<p><a href="/Lechon/signin.php">LOGIN</a>
+							<p><a href="signin.php">LOGIN</a>
 							</p>
 						</div>
 						<div class="newA">
-							<p><a href="/Lechon/register/signup.php">NEW ACCOUNT</a>
+							<p><a href="register/signup.php">NEW ACCOUNT</a>
 							</p>
 						</div>
 						<?php endif; ?>
