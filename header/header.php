@@ -24,7 +24,7 @@ $name = $user['name'];
 
 		<div id="groval-navi">
 			<div class="navi">
-				<h1 class="logo"><a href="index.php"><?php logoimg(); ?></a></h1>
+				<h1 class="logo"><a href="../index.php"><?php logoimg(); ?></a></h1>
 
 				<!--pcOnly navi-->
 				<div class="navb pcOnly">
