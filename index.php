@@ -3,6 +3,7 @@ require( 'path.php' );
 session_start();
 require_once( 'dbconnect.php' );
 require_once( 'function.php' );
+require_once('vendor/autoload.php');
 
 $signin_user_id = '';
 if ( isset( $_SESSION[ 'register' ][ 'id' ] ) ) {

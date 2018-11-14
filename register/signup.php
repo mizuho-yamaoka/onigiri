@@ -1,7 +1,24 @@
 <?php
 require( '../path.php' );
-date_default_timezone_set( 'Asia/Manila' ); //フィリピン時間に設定
+require('vendor/autoload.php');
+date_default_timezone_set( 'Asia/Manila' ); 
+//フィリピン時間に設定
 session_start();
+
+use Cloudinary;
+use Cloudinary\Uploader;
+
+$account = parse_url(getenv('CLOUDINARY_URL'));
+
+\Cloudinary::config(array(
+    "cloud_name" => 'hpzkypnos',
+    "api_key" => '868377629318311',
+    "api_secret" => 'khzmmn9AGVgMOlAKsTQRgw8s69w'
+));
+
+// $ret = \Cloudinary\Uploader::upload("https://farm9.staticflickr.com/8748/16531734384_afdd2327e5_z.jpg");
+
+// print_r($ret);
 
 $name = '';
 $email = '';
@@ -81,10 +98,12 @@ if ( !empty( $_POST ) ) {
 	if ( empty( $errors ) ) {
 		$date_str = date( 'YmdHis' );
 		$submit_file_name = $date_str . $file_name;
+		$cloudinary_name = explode($submit_file_name, '.');
 
 		move_uploaded_file(
 			$_FILES[ 'img_name' ][ 'tmp_name' ],
 			'../user_profile_img/' . $submit_file_name );
+		\Cloudinary\Uploader::upload($cloudinary_name[0]);
 
 		$_SESSION[ 'register' ] = $_POST;
 		$_SESSION[ 'register' ][ 'img_name' ] = $submit_file_name;
