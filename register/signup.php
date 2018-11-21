@@ -4,7 +4,7 @@ require('../vendor/autoload.php');
 date_default_timezone_set( 'Asia/Manila' ); 
 //フィリピン時間に設定
 session_start();
-var_dump('hoge');
+echo 'hoge';
 // use Cloudinary;
 // use Cloudinary\Uploader;
 
