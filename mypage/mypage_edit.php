@@ -1,3 +1,4 @@
+
   <?php
   require( '../path.php' );
   session_start();
