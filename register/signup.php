@@ -1,6 +1,6 @@
 <?php
 require( '../path.php' );
-require('vendor/autoload.php');
+require('../vendor/autoload.php');
 date_default_timezone_set( 'Asia/Manila' ); 
 //フィリピン時間に設定
 session_start();
