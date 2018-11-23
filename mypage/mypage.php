@@ -239,7 +239,7 @@ if ( $gender == '1' ) {
 		</header>
 		<div id="mypageWrap">
 			<div class="mpc">
-				<h1><img src="img/mypagepng"></h1>
+				<h1><img src="img/mypage.png"></h1>
 				<article>
 					<div id="uinfo">
 						<div class="user_img"><img src="../user_profile_img/<?= $user['img_name']?>" width="60" class="img-thumbnail">

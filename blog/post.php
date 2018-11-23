@@ -42,7 +42,7 @@ if ( !empty( $_POST ) ) {
 	$title = $_POST[ 'title' ];
 	$post = $_POST[ 'body' ];
 
-	// $post = str_replace(array("\r", "\n"), "<br />", $post);
+	$post = str_replace(array("\r", "\n"), "<br />", $post);
 
 	$pictures = $_FILES[ 'blog_file' ][ 'name' ];
 	$temps = $_FILES[ 'blog_file' ][ 'tmp_name' ];

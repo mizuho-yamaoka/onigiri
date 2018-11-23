@@ -24,17 +24,17 @@ $name = $user['name'];
 
 		<div id="groval-navi">
 			<div class="navi">
-				<h1 class="logo"><a href="../index.php"><?php logoimg(); ?></a></h1>
+				<h1 class="logo"><a href="/cebufull/Lechon/index.php"><?php logoimg(); ?></a></h1>
 
 				<!--pcOnly navi-->
 				<div class="navb pcOnly">
 				<ul class="navilist">
 					<li>
-						<p><a href="blog/blog_list.php">BLOG</a>
+						<p><a href="/cebufull/Lechon/blog/blog_list.php">BLOG</a>
 						</p>
 					</li>
 					<li>
-						<p><a href="bbs/bbs_list.php">BBS</a>
+						<p><a href="/cebufull/Lechon/bbs/bbs_list.php">BBS</a>
 						</p>
 					</li>
 				</ul>
@@ -42,11 +42,11 @@ $name = $user['name'];
 				<div class="chda">
 					<?php if(!isset($_SESSION['register']['id'])) :?>
 						<div class="login">
-							<p><a href="signin.php">LOGIN</a>
+							<p><a href="/cebufull/Lechon/signin.php">LOGIN</a>
 							</p>
 						</div>
 						<div class="newA">
-							<p><a href="register/signup.php">NEW ACCOUNT</a>
+							<p><a href="/cebufull/Lechon/register/signup.php">NEW ACCOUNT</a>
 							</p>
 						</div>
 					<?php endif; ?>
@@ -56,13 +56,13 @@ $name = $user['name'];
 					
 					<?php if(isset($_SESSION['register']['id'])): ?>
 						<div class="logout">
-							<p><a href="signout.php">logout</a></p>
+							<p><a href="/cebufull/Lechon/signout.php">logout</a></p>
 						</div>
 						<div class="user_img">
 							<p><img src="../user_profile_img/<?php echo $img_name ?>" alt="" width="60px"></a></p>
 						</div>
 						<div class="user_name">
-							<p><a href="mypage/mypage.php"><?php echo $name ?></a></p>
+							<p><a href="/cebufull/Lechon/mypage/mypage.php"><?php echo $name ?></a></p>
 						</div>
 					<?php endif ;?>
 				</div>
@@ -73,24 +73,24 @@ $name = $user['name'];
 				<div class="spnavi">
 				<div id="overlay">
 					<ul>
-						<li><a href="blog/blog_list.php">BLOG</a>
+						<li><a href="/cebufull/Lechon/blog/blog_list.php">BLOG</a>
 						</li>
-						<li><a href="bbs/bbs_list.php">BBS</a>
+						<li><a href="/cebufull/Lechon/bbs/bbs_list.php">BBS</a>
 						</li>
 					<div>
 						<?php if(!isset($_SESSION['register']['id'])): ?>
-							<li><a href="signin.php">LOGIN</a>
+							<li><a href="/cebufull/Lechon/signin.php">LOGIN</a>
 							</li>
-							<li><a href="register/signup.php">NEW ACCOUNT</a>
+							<li><a href="/cebufull/Lechon/register/signup.php">NEW ACCOUNT</a>
 							</li>
 						<?php endif ;?>
 					</div>
 					<div>
 						<?php if(isset($_SESSION['register']['id'])): ?>
 
-							<li><a href="signout.php">LOGOUT</a>
+							<li><a href="/cebufull/Lechon/signout.php">LOGOUT</a>
 							</li>
-							<li><a href="mypage/mypage.php">MY PAGE</a>
+							<li><a href="/cebufull/Lechon/mypage/mypage.php">MY PAGE</a>
 							</li>
 						<?php endif ;?>
 					</div>

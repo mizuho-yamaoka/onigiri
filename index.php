@@ -86,11 +86,11 @@ while ( true ) {
 					<div class="chda">
 						<?php if(!isset($_SESSION['register']['id'])) :?>
 						<div class="login">
-							<p><a href="signin.php">LOGIN</a>
+							<p><a href="/cebufull/Lechon/signin.php">LOGIN</a>
 							</p>
 						</div>
 						<div class="newA">
-							<p><a href="register/signup.php">NEW ACCOUNT</a>
+							<p><a href="/cebufull/Lechon/register/signup.php">NEW ACCOUNT</a>
 							</p>
 						</div>
 						<?php endif; ?>
@@ -99,7 +99,7 @@ while ( true ) {
 					<div class="chda2">
 						<?php if(isset($_SESSION['register']['id'])): ?>
 						<div class="logout">
-							<p><a href="/Lechon/signout.php">LOGOUT</a>
+							<p><a href="/cebufull/Lechon/signout.php">LOGOUT</a>
 							</p>
 						</div>
 						<div class="user_img">
@@ -109,7 +109,7 @@ while ( true ) {
 						</div>
 						<div class="user_name">
 							<p>
-								<a href="/Lechon/mypage/mypage.php">
+								<a href="/cebufull/Lechon/mypage/mypage.php">
 									<?php echo $name ?>
 								</a>
 							</p>
@@ -123,24 +123,24 @@ while ( true ) {
 				<div class="spnavi">
 					<div id="overlay">
 						<ul>
-							<li><a href="blog/blog_list.php">BLOG</a>
+							<li><a href="/cebufull/Lechon/blog/blog_list.php">BLOG</a>
 							</li>
-							<li><a href="bbs/bbs_list.php">BBS</a>
+							<li><a href="/cebufull/Lechon/bbs/bbs_list.php">BBS</a>
 							</li>
 						</ul>
 						<ul>
 							<?php if(!isset($_SESSION['register']['id'])): ?>
-							<li><a href="/Lechon/signin.php">LOGIN</a>
+							<li><a href="/cebufull/Lechon/signin.php">LOGIN</a>
 							</li>
-							<li><a href="/Lechon/register/signup.php">NEW ACCOUNT</a>
+							<li><a href="/cebufull/Lechon/register/signup.php">NEW ACCOUNT</a>
 							</li>
 							<?php endif ;?>
 						</ul>
 						<ul>
 							<?php if(isset($_SESSION['register']['id'])): ?>
-							<li><a href="/Lechon/signout.php">LOGOUT</a>
+							<li><a href="/cebufull/Lechon/signout.php">LOGOUT</a>
 							</li>
-							<li><a href="/Lechon/mypage/mypage.php">MY PAGE</a>
+							<li><a href="/cebufull/Lechon/mypage/mypage.php">MY PAGE</a>
 							</li>
 							<?php endif ;?>
 						</ul>
